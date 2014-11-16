@@ -38,6 +38,8 @@
 		39B7E03F1A11DF3700A0514C /* cicadaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cicadaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B7E0441A11DF3700A0514C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39B7E0451A11DF3700A0514C /* cicadaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cicadaTests.swift; sourceTree = "<group>"; };
+		39B7E04F1A11E0F200A0514C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		39B7E0501A11E0F200A0514C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				39B7E0341A11DF3700A0514C /* Base */,
+				39B7E04F1A11E0F200A0514C /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				39B7E0391A11DF3700A0514C /* Base */,
+				39B7E0501A11E0F200A0514C /* zh-Hans */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
