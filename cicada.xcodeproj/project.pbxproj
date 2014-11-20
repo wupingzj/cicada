@@ -14,6 +14,9 @@
 		39B7E0371A11DF3700A0514C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0361A11DF3700A0514C /* Images.xcassets */; };
 		39B7E03A1A11DF3700A0514C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0381A11DF3700A0514C /* LaunchScreen.xib */; };
 		39B7E0461A11DF3700A0514C /* cicadaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0451A11DF3700A0514C /* cicadaTests.swift */; };
+		39B7E0571A1949CC00A0514C /* cicadaModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0551A1949CC00A0514C /* cicadaModel.xcdatamodeld */; };
+		39B7E05B1A1DE0EF00A0514C /* RequestProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E05A1A1DE0EF00A0514C /* RequestProgressView.swift */; };
+		39B7E05D1A1DE16F00A0514C /* AccommodationRequestPV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E05C1A1DE16F00A0514C /* AccommodationRequestPV.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		39B7E0451A11DF3700A0514C /* cicadaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cicadaTests.swift; sourceTree = "<group>"; };
 		39B7E04F1A11E0F200A0514C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		39B7E0501A11E0F200A0514C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		39B7E0561A1949CC00A0514C /* cicadaModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cicadaModel.xcdatamodel; sourceTree = "<group>"; };
+		39B7E05A1A1DE0EF00A0514C /* RequestProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestProgressView.swift; sourceTree = "<group>"; };
+		39B7E05C1A1DE16F00A0514C /* AccommodationRequestPV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationRequestPV.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,10 @@
 		39B7E02A1A11DF3700A0514C /* cicada */ = {
 			isa = PBXGroup;
 			children = (
+				39B7E0541A1948E500A0514C /* Utility */,
+				39B7E0531A1948D000A0514C /* Resource */,
+				39B7E0521A1948AD00A0514C /* ViewController */,
+				39B7E0511A19489800A0514C /* Model */,
 				39B7E02D1A11DF3700A0514C /* AppDelegate.swift */,
 				39B7E02F1A11DF3700A0514C /* FirstViewController.swift */,
 				39B7E0311A11DF3700A0514C /* SecondViewController.swift */,
@@ -115,6 +125,45 @@
 				39B7E0441A11DF3700A0514C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		39B7E0511A19489800A0514C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39B7E0551A1949CC00A0514C /* cicadaModel.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		39B7E0521A1948AD00A0514C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				39B7E05A1A1DE0EF00A0514C /* RequestProgressView.swift */,
+				39B7E0591A1DE02800A0514C /* Accommodation */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		39B7E0531A1948D000A0514C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		39B7E0541A1948E500A0514C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		39B7E0591A1DE02800A0514C /* Accommodation */ = {
+			isa = PBXGroup;
+			children = (
+				39B7E05C1A1DE16F00A0514C /* AccommodationRequestPV.swift */,
+			);
+			name = Accommodation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,7 +268,10 @@
 			files = (
 				39B7E0321A11DF3700A0514C /* SecondViewController.swift in Sources */,
 				39B7E02E1A11DF3700A0514C /* AppDelegate.swift in Sources */,
+				39B7E0571A1949CC00A0514C /* cicadaModel.xcdatamodeld in Sources */,
 				39B7E0301A11DF3700A0514C /* FirstViewController.swift in Sources */,
+				39B7E05D1A1DE16F00A0514C /* AccommodationRequestPV.swift in Sources */,
+				39B7E05B1A1DE0EF00A0514C /* RequestProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +467,7 @@
 				39B7E04B1A11DF3700A0514C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39B7E04C1A11DF3700A0514C /* Build configuration list for PBXNativeTarget "cicadaTests" */ = {
 			isa = XCConfigurationList;
@@ -423,8 +476,22 @@
 				39B7E04E1A11DF3700A0514C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		39B7E0551A1949CC00A0514C /* cicadaModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				39B7E0561A1949CC00A0514C /* cicadaModel.xcdatamodel */,
+			);
+			currentVersion = 39B7E0561A1949CC00A0514C /* cicadaModel.xcdatamodel */;
+			path = cicadaModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 39B7E0201A11DF3600A0514C /* Project object */;
 }
