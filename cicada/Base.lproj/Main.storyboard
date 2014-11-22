@@ -192,7 +192,85 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YUe-Go-NwC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="745" y="-1066"/>
+            <point key="canvasLocation" x="757" y="-1242"/>
+        </scene>
+        <!--destinationPageVC-->
+        <scene sceneID="Br3-32-zAh">
+            <objects>
+                <viewController storyboardIdentifier="destinationPageVC" id="eNh-ud-UVd" userLabel="destinationPageVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XFc-f2-TuN"/>
+                        <viewControllerLayoutGuide type="bottom" id="0SI-IS-wbP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mja-pz-md5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Destination Page" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2a-4H-JEK">
+                                <rect key="frame" x="72" y="220" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dgA-pM-sI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1510" y="-1242"/>
+        </scene>
+        <!--accommodationPageVC-->
+        <scene sceneID="ga0-lN-jO6">
+            <objects>
+                <viewController storyboardIdentifier="accommodationPageVC" id="Dc8-51-3eE" userLabel="accommodationPageVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kMi-Ft-84z"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rgq-s0-9kO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oZ4-uC-JeO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Accommodation Page" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VA0-DF-rTz">
+                                <rect key="frame" x="37" y="393" width="171" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vmO-ed-E1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2178" y="-1397"/>
+        </scene>
+        <!--confirmationPageVC-->
+        <scene sceneID="6Sz-cs-cbG">
+            <objects>
+                <viewController storyboardIdentifier="confirmationPageVC" id="WMb-om-fEn" userLabel="confirmationPageVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Ih-3m-hdc"/>
+                        <viewControllerLayoutGuide type="bottom" id="iMd-3f-Nel"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VWo-p1-EKm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Conformation Page" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWs-xB-41S">
+                                <rect key="frame" x="66" y="383" width="149" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hl0-rW-6sZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2820" y="-1397"/>
         </scene>
         <!--accomodationNavController-->
         <scene sceneID="FGa-qk-ads">

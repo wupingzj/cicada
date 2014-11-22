@@ -19,6 +19,7 @@
 		39B7E0621A1DEB7200A0514C /* PWQuotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0611A1DEB7200A0514C /* PWQuotesVC.swift */; };
 		39B7E0661A1F506400A0514C /* AccommodationPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0651A1F506400A0514C /* AccommodationPageVC.swift */; };
 		39B7E09A1A202E9700A0514C /* PWAccommodationRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */; };
+		39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		39B7E0611A1DEB7200A0514C /* PWQuotesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWQuotesVC.swift; sourceTree = "<group>"; };
 		39B7E0651A1F506400A0514C /* AccommodationPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationPageVC.swift; sourceTree = "<group>"; };
 		39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWAccommodationRequestVC.swift; sourceTree = "<group>"; };
+		39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWAccommodationModelController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				39B7E05E1A1DEAE300A0514C /* PWAccomodationAddressVC.swift */,
 				39B7E0651A1F506400A0514C /* AccommodationPageVC.swift */,
 				39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */,
+				39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */,
 			);
 			name = Accommodation;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				39B7E0621A1DEB7200A0514C /* PWQuotesVC.swift in Sources */,
 				39B7E05F1A1DEAE300A0514C /* PWAccomodationAddressVC.swift in Sources */,
 				39B7E05D1A1DE16F00A0514C /* AccommodationRequestPV.swift in Sources */,
+				39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */,
 				39B7E0661A1F506400A0514C /* AccommodationPageVC.swift in Sources */,
 				39B7E05B1A1DE0EF00A0514C /* RequestProgressView.swift in Sources */,
 			);

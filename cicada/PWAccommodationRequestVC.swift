@@ -5,16 +5,43 @@
 //  Created by Ping on 22/11/2014.
 //  Copyright (c) 2014 Yang Ltd. All rights reserved.
 //
-// Accommodation requet view controller.
+// Accommodation Requet Publish view controller.
 
 import UIKit
 
-class PWAccommodationRequestVC: UIViewController {
+class PWAccommodationRequestVC: UIViewController, UIPageViewControllerDelegate {
+
+    var pageViewController: UIPageViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        self.pageViewController!.delegate = self
+        
+        
+        /////////////////
+        let destinationPage: UIViewController = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard!)!
+        let viewControllers: NSArray = [destinationPage]
+        self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: {done in })
+        
+        self.pageViewController!.dataSource = self.modelController
+        
+        self.addChildViewController(self.pageViewController!)
+        self.view.addSubview(self.pageViewController!.view)
+        
+        // Set the page view controller's bounds using an inset rect so that self's view is visible around the edges of the pages.
+        var pageViewRect = self.view.bounds
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            pageViewRect = CGRectInset(pageViewRect, 40.0, 40.0)
+        }
+        self.pageViewController!.view.frame = pageViewRect
+        
+        self.pageViewController!.didMoveToParentViewController(self)
+        
+        // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
+        self.view.gestureRecognizers = self.pageViewController!.gestureRecognizers
+        /////////////////
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +49,15 @@ class PWAccommodationRequestVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    var modelController: PWAccommodationModelController {
+        if _modelController == nil {
+            _modelController = PWAccommodationModelController()
+            }
+            return _modelController!
+    }
+    var _modelController: PWAccommodationModelController? = nil
+
 
     /*
     // MARK: - Navigation
