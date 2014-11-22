@@ -13,13 +13,8 @@
 		39B7E03A1A11DF3700A0514C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0381A11DF3700A0514C /* LaunchScreen.xib */; };
 		39B7E0461A11DF3700A0514C /* cicadaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0451A11DF3700A0514C /* cicadaTests.swift */; };
 		39B7E0571A1949CC00A0514C /* cicadaModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0551A1949CC00A0514C /* cicadaModel.xcdatamodeld */; };
-		39B7E05B1A1DE0EF00A0514C /* RequestProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E05A1A1DE0EF00A0514C /* RequestProgressView.swift */; };
-		39B7E05D1A1DE16F00A0514C /* AccommodationRequestPV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E05C1A1DE16F00A0514C /* AccommodationRequestPV.swift */; };
 		39B7E05F1A1DEAE300A0514C /* PWAccomodationAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E05E1A1DEAE300A0514C /* PWAccomodationAddressVC.swift */; };
 		39B7E0621A1DEB7200A0514C /* PWQuotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0611A1DEB7200A0514C /* PWQuotesVC.swift */; };
-		39B7E0661A1F506400A0514C /* AccommodationPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0651A1F506400A0514C /* AccommodationPageVC.swift */; };
-		39B7E09A1A202E9700A0514C /* PWAccommodationRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */; };
-		39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,13 +40,8 @@
 		39B7E04F1A11E0F200A0514C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		39B7E0501A11E0F200A0514C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		39B7E0561A1949CC00A0514C /* cicadaModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cicadaModel.xcdatamodel; sourceTree = "<group>"; };
-		39B7E05A1A1DE0EF00A0514C /* RequestProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestProgressView.swift; sourceTree = "<group>"; };
-		39B7E05C1A1DE16F00A0514C /* AccommodationRequestPV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationRequestPV.swift; sourceTree = "<group>"; };
 		39B7E05E1A1DEAE300A0514C /* PWAccomodationAddressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWAccomodationAddressVC.swift; sourceTree = "<group>"; };
 		39B7E0611A1DEB7200A0514C /* PWQuotesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWQuotesVC.swift; sourceTree = "<group>"; };
-		39B7E0651A1F506400A0514C /* AccommodationPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationPageVC.swift; sourceTree = "<group>"; };
-		39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWAccommodationRequestVC.swift; sourceTree = "<group>"; };
-		39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWAccommodationModelController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +132,6 @@
 		39B7E0521A1948AD00A0514C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				39B7E05A1A1DE0EF00A0514C /* RequestProgressView.swift */,
 				39B7E0591A1DE02800A0514C /* Accommodation */,
 				39B7E0601A1DEB3600A0514C /* Quotes */,
 			);
@@ -166,11 +155,7 @@
 		39B7E0591A1DE02800A0514C /* Accommodation */ = {
 			isa = PBXGroup;
 			children = (
-				39B7E05C1A1DE16F00A0514C /* AccommodationRequestPV.swift */,
 				39B7E05E1A1DEAE300A0514C /* PWAccomodationAddressVC.swift */,
-				39B7E0651A1F506400A0514C /* AccommodationPageVC.swift */,
-				39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */,
-				39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */,
 			);
 			name = Accommodation;
 			sourceTree = "<group>";
@@ -283,15 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39B7E09A1A202E9700A0514C /* PWAccommodationRequestVC.swift in Sources */,
 				39B7E02E1A11DF3700A0514C /* AppDelegate.swift in Sources */,
 				39B7E0571A1949CC00A0514C /* cicadaModel.xcdatamodeld in Sources */,
 				39B7E0621A1DEB7200A0514C /* PWQuotesVC.swift in Sources */,
 				39B7E05F1A1DEAE300A0514C /* PWAccomodationAddressVC.swift in Sources */,
-				39B7E05D1A1DE16F00A0514C /* AccommodationRequestPV.swift in Sources */,
-				39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */,
-				39B7E0661A1F506400A0514C /* AccommodationPageVC.swift in Sources */,
-				39B7E05B1A1DE0EF00A0514C /* RequestProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
