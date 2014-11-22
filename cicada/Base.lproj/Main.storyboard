@@ -2,12 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--First View Controller-->
+        <!--Destination-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="PWAccomodationAddressVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -16,41 +17,107 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="First View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
-                                <rect key="frame" x="221" y="279" width="158" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
-                                <rect key="frame" x="279" y="329" width="43" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3KB-cz-Tvc" customClass="AccommodationRequestPV" customModule="cicada" customModuleProvider="target">
-                                <rect key="frame" x="225" y="126" width="150" height="2"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="3KB-cz-Tvc" userLabel="RequestProgressView" customClass="AccommodationRequestPV" customModule="cicada" customModuleProvider="target">
+                                <rect key="frame" x="175" y="94" width="250" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="jvB-ol-P1o"/>
+                                </constraints>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pY9-9G-c5O">
+                                <rect key="frame" x="519" y="115" width="60" height="30"/>
+                                <state key="normal" title="Australia">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="lxt-KO-Yl0" kind="show" identifier="changeCountrySegue" id="PhL-G2-pPu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wp-mt-bdU">
+                                <rect key="frame" x="547" y="501" width="32" height="30"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="1fd-go-ho1" kind="show" id="Vid-sZ-Rtb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="6BV-lF-sBN"/>
-                            <constraint firstItem="A5M-7J-77L" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="8" symbolic="YES" id="cfb-er-3JN"/>
-                            <constraint firstItem="A5M-7J-77L" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="e1l-AV-tCB"/>
-                            <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
+                            <constraint firstItem="3KB-cz-Tvc" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="30" id="AO5-B7-txQ"/>
+                            <constraint firstItem="pY9-9G-c5O" firstAttribute="top" secondItem="3KB-cz-Tvc" secondAttribute="bottom" constant="19" id="EOk-mu-ouV"/>
+                            <constraint firstAttribute="centerX" secondItem="3KB-cz-Tvc" secondAttribute="centerX" id="U6m-0E-3bD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2wp-mt-bdU" secondAttribute="trailing" constant="5" id="bLF-Ba-gBO"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="2wp-mt-bdU" secondAttribute="bottom" constant="20" id="bOy-OH-3Eq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pY9-9G-c5O" secondAttribute="trailing" constant="5" id="eMg-cG-bIF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Vr3-mL-DZS"/>
+                    <navigationItem key="navigationItem" title="Destination" id="Vr3-mL-DZS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1562" y="-320"/>
         </scene>
+        <!--ChangeCountryVC-->
+        <scene sceneID="OS9-yg-GHu">
+            <objects>
+                <viewController title="ChangeCountryVC" id="lxt-KO-Yl0" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B2f-Qv-uwE"/>
+                        <viewControllerLayoutGuide type="bottom" id="efJ-IT-wCe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r80-5g-1Do">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Country" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4g-fp-yNM">
+                                <rect key="frame" x="259" y="248" width="126" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J8H-h9-Luu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2496" y="-720"/>
+        </scene>
+        <!--AccommodationPage2VC-->
+        <scene sceneID="iPw-BN-A6j">
+            <objects>
+                <viewController title="AccommodationPage2VC" id="1fd-go-ho1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ucA-9b-zF4"/>
+                        <viewControllerLayoutGuide type="bottom" id="kUu-Nk-jp2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OXn-Ak-EqL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FfZ-Pd-b4S">
+                                <rect key="frame" x="175" y="94" width="250" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="h30-fh-CYV"/>
+                                </constraints>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="FfZ-Pd-b4S" secondAttribute="centerX" id="J2h-6f-ZsT"/>
+                            <constraint firstItem="FfZ-Pd-b4S" firstAttribute="top" secondItem="ucA-9b-zF4" secondAttribute="bottom" constant="30" id="fVa-1H-iof"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="olj-co-5xX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2496" y="-14"/>
+        </scene>
         <!--quotesViewController-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="quotesViewController" id="8rJ-Kc-sve" customClass="SecondViewController" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="quotesViewController" id="8rJ-Kc-sve" customClass="PWQuotesVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -59,8 +126,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="195" y="279" width="210" height="42"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Start New" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
+                                <rect key="frame" x="221" y="279" width="159" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -81,11 +148,11 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PM5-4M-JDK"/>
+                    <navigationItem key="navigationItem" title="Quotes" id="PM5-4M-JDK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1562" y="360"/>
+            <point key="canvasLocation" x="1562" y="832"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -98,6 +165,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="nqq-9a-NYT" kind="relationship" relationship="viewControllers" id="XTV-ch-wq0"/>
                         <segue destination="BBR-g3-Pzz" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="ngQ-FD-etc" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
@@ -106,11 +174,31 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
+        <!--Accommodation-->
+        <scene sceneID="8FT-xV-hDz">
+            <objects>
+                <viewController id="nqq-9a-NYT" customClass="PWAccommodationRequestVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o0Q-aC-MQM"/>
+                        <viewControllerLayoutGuide type="bottom" id="ptS-QP-nfV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v9p-fa-jpf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Accommodation" image="second" id="szA-oh-BcO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YUe-Go-NwC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="745" y="-1066"/>
+        </scene>
         <!--accomodationNavController-->
         <scene sceneID="FGa-qk-ads">
             <objects>
                 <navigationController title="accomodationNavController" automaticallyAdjustsScrollViewInsets="NO" id="BBR-g3-Pzz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Accomdation" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Accommodation" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6yJ-vd-VhX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -123,7 +211,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jj2-mM-zSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="774" y="-8"/>
         </scene>
         <!--QuoteNavController-->
         <scene sceneID="ar3-4h-eRz">
@@ -142,7 +230,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0C-bv-dgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="750" y="832"/>
         </scene>
     </scenes>
     <resources>
