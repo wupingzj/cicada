@@ -5,6 +5,34 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--ScrollWithPage-->
+        <scene sceneID="XdC-wc-w2x">
+            <objects>
+                <viewController id="jT9-nG-5km" customClass="PWAccommodationViewController" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LIR-Yr-Scc"/>
+                        <viewControllerLayoutGuide type="bottom" id="nyd-fo-nSS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UIh-sF-1KS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41O-aW-d2I">
+                                <rect key="frame" x="0.0" y="-34" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="ScrollWithPage" id="BPd-pK-dcy"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="scrollView" destination="41O-aW-d2I" id="McG-rs-tda"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QQR-0o-wib" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="763" y="-835"/>
+        </scene>
         <!--Destination-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -213,6 +241,7 @@
                     <connections>
                         <segue destination="BBR-g3-Pzz" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="ngQ-FD-etc" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="jT9-nG-5km" kind="relationship" relationship="viewControllers" id="V5S-du-XHg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
