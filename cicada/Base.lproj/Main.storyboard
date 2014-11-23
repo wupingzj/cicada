@@ -17,21 +17,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41O-aW-d2I">
-                                <rect key="frame" x="0.0" y="-34" width="600" height="600"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="7Wm-mU-xui">
+                                <rect key="frame" x="281" y="514" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="changePage:" destination="jT9-nG-5km" eventType="valueChanged" id="c5l-v7-TVs"/>
+                                </connections>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41O-aW-d2I">
+                                <rect key="frame" x="-4" y="20" width="738" height="494"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="7Wm-mU-xui" secondAttribute="centerX" id="7jZ-ib-zF4"/>
+                            <constraint firstItem="7Wm-mU-xui" firstAttribute="top" secondItem="41O-aW-d2I" secondAttribute="bottom" id="WUn-8s-OPs"/>
+                            <constraint firstItem="41O-aW-d2I" firstAttribute="top" secondItem="LIR-Yr-Scc" secondAttribute="bottom" id="k3r-zH-Qjl"/>
+                            <constraint firstItem="nyd-fo-nSS" firstAttribute="top" secondItem="7Wm-mU-xui" secondAttribute="bottom" id="lkQ-jT-PFe"/>
+                            <constraint firstItem="41O-aW-d2I" firstAttribute="leading" secondItem="UIh-sF-1KS" secondAttribute="leadingMargin" constant="-20" id="q8T-YO-OpI"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="ScrollWithPage" id="BPd-pK-dcy"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="pageControl" destination="7Wm-mU-xui" id="9L5-Rl-VmK"/>
                         <outlet property="scrollView" destination="41O-aW-d2I" id="McG-rs-tda"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQR-0o-wib" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="763" y="-835"/>
+            <point key="canvasLocation" x="774" y="-837"/>
         </scene>
         <!--Destination-->
         <scene sceneID="hNz-n2-bh7">

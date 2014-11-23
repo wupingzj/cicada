@@ -8,9 +8,11 @@
 
 import UIKit
 
-class PWAccommodationViewController: UIViewController {
+class PWAccommodationViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet var scrollView: UIScrollView!
+    
+    @IBOutlet var pageControl: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,9 @@ class PWAccommodationViewController: UIViewController {
         }
         
         self.scrollView.contentSize = CGSizeMake(width * CGFloat(colors.count), height);
+        //self.view.backgroundColor = UIColor.blackColor()
+        
+        self.scrollView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +42,21 @@ class PWAccommodationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // Update the page when more than 50% of the previous/next page is visible
+        let pageWidth = scrollView.frame.size.width;
+        let page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+        self.pageControl.currentPage = Int(page);
+    }
+    
+    @IBAction func changePage(sender: UIPageControl) {
+        let pageWidth = scrollView.frame.size.width;
+        let pageHeight = scrollView.frame.size.height
+        let x: CGFloat = pageWidth * CGFloat(self.pageControl.currentPage)
+        let frame: CGRect = CGRectMake(x, 0, pageWidth, pageHeight)
+        
+        self.scrollView.scrollRectToVisible(frame, animated: true)
+    }
 
     /*
     // MARK: - Navigation
