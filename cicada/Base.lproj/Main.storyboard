@@ -81,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J8H-h9-Luu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2496" y="-720"/>
+            <point key="canvasLocation" x="3308" y="-720"/>
         </scene>
         <!--AccommodationPage2VC-->
         <scene sceneID="iPw-BN-A6j">
@@ -213,14 +213,14 @@
                     <connections>
                         <segue destination="BBR-g3-Pzz" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="ngQ-FD-etc" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="nqq-9a-NYT" kind="relationship" relationship="viewControllers" id="XTV-ch-wq0"/>
+                        <segue destination="jgg-Sp-CkQ" kind="relationship" relationship="viewControllers" id="XTV-ch-wq0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Accommodation-->
+        <!--MyNavgation-->
         <scene sceneID="8FT-xV-hDz">
             <objects>
                 <viewController id="nqq-9a-NYT" customClass="PWAccommodationRequestVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
@@ -233,12 +233,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Accommodation" image="second" id="szA-oh-BcO"/>
+                    <navigationItem key="navigationItem" title="MyNavgation" id="bcC-Sr-ypZ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YUe-Go-NwC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="757" y="-1242"/>
+            <point key="canvasLocation" x="1569" y="-1242"/>
         </scene>
         <!--destinationPageVC-->
         <scene sceneID="Br3-32-zAh">
@@ -264,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgA-pM-sI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1510" y="-1242"/>
+            <point key="canvasLocation" x="2322" y="-1242"/>
         </scene>
         <!--accommodationPageVC-->
         <scene sceneID="ga0-lN-jO6">
@@ -290,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmO-ed-E1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2178" y="-1397"/>
+            <point key="canvasLocation" x="2990" y="-1397"/>
         </scene>
         <!--confirmationPageVC-->
         <scene sceneID="6Sz-cs-cbG">
@@ -316,7 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hl0-rW-6sZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2820" y="-1397"/>
+            <point key="canvasLocation" x="3632" y="-1397"/>
         </scene>
         <!--accomodationNavController-->
         <scene sceneID="FGa-qk-ads">
@@ -355,6 +355,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0C-bv-dgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="832"/>
+        </scene>
+        <!--Accommodation-->
+        <scene sceneID="JcG-zR-fyw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jgg-Sp-CkQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Accommodation" image="second" id="szA-oh-BcO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8u8-q4-xx6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nqq-9a-NYT" kind="relationship" relationship="rootViewController" id="L9B-GW-byq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XR5-az-GQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="757" y="-1242"/>
         </scene>
     </scenes>
     <resources>
