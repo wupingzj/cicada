@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Yang Ltd. All rights reserved.
 //
 
+// Ref: http://www.iosdevnotes.com/2011/03/uiscrollview-paging/
+
 import UIKit
 
 class PWAccommodationViewController: UIViewController, UIScrollViewDelegate {
@@ -14,10 +16,15 @@ class PWAccommodationViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet var pageControl: UIPageControl!
     
+    var pageControlBeingUsed: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.pageControlBeingUsed = false
+        
         let colors: [UIColor] = [UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor()]
         let width: CGFloat = self.scrollView.frame.size.width
         let height: CGFloat = self.scrollView.frame.size.height
@@ -43,10 +50,20 @@ class PWAccommodationViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        // Update the page when more than 50% of the previous/next page is visible
-        let pageWidth = scrollView.frame.size.width;
-        let page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-        self.pageControl.currentPage = Int(page);
+        if !pageControlBeingUsed {
+            // Update the page when more than 50% of the previous/next page is visible
+            let pageWidth = scrollView.frame.size.width;
+            let page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+            self.pageControl.currentPage = Int(page);
+        }
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        self.pageControlBeingUsed = false
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        self.pageControlBeingUsed = false
     }
     
     @IBAction func changePage(sender: UIPageControl) {
