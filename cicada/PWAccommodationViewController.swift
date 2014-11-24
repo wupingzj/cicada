@@ -73,6 +73,8 @@ class PWAccommodationViewController: UIViewController, UIScrollViewDelegate {
         let frame: CGRect = CGRectMake(x, 0, pageWidth, pageHeight)
         
         self.scrollView.scrollRectToVisible(frame, animated: true)
+        
+        self.navigationItem.title = "ChangedNavigationTitle"
     }
 
     /*
