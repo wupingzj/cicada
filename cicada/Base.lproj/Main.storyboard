@@ -201,6 +201,38 @@
             </objects>
             <point key="canvasLocation" x="1562" y="832"/>
         </scene>
+        <!--Research-->
+        <scene sceneID="R7p-Tw-GUa">
+            <objects>
+                <viewController id="1lV-eG-sIN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J2g-0m-gk0"/>
+                        <viewControllerLayoutGuide type="bottom" id="o7f-bk-M0z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="94k-UX-g2X">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ReSearch to examine current market" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRf-m3-RWY">
+                                <rect key="frame" x="160" y="290" width="281" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="mRf-m3-RWY" secondAttribute="centerX" id="2o6-Yh-lHd"/>
+                            <constraint firstAttribute="centerY" secondItem="mRf-m3-RWY" secondAttribute="centerY" id="k4f-3L-RRu"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Research" id="Y3p-cD-QuZ"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="55N-9S-gdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="1709"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -215,6 +247,7 @@
                         <segue destination="BBR-g3-Pzz" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="ngQ-FD-etc" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="jgg-Sp-CkQ" kind="relationship" relationship="viewControllers" id="XTV-ch-wq0"/>
+                        <segue destination="1lV-eG-sIN" kind="relationship" relationship="viewControllers" id="UqG-bG-DNa"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
