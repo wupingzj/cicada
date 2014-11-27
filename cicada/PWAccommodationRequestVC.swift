@@ -31,7 +31,9 @@ class PWAccommodationRequestVC: UIViewController, UIPageViewControllerDelegate {
         self.view.addSubview(self.pageViewController!.view)
         
         // Set the page view controller's bounds using an inset rect so that self's view is visible around the edges of the pages.
-        var pageViewRect = self.view.bounds
+//        var pageViewRect = self.view.bounds
+        let size = self.view.bounds.size
+        var pageViewRect = CGRectMake(0, 0, size.width, size.height - 58.0)
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             pageViewRect = CGRectInset(pageViewRect, 40.0, 40.0)
         }
@@ -41,6 +43,7 @@ class PWAccommodationRequestVC: UIViewController, UIPageViewControllerDelegate {
         
         // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
         self.view.gestureRecognizers = self.pageViewController!.gestureRecognizers
+        
         /////////////////
         
         setupPageControl()
@@ -48,10 +51,9 @@ class PWAccommodationRequestVC: UIViewController, UIPageViewControllerDelegate {
     
     func setupPageControl() {
         let pageControl:UIPageControl = UIPageControl.appearance();
-        pageControl.pageIndicatorTintColor = UIColor.greenColor()
-        pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
-        pageControl.backgroundColor = UIColor.grayColor()
-    
+        pageControl.pageIndicatorTintColor = UIColor.blueColor()
+        pageControl.currentPageIndicatorTintColor = UIColor.greenColor()
+        pageControl.backgroundColor = UIColor.whiteColor()
     }
 
     override func didReceiveMemoryWarning() {
