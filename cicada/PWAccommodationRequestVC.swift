@@ -42,6 +42,12 @@ class PWAccommodationRequestVC: UIViewController, UIPageViewControllerDelegate {
         // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
         self.view.gestureRecognizers = self.pageViewController!.gestureRecognizers
         /////////////////
+        
+        
+        let pageControl:UIPageControl = UIPageControl.appearance();
+        pageControl.pageIndicatorTintColor = UIColor.greenColor()
+        pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
+        pageControl.backgroundColor = UIColor.yellowColor()
     }
 
     override func didReceiveMemoryWarning() {
