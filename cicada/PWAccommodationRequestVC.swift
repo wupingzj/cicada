@@ -43,11 +43,15 @@ class PWAccommodationRequestVC: UIViewController, UIPageViewControllerDelegate {
         self.view.gestureRecognizers = self.pageViewController!.gestureRecognizers
         /////////////////
         
-        
+        setupPageControl()
+    }
+    
+    func setupPageControl() {
         let pageControl:UIPageControl = UIPageControl.appearance();
         pageControl.pageIndicatorTintColor = UIColor.greenColor()
         pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
-        pageControl.backgroundColor = UIColor.yellowColor()
+        pageControl.backgroundColor = UIColor.grayColor()
+    
     }
 
     override func didReceiveMemoryWarning() {

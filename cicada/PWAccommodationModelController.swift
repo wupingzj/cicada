@@ -40,7 +40,7 @@ class PWAccommodationModelController: NSObject, UIPageViewControllerDataSource  
     
     func indexOfViewController(viewController: UIViewController) -> Int {
         // Return the index of the given data view controller.
-        for index in 0...(pages.count-1) {
+        for index in 0..<pages.count {
             if pages[index] == viewController {
                 return index
             }
@@ -79,5 +79,14 @@ class PWAccommodationModelController: NSObject, UIPageViewControllerDataSource  
             return nil
         }
         return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
+    }
+    
+    // The following method implementation is necessary for showing the Page Control.
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return self.pages.count
+    }
+    
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return 0
     }
 }
