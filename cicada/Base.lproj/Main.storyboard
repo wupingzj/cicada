@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Destination-->
+        <!--TBD-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" sceneMemberID="viewController">
@@ -49,16 +49,16 @@
                             <constraint firstItem="pY9-9G-c5O" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" symbolic="YES" id="uu4-JB-Aok"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Destination" id="Vr3-mL-DZS"/>
+                    <navigationItem key="navigationItem" title="TBD" id="Vr3-mL-DZS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1562" y="-320"/>
         </scene>
-        <!--AccommodationPage2VC-->
+        <!--TBDAccommodationPageVC-->
         <scene sceneID="iPw-BN-A6j">
             <objects>
-                <viewController title="AccommodationPage2VC" id="1fd-go-ho1" sceneMemberID="viewController">
+                <viewController title="TBDAccommodationPageVC" id="1fd-go-ho1" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ucA-9b-zF4"/>
                         <viewControllerLayoutGuide type="bottom" id="kUu-Nk-jp2"/>
@@ -95,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="2496" y="-14"/>
         </scene>
-        <!--View Controller-->
+        <!--TBDConfirmationPage-->
         <scene sceneID="fTW-ky-8ZT">
             <objects>
-                <viewController id="hO7-tX-Mel" sceneMemberID="viewController">
+                <viewController title="TBDConfirmationPage" id="hO7-tX-Mel" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="shH-F7-OFe"/>
                         <viewControllerLayoutGuide type="bottom" id="ldY-Lj-LZl"/>
@@ -255,10 +255,10 @@
             </objects>
             <point key="canvasLocation" x="2330" y="-2154"/>
         </scene>
-        <!--Table View Controller-->
+        <!--destinationPageVC-->
         <scene sceneID="9cj-bs-b5o">
             <objects>
-                <tableViewController storyboardIdentifier="destinationPageVC" id="E3v-GV-xLB" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="destinationPageVC" title="destinationPageVC" id="E3v-GV-xLB" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xdN-dA-Q1j">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -281,7 +281,7 @@
             </objects>
             <point key="canvasLocation" x="2283" y="-1397"/>
         </scene>
-        <!--MyNavgation-->
+        <!--Destination-->
         <scene sceneID="8FT-xV-hDz">
             <objects>
                 <viewController id="nqq-9a-NYT" customClass="PWAccommodationRequestVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
@@ -294,7 +294,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="MyNavgation" id="bcC-Sr-ypZ"/>
+                    <navigationItem key="navigationItem" title="Destination" id="bcC-Sr-ypZ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YUe-Go-NwC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -361,10 +361,10 @@
             </objects>
             <point key="canvasLocation" x="3632" y="-1397"/>
         </scene>
-        <!--accomodationNavController-->
+        <!--TBDNavController-->
         <scene sceneID="FGa-qk-ads">
             <objects>
-                <navigationController title="accomodationNavController" automaticallyAdjustsScrollViewInsets="NO" id="BBR-g3-Pzz" sceneMemberID="viewController">
+                <navigationController title="TBDNavController" automaticallyAdjustsScrollViewInsets="NO" id="BBR-g3-Pzz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Accommodation" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6yJ-vd-VhX">
@@ -399,10 +399,10 @@
             </objects>
             <point key="canvasLocation" x="750" y="832"/>
         </scene>
-        <!--Accommodation-->
+        <!--RequestNC-->
         <scene sceneID="JcG-zR-fyw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jgg-Sp-CkQ" sceneMemberID="viewController">
+                <navigationController title="RequestNC" automaticallyAdjustsScrollViewInsets="NO" id="jgg-Sp-CkQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Accommodation" image="second" id="szA-oh-BcO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8u8-q4-xx6">

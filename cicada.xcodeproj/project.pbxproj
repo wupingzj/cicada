@@ -162,9 +162,9 @@
 		39B7E0591A1DE02800A0514C /* Accommodation */ = {
 			isa = PBXGroup;
 			children = (
-				39F4D1301A2BBBF2005D58E5 /* DetailsPage */,
-				39F4D12F1A2BBBE4005D58E5 /* AccommodationPage */,
 				39F4D12E1A2BBBC7005D58E5 /* DestinationPage */,
+				39F4D12F1A2BBBE4005D58E5 /* AccommodationPage */,
+				39F4D1301A2BBBF2005D58E5 /* DetailsPage */,
 				39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */,
 				39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */,
 			);
