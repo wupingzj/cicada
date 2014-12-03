@@ -8,94 +8,103 @@
 
 import UIKit
 
-class PWDestinationTableVC: UITableViewController {
-    var tableData: [String] = ["One","Two", "Three"]
+class PWDestinationTableVC: UITableViewController, UISearchBarDelegate {
+    var tableData: [String] = ["One1","Two1", "Three1", "One2","Two2", "Three2", "One3","Two3", "Three3", "One4","Two", "Three", "One5","Two", "Three", "One3","Two", "Three", "One","Two", "Three", "One","Two", "Three", "One","Two", "Three", "One4","Two", "Three", "One","Two", "Three", "One","Two", "Three", "One","Two", "Three", "One5","Two", "Three", "One","Two", "Three", "One","Two", "Three", "One","Two", "Three"]
     var searchResult: [String] =  [String]()
-
+    
+    @IBOutlet var infoView: UIView!
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var countryButton: UIButton!
+    
+    var isFiltered: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        searchBar.delegate = self
+        
+        countryButton.setTitle("Australia", forState: UIControlState.Normal)
+        
+        addMySeparatorLine()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func addMySeparatorLine() {
+        let lineView = UIView(frame: CGRectMake(0, 50, 200, 1))
+        lineView.backgroundColor = UIColor.blackColor()
+        infoView.addSubview(lineView)
     }
-
+    
+    
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (tableView == self.searchDisplayController?.searchResultsTableView) {
-            println("****** This table is search result table view!")
+        if (isFiltered) {
             return searchResult.count
         } else {
-            println("****** Not search table view")
             return tableData.count
         }
     }
-
-    /*
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("destinationCell", forIndexPath: indexPath) as UITableViewCell
+        
+        if (isFiltered) {
+            cell.textLabel!.text = searchResult[indexPath.row]
+        } else {
+            cell.textLabel!.text = tableData[indexPath.row]
+        }
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView!, moveRowAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
     }
     */
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        let len = countElements(searchText)
+        if (len == 0) {
+            isFiltered = false
+        } else {
+            isFiltered = true
+        }
+        
+        self.filterContentForSearchText(searchText)
+        
+        self.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked() {
+        // When clicked the search button, dismiss the keyboard
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func filterContentForSearchText(searchText: NSString) {
+        
+        
+        /*searchResult = tableData.filter() {(m: String) -> Bool in
+        return m.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil, locale: nil) != nil
+        }*/
+        
+        searchResult = tableData.filter() {
+            $0.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil, locale: nil) != nil
+        }
+        
+        println("searchText=\(searchText)     searchResult.count=\(searchResult.count)")
+        
+        // to use NSPredicate, followint this torial
+        // http://blog.mugunthkumar.com/coding/iphone-tutorial-uisearchdisplaycontroller-with-nspredicate/
+    }
 
 }
