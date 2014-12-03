@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -22,9 +23,6 @@
                                 <state key="normal" title="Australia">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="lxt-KO-Yl0" kind="show" identifier="changeCountrySegue" id="PhL-G2-pPu"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wp-mt-bdU">
                                 <rect key="frame" x="547" y="510" width="32" height="30"/>
@@ -56,32 +54,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1562" y="-320"/>
-        </scene>
-        <!--ChangeCountryVC-->
-        <scene sceneID="OS9-yg-GHu">
-            <objects>
-                <viewController title="ChangeCountryVC" id="lxt-KO-Yl0" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="B2f-Qv-uwE"/>
-                        <viewControllerLayoutGuide type="bottom" id="efJ-IT-wCe"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="r80-5g-1Do">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Country" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4g-fp-yNM">
-                                <rect key="frame" x="259" y="248" width="126" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J8H-h9-Luu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3308" y="-720"/>
         </scene>
         <!--AccommodationPage2VC-->
         <scene sceneID="iPw-BN-A6j">
@@ -283,6 +255,32 @@
             </objects>
             <point key="canvasLocation" x="2330" y="-2154"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="9cj-bs-b5o">
+            <objects>
+                <tableViewController storyboardIdentifier="destinationPageVC" id="E3v-GV-xLB" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xdN-dA-Q1j">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="MVr-7P-rgY" userLabel="destinationPage">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MVr-7P-rgY" id="06K-4I-ckf">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="E3v-GV-xLB" id="7oq-A8-cbh"/>
+                            <outlet property="delegate" destination="E3v-GV-xLB" id="CId-YV-Ueg"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="epc-xQ-rre" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2283" y="-1397"/>
+        </scene>
         <!--MyNavgation-->
         <scene sceneID="8FT-xV-hDz">
             <objects>
@@ -302,39 +300,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YUe-Go-NwC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1657" y="-1397"/>
-        </scene>
-        <!--destinationPageVC-->
-        <scene sceneID="Br3-32-zAh">
-            <objects>
-                <viewController storyboardIdentifier="destinationPageVC" id="eNh-ud-UVd" userLabel="destinationPageVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XFc-f2-TuN"/>
-                        <viewControllerLayoutGuide type="bottom" id="0SI-IS-wbP"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mja-pz-md5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6a-5Y-AX7" userLabel="Country">
-                                <rect key="frame" x="511" y="28" width="60" height="30"/>
-                                <state key="normal" title="Australia">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ZL2-6A-nDa" kind="show" id="t3e-EJ-97f"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="D6a-5Y-AX7" firstAttribute="top" secondItem="XFc-f2-TuN" secondAttribute="bottom" constant="8" symbolic="YES" id="NG8-fj-eCn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="D6a-5Y-AX7" secondAttribute="trailing" constant="13" id="nmD-si-UNw"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dgA-pM-sI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2330" y="-1397"/>
         </scene>
         <!--accommodationPageVC-->
         <scene sceneID="ga0-lN-jO6">
