@@ -228,7 +228,7 @@
         <!--ChangeCountryVC-->
         <scene sceneID="tFI-7c-iLy">
             <objects>
-                <viewController id="ZL2-6A-nDa" userLabel="ChangeCountryVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="changeCountryVC" id="ZL2-6A-nDa" userLabel="ChangeCountryVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HUs-b5-Vgq"/>
                         <viewControllerLayoutGuide type="bottom" id="qkt-so-F1d"/>
@@ -255,16 +255,16 @@
             </objects>
             <point key="canvasLocation" x="2330" y="-2154"/>
         </scene>
-        <!--destinationPageVC-->
+        <!--destinationTableVC-->
         <scene sceneID="9cj-bs-b5o">
             <objects>
-                <tableViewController storyboardIdentifier="destinationPageVC" title="destinationPageVC" id="E3v-GV-xLB" customClass="PWDestinationTableVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="destionationTableVC" title="destinationTableVC" id="E3v-GV-xLB" customClass="PWDestinationTableVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xdN-dA-Q1j">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Qsz-mB-DDl" userLabel="infoView">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="140"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="94"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52l-QU-NdP">
@@ -274,7 +274,7 @@
                                     </state>
                                 </button>
                                 <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JEN-ro-Ixu">
-                                    <rect key="frame" x="0.0" y="88" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="50" width="600" height="44"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                             </subviews>
@@ -305,7 +305,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epc-xQ-rre" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2283" y="-1397"/>
+            <point key="canvasLocation" x="1671" y="-2154"/>
         </scene>
         <!--Destination-->
         <scene sceneID="8FT-xV-hDz">
@@ -326,6 +326,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YUe-Go-NwC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1657" y="-1397"/>
+        </scene>
+        <!--destinationPageVC-->
+        <scene sceneID="h1z-pg-m4X">
+            <objects>
+                <viewController storyboardIdentifier="destinationPageVC" title="destinationPageVC" id="kRk-tO-kDD" customClass="PWDestinationPageVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UNs-5b-0Ax"/>
+                        <viewControllerLayoutGuide type="bottom" id="T2j-4Z-lQn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Elx-Ds-5vh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxT-TY-WlA">
+                                <rect key="frame" x="16" y="28" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" text="Please click to select" translatesAutoresizingMaskIntoConstraints="NO" id="3tu-ff-2Xc">
+                                <rect key="frame" x="16" y="57" width="258" height="60"/>
+                                <color key="backgroundColor" red="0.86413242525305101" green="1" blue="0.85960216672810186" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <dataDetectorType key="dataDetectorTypes" address="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3tu-ff-2Xc" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="4Kc-mA-hRL"/>
+                            <constraint firstItem="QxT-TY-WlA" firstAttribute="top" secondItem="UNs-5b-0Ax" secondAttribute="bottom" constant="8" symbolic="YES" id="X3D-fd-6zS"/>
+                            <constraint firstItem="QxT-TY-WlA" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="v16-Zg-Pt8"/>
+                            <constraint firstItem="3tu-ff-2Xc" firstAttribute="top" secondItem="QxT-TY-WlA" secondAttribute="bottom" constant="8" symbolic="YES" id="wtE-KI-0Jn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="destinationTextView" destination="3tu-ff-2Xc" id="WVo-Kn-NeF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T0f-VX-5LP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2330" y="-1388"/>
         </scene>
         <!--accommodationPageVC-->
         <scene sceneID="ga0-lN-jO6">
