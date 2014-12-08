@@ -30,7 +30,7 @@ class PWDestinationPageVC: UIViewController {
         view.userInteractionEnabled = true
         view.addGestureRecognizer(tapGestureRecognizer)
         
-        println("registering action for view \(view). action=\(action)")
+        println("registering action action=\(action)")
         
     }
 
