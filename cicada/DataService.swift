@@ -108,7 +108,7 @@ public class DataService {
     var managedObjectModel: NSManagedObjectModel {
         if _managedObjectModel == nil {
             //let modelURL = NSBundle.mainBundle().URLForResource("QiuTuiJianV0", withExtension: "momd")
-            let modelURL = NSBundle.mainBundle().URLForResource("QiuTuiJianModel", withExtension: "momd")
+            let modelURL = NSBundle.mainBundle().URLForResource("cicadaModel", withExtension: "momd")
             
             println("model location= \(modelURL)")
             

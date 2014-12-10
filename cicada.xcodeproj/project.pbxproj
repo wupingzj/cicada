@@ -24,6 +24,7 @@
 		39F4D1491A35C37F005D58E5 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D1481A35C37F005D58E5 /* Destination.swift */; };
 		39F4D14B1A35CB99005D58E5 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D14A1A35CB99005D58E5 /* DataLoader.swift */; };
 		39F4D14D1A35CC5A005D58E5 /* DataDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D14C1A35CC59005D58E5 /* DataDao.swift */; };
+		39F4D14F1A364D8D005D58E5 /* PWCountryTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D14E1A364D8D005D58E5 /* PWCountryTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		39F4D1481A35C37F005D58E5 /* Destination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		39F4D14A1A35CB99005D58E5 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		39F4D14C1A35CC59005D58E5 /* DataDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDao.swift; sourceTree = "<group>"; };
+		39F4D14E1A364D8D005D58E5 /* PWCountryTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWCountryTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 			children = (
 				39F4D1311A2BBC98005D58E5 /* PWDestinationTableVC.swift */,
 				39F4D13F1A3084BD005D58E5 /* PWDestinationPageVC.swift */,
+				39F4D14E1A364D8D005D58E5 /* PWCountryTableVC.swift */,
 			);
 			name = DestinationPage;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				39F4D1401A3084BD005D58E5 /* PWDestinationPageVC.swift in Sources */,
 				39F4D1321A2BBC98005D58E5 /* PWDestinationTableVC.swift in Sources */,
 				39F4D14D1A35CC5A005D58E5 /* DataDao.swift in Sources */,
+				39F4D14F1A364D8D005D58E5 /* PWCountryTableVC.swift in Sources */,
 				39B7E0621A1DEB7200A0514C /* PWQuotesVC.swift in Sources */,
 				39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */,
 				39F4D14B1A35CB99005D58E5 /* DataLoader.swift in Sources */,
