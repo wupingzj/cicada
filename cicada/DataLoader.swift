@@ -10,7 +10,7 @@ import Foundation
 
 import CoreData
 
-class DataLoader {
+class PWDataLoader {
     func getCountryList() -> [Country] {
         var dataDao: DataDao = DataDao()
         
@@ -29,23 +29,29 @@ class DataLoader {
         }
     }
     
-    func dispplay(entities: [NSManagedObject]) {
+    func display(entities: [Country]) {
+        for (index, entity) in enumerate(entities) {
+            println("contry[\(index)]: \(entity.name)")
+        }
+    }
+    
+    func display(entities: [NSManagedObject]) {
         for (index, entity) in enumerate(entities) {
             println("business entity[\(index)]: \(entity)")
         }
     }
     
     // *** BE CAREFUL ****
-    func xdeleteAllEntities() {
+    func deleteAllCountries() {
         let businessEntities: [Country] = getCountryList()
-        dispplay(businessEntities)
+        display(businessEntities)
         
         let dataService: DataService = DataService.sharedInstance
         let ctx:NSManagedObjectContext = dataService.getContext()
 
         //ctx.deletedObjects(businessEntities)
-        for (index, Country) in enumerate(businessEntities) {
-            ctx.deleteObject(Country)
+        for (index, country) in enumerate(businessEntities) {
+            ctx.deleteObject(country)
         }
         
         var error: NSError? = dataService.saveContext()
@@ -54,7 +60,7 @@ class DataLoader {
         }
     }
     
-    func createEntity() -> Bool {
+    func createCountries() -> Bool {
         self.createCountry("Australia", active: true)
         self.createCountry("Argentina", active: true)
         self.createCountry("China", active: true)
@@ -86,7 +92,7 @@ class DataLoader {
         let newCountry: Country = Country.createEntity()
         
         newCountry.name = name
-        newCountry.active = active
+        //newCountry.active = active
         
         return newCountry
     }

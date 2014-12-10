@@ -98,7 +98,7 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: nil, cacheName: "Master")
+        let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: "name", cacheName: "Master")
         fetchController.delegate = self
         _fetchedResultsController = fetchController
         
