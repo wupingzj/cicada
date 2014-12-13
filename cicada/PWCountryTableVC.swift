@@ -26,7 +26,12 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        if let sections = self.fetchedResultsController.sections {
+            return sections.count
+        } else {
+            println("ERROR@PWCountryTableVC: No sections found!")
+            return 0
+        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,7 +40,7 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
             let sectionInfo = sections[section] as NSFetchedResultsSectionInfo
             return sectionInfo.numberOfObjects
         } else {
-            println("ERROR@FavoriteTableVC: No sections found!")
+            println("ERROR@PWCountryTableVC: No sections found!")
             return 0
         }
     }
@@ -95,10 +100,20 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         
         let sortByName = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortByName]
-        
+            
+        // TODO -- filter inactive countries like India
+        // see WorldFacts tutorial
+//      let predicate = NSPredicate(precondition({}, {return "Message To Be Defined"}))
+//        let predicate = NSPredicate(format: "%K BEGINSWITH[cd] %@", "1st Item")
+        let predicate = NSPredicate(format: "active == YES")
+        fetchRequest.predicate = predicate
+            
+        // If the fetchRequest is changed, the cache MUST be deleted. Otherwise, code crashes.
+//        NSFetchedResultsController.deleteCacheWithName("Master")
+
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: "name", cacheName: "Master")
+        let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: "name", cacheName: nil)
         fetchController.delegate = self
         _fetchedResultsController = fetchController
         
@@ -125,38 +140,38 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
 //    }
     
     // --- might not be used
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        switch type {
-        case NSFetchedResultsChangeType.Insert:
-            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-        case NSFetchedResultsChangeType.Delete:
-            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-        default:
-            // Move
-            // Update
-            // @TODO please handle move and update events
-            println("****** section is being changed. Please handle it.")
-            return
-        }
-    }
+//    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+//        switch type {
+//        case NSFetchedResultsChangeType.Insert:
+//            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+//        case NSFetchedResultsChangeType.Delete:
+//            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+//        default:
+//            // Move
+//            // Update
+//            // @TODO please handle move and update events
+//            println("****** section is being changed. Please handle it.")
+//            return
+//        }
+//    }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
-        switch type {
-        case NSFetchedResultsChangeType.Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-        case NSFetchedResultsChangeType.Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        case NSFetchedResultsChangeType.Update:
-            self.configureCell(tableView.cellForRowAtIndexPath(indexPath)!, atIndexPath: indexPath)
-        case NSFetchedResultsChangeType.Move:
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-        default:
-            return
-        }
-    }
+//    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
+//        switch type {
+//        case NSFetchedResultsChangeType.Insert:
+//            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+//        case NSFetchedResultsChangeType.Delete:
+//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//        case NSFetchedResultsChangeType.Update:
+//            self.configureCell(tableView.cellForRowAtIndexPath(indexPath)!, atIndexPath: indexPath)
+//        case NSFetchedResultsChangeType.Move:
+//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+//        default:
+//            return
+//        }
+//    }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.endUpdates()
-    }
+//    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+//        self.tableView.endUpdates()
+//    }
 }

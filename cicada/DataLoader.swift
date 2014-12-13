@@ -31,7 +31,7 @@ class PWDataLoader {
     
     func display(entities: [Country]) {
         for (index, entity) in enumerate(entities) {
-            println("contry[\(index)]: \(entity.name)")
+            println("contry[\(index)]: \(entity.name) \(entity.active) ")
         }
     }
     
@@ -92,7 +92,7 @@ class PWDataLoader {
         let newCountry: Country = Country.createEntity()
         
         newCountry.name = name
-        //newCountry.active = active
+        newCountry.active = active
         
         return newCountry
     }
