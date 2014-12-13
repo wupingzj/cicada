@@ -355,9 +355,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" text="Please click to select" translatesAutoresizingMaskIntoConstraints="NO" id="3tu-ff-2Xc">
-                                <rect key="frame" x="16" y="57" width="258" height="60"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Please click to select" translatesAutoresizingMaskIntoConstraints="NO" id="3tu-ff-2Xc">
+                                <rect key="frame" x="16" y="57" width="290" height="60"/>
                                 <color key="backgroundColor" red="0.86413242525305101" green="1" blue="0.85960216672810186" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Yuv-Mn-6sF"/>
+                                    <constraint firstAttribute="width" constant="290" id="esG-DL-w3v"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <dataDetectorType key="dataDetectorTypes" address="YES"/>
