@@ -18,12 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pY9-9G-c5O">
-                                <rect key="frame" x="519" y="72" width="60" height="30"/>
-                                <state key="normal" title="Australia">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wp-mt-bdU">
                                 <rect key="frame" x="547" y="510" width="32" height="30"/>
                                 <state key="normal" title="Next">
@@ -75,11 +69,9 @@
                             <constraint firstItem="tNj-Pl-NOT" firstAttribute="leading" secondItem="7PV-R3-zo0" secondAttribute="trailing" constant="20" id="ZE8-mv-G3O"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2wp-mt-bdU" secondAttribute="trailing" constant="5" id="bLF-Ba-gBO"/>
                             <constraint firstItem="tNj-Pl-NOT" firstAttribute="baseline" secondItem="aQ7-hU-vvM" secondAttribute="baseline" id="cKn-4m-FCh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="pY9-9G-c5O" secondAttribute="trailing" constant="5" id="eMg-cG-bIF"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="vvJ-Na-gtc" secondAttribute="bottom" constant="8" symbolic="YES" id="gn0-40-hJW"/>
                             <constraint firstItem="tNj-Pl-NOT" firstAttribute="baseline" secondItem="7PV-R3-zo0" secondAttribute="baseline" id="o5g-jN-p7G"/>
                             <constraint firstItem="aQ7-hU-vvM" firstAttribute="leading" secondItem="tNj-Pl-NOT" secondAttribute="trailing" constant="10" id="q8h-pI-M7e"/>
-                            <constraint firstItem="pY9-9G-c5O" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" symbolic="YES" id="uu4-JB-Aok"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="TBD" id="Vr3-mL-DZS"/>
@@ -270,25 +262,12 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="94"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52l-QU-NdP">
-                                    <rect key="frame" x="525" y="20" width="55" height="30"/>
-                                    <state key="normal" title="Country">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <segue destination="MQB-XK-Ogh" kind="show" id="Pra-yc-7jy"/>
-                                    </connections>
-                                </button>
                                 <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JEN-ro-Ixu">
                                     <rect key="frame" x="0.0" y="50" width="600" height="44"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="52l-QU-NdP" firstAttribute="top" secondItem="Qsz-mB-DDl" secondAttribute="top" constant="20" symbolic="YES" id="eUq-Vg-8eh"/>
-                                <constraint firstAttribute="trailing" secondItem="52l-QU-NdP" secondAttribute="trailing" constant="20" symbolic="YES" id="jX0-LH-17m"/>
-                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="destinationCell" id="MVr-7P-rgY">
@@ -304,7 +283,6 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="countryButton" destination="52l-QU-NdP" id="ihh-hN-LCB"/>
                         <outlet property="infoView" destination="Qsz-mB-DDl" id="0oZ-VW-C6H"/>
                         <outlet property="searchBar" destination="JEN-ro-Ixu" id="a6a-33-xZk"/>
                     </connections>
@@ -313,10 +291,10 @@
             </objects>
             <point key="canvasLocation" x="1675" y="-1974"/>
         </scene>
-        <!--Country TableVC-->
+        <!--Country-->
         <scene sceneID="XOO-37-bzv">
             <objects>
-                <tableViewController id="MQB-XK-Ogh" customClass="PWCountryTableVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Country" hidesBottomBarWhenPushed="YES" id="MQB-XK-Ogh" customClass="PWCountryTableVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="LTc-lU-B3j">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -384,16 +362,28 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <dataDetectorType key="dataDetectorTypes" address="YES"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6No-mx-SJu">
+                                <rect key="frame" x="538" y="24" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="MQB-XK-Ogh" kind="show" identifier="showCountryTableSegue" id="1H9-51-RV9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3tu-ff-2Xc" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="4Kc-mA-hRL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6No-mx-SJu" secondAttribute="trailing" id="KE7-mH-sJg"/>
+                            <constraint firstItem="6No-mx-SJu" firstAttribute="baseline" secondItem="QxT-TY-WlA" secondAttribute="baseline" id="O7W-kF-iec"/>
                             <constraint firstItem="QxT-TY-WlA" firstAttribute="top" secondItem="UNs-5b-0Ax" secondAttribute="bottom" constant="8" symbolic="YES" id="X3D-fd-6zS"/>
                             <constraint firstItem="QxT-TY-WlA" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="v16-Zg-Pt8"/>
                             <constraint firstItem="3tu-ff-2Xc" firstAttribute="top" secondItem="QxT-TY-WlA" secondAttribute="bottom" constant="8" symbolic="YES" id="wtE-KI-0Jn"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="countryButton" destination="6No-mx-SJu" id="E8Y-XL-RXp"/>
                         <outlet property="destinationTextView" destination="3tu-ff-2Xc" id="WVo-Kn-NeF"/>
                     </connections>
                 </viewController>

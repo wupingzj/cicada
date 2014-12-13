@@ -9,14 +9,22 @@
 import UIKit
 import CoreData
 
+protocol PWCountryTableVCDelegate {
+    func didSelectCountry(controller: PWCountryTableVC, selectedCountry: Country)
+}
+
 class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
+    var delegate: PWCountryTableVCDelegate? = nil
+    var country: Country!
+    
+    var lastSelectedCell: UITableViewCell? = nil
     var ctx: NSManagedObjectContext = DataService.sharedInstance.getContext()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
+        // self.clearsSelectionOnViewWillAppear = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,7 +32,6 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
     }
 
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if let sections = self.fetchedResultsController.sections {
             return sections.count
@@ -45,7 +52,6 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         }
     }
 
-    
     // Customize the appearance of table view cells.
     func configureCell(cell:UITableViewCell, atIndexPath indexPath:NSIndexPath) {
         let country:Country = self.fetchedResultsController.objectAtIndexPath(indexPath) as Country
@@ -58,18 +64,31 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("countryCell", forIndexPath: indexPath) as UITableViewCell
+
         self.configureCell(cell, atIndexPath: indexPath)
+
         return cell
     }
+    
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedCountry:Country = self.fetchedResultsController.objectAtIndexPath(indexPath) as Country
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+        // set the checkmark
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            if lastSelectedCell != nil {
+                // clear the checkmark of previous selection
+                lastSelectedCell?.accessoryType = UITableViewCellAccessoryType.None
+            }
+            lastSelectedCell = cell
+
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+    
+        // callback the delegate
+        if delegate != nil {
+            delegate!.didSelectCountry(self, selectedCountry: selectedCountry)
+        }
     }
-    */
-
 
     /*
     // MARK: - Navigation
@@ -126,52 +145,4 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         return _fetchedResultsController!
     }
     var _fetchedResultsController: NSFetchedResultsController? = nil
-    
-    
-    
-//    override func tableView(tableView: UITableView, titleForHeaderInSection sectionIdx:NSInteger) -> String {
-//        if let sections = self.fetchedResultsController.sections {
-//            let sectionInfo = sections[sectionIdx] as NSFetchedResultsSectionInfo
-//            return sectionInfo.name
-//        } else {
-//            println("ERROR@SeekTableVC: No sections found!")
-//            return "N/A"
-//        }
-//    }
-    
-    // --- might not be used
-//    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-//        switch type {
-//        case NSFetchedResultsChangeType.Insert:
-//            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-//        case NSFetchedResultsChangeType.Delete:
-//            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-//        default:
-//            // Move
-//            // Update
-//            // @TODO please handle move and update events
-//            println("****** section is being changed. Please handle it.")
-//            return
-//        }
-//    }
-    
-//    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
-//        switch type {
-//        case NSFetchedResultsChangeType.Insert:
-//            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-//        case NSFetchedResultsChangeType.Delete:
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//        case NSFetchedResultsChangeType.Update:
-//            self.configureCell(tableView.cellForRowAtIndexPath(indexPath)!, atIndexPath: indexPath)
-//        case NSFetchedResultsChangeType.Move:
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-//        default:
-//            return
-//        }
-//    }
-    
-//    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-//        self.tableView.endUpdates()
-//    }
 }

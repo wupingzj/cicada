@@ -19,7 +19,6 @@ class PWDestinationTableVC: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet var infoView: UIView!
     @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var countryButton: UIButton!
     
     var isFiltered: Bool = false
     
@@ -27,8 +26,6 @@ class PWDestinationTableVC: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         searchBar.delegate = self
-        
-        countryButton.setTitle("Australia", forState: UIControlState.Normal)
         
         //addMySeparatorLine()
         
