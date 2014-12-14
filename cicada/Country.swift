@@ -16,6 +16,10 @@ public class Country: NSManagedObject {
     @NSManaged
     var active: Bool
     
+    @NSManaged
+    //var destinations: [PWDestination]
+    var destinations: NSSet
+    
     class func createEntity() -> Country {
         let ctx: NSManagedObjectContext = DataService.sharedInstance.getContext()
         let ed: NSEntityDescription = NSEntityDescription.entityForName("Country", inManagedObjectContext: ctx)!

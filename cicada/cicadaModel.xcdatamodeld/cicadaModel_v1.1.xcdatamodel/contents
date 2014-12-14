@@ -6,12 +6,11 @@
         <relationship name="destination" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Destination" inverseName="country" inverseEntity="Destination" syncable="YES"/>
     </entity>
     <entity name="Destination" representedClassName="cicada.PWDestination" syncable="YES">
-        <attribute name="city" attributeType="String" syncable="YES"/>
-        <attribute name="displayOrder" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="postCode" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="displayOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="postCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="town" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="destination" inverseEntity="Country" syncable="YES"/>
+        <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="destination" inverseEntity="Country" syncable="YES"/>
     </entity>
     <entity name="ModelStatus" representedClassName="cicada.ModelStatus" syncable="YES">
         <attribute name="table" attributeType="String" syncable="YES"/>
@@ -21,6 +20,6 @@
     <elements>
         <element name="Country" positionX="-63" positionY="-18" width="128" height="88"/>
         <element name="ModelStatus" positionX="-54" positionY="9" width="128" height="88"/>
-        <element name="Destination" positionX="-54" positionY="18" width="128" height="28"/>
+        <element name="Destination" positionX="-54" positionY="18" width="128" height="118"/>
     </elements>
 </model>

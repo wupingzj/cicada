@@ -21,29 +21,44 @@ class DataLoaderVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    // ******** destination data *************
+    @IBAction func createDestination(sender: AnyObject) {
+        print("creating destination...")
+        
+        let dataloader = PWDestinationLoader()
+        dataloader.createDestinations()
     }
-    */
-    @IBAction func listCountries(sender: AnyObject) {
-        let dataloader = PWDataLoader()
-        let countries = dataloader.getCountryList();
-        dataloader.display(countries)
+    
+    @IBAction func deleteDestination(sender: AnyObject) {
+        print("deleting destination...")
+        
+        let dataloader = PWDestinationLoader()
+        
+        print("******** To Be Implemented *******")
+    }
+    
+    @IBAction func listDestination(sender: AnyObject) {
+        print("listing destination...")
+        let dataloader = PWDestinationLoader()
+        let destinations = dataloader.getDestinationList()
+        dataloader.display(destinations)
+    }
+    
+    // ********* country data *********
+    @IBAction func loadCountryData(sender: AnyObject) {
+        let dataloader = PWCountryLoader()
+        dataloader.createCountries();
     }
 
     @IBAction func deleteCounties(sender: AnyObject) {
-        let dataloader = PWDataLoader()
+        let dataloader = PWCountryLoader()
         dataloader.deleteAllCountries();
     }
     
-    @IBAction func loadCountryData(sender: AnyObject) {
-        let dataloader = PWDataLoader()
-        dataloader.createCountries();
+    @IBAction func listCountries(sender: AnyObject) {
+        let dataloader = PWCountryLoader()
+        let countries = dataloader.getCountryList();
+        dataloader.display(countries)
     }
 }

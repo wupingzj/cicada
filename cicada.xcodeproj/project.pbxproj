@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3972B9A41A3D00BF0098B2B1 /* PWDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */; };
+		3972B9A61A3D0CE50098B2B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0331A11DF3700A0514C /* Main.storyboard */; };
 		39B7E02E1A11DF3700A0514C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E02D1A11DF3700A0514C /* AppDelegate.swift */; };
-		39B7E0351A11DF3700A0514C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0331A11DF3700A0514C /* Main.storyboard */; };
 		39B7E0371A11DF3700A0514C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0361A11DF3700A0514C /* Images.xcassets */; };
 		39B7E03A1A11DF3700A0514C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0381A11DF3700A0514C /* LaunchScreen.xib */; };
 		39B7E0461A11DF3700A0514C /* cicadaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0451A11DF3700A0514C /* cicadaTests.swift */; };
@@ -20,7 +21,6 @@
 		39F4D1401A3084BD005D58E5 /* PWDestinationPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D13F1A3084BD005D58E5 /* PWDestinationPageVC.swift */; };
 		39F4D1441A35B9A7005D58E5 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D1431A35B9A7005D58E5 /* Country.swift */; };
 		39F4D1471A35BACA005D58E5 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D1461A35BACA005D58E5 /* DataService.swift */; };
-		39F4D1491A35C37F005D58E5 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D1481A35C37F005D58E5 /* Destination.swift */; };
 		39F4D14B1A35CB99005D58E5 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D14A1A35CB99005D58E5 /* DataLoader.swift */; };
 		39F4D14D1A35CC5A005D58E5 /* DataDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D14C1A35CC59005D58E5 /* DataDao.swift */; };
 		39F4D14F1A364D8D005D58E5 /* PWCountryTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D14E1A364D8D005D58E5 /* PWCountryTableVC.swift */; };
@@ -38,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDestination.swift; sourceTree = "<group>"; };
+		3972B9A51A3D056D0098B2B1 /* cicadaModel_v1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cicadaModel_v1.1.xcdatamodel; sourceTree = "<group>"; };
 		39B7E0281A11DF3700A0514C /* cicada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cicada.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B7E02C1A11DF3700A0514C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39B7E02D1A11DF3700A0514C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +59,6 @@
 		39F4D13F1A3084BD005D58E5 /* PWDestinationPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDestinationPageVC.swift; sourceTree = "<group>"; };
 		39F4D1431A35B9A7005D58E5 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		39F4D1461A35BACA005D58E5 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		39F4D1481A35C37F005D58E5 /* Destination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		39F4D14A1A35CB99005D58E5 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		39F4D14C1A35CC59005D58E5 /* DataDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDao.swift; sourceTree = "<group>"; };
 		39F4D14E1A364D8D005D58E5 /* PWCountryTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWCountryTableVC.swift; sourceTree = "<group>"; };
@@ -225,7 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				39F4D1431A35B9A7005D58E5 /* Country.swift */,
-				39F4D1481A35C37F005D58E5 /* Destination.swift */,
+				3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */,
 			);
 			name = entity;
 			sourceTree = "<group>";
@@ -318,7 +319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39B7E0351A11DF3700A0514C /* Main.storyboard in Resources */,
+				3972B9A61A3D0CE50098B2B1 /* Main.storyboard in Resources */,
 				39B7E03A1A11DF3700A0514C /* LaunchScreen.xib in Resources */,
 				39B7E0371A11DF3700A0514C /* Images.xcassets in Resources */,
 			);
@@ -339,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39B7E09A1A202E9700A0514C /* PWAccommodationRequestVC.swift in Sources */,
+				3972B9A41A3D00BF0098B2B1 /* PWDestination.swift in Sources */,
 				39F4D1441A35B9A7005D58E5 /* Country.swift in Sources */,
 				39B7E02E1A11DF3700A0514C /* AppDelegate.swift in Sources */,
 				39B7E0571A1949CC00A0514C /* cicadaModel.xcdatamodeld in Sources */,
@@ -351,7 +353,6 @@
 				39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */,
 				39F4D14B1A35CB99005D58E5 /* DataLoader.swift in Sources */,
 				39F4D1471A35BACA005D58E5 /* DataService.swift in Sources */,
-				39F4D1491A35C37F005D58E5 /* Destination.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +567,7 @@
 		39B7E0551A1949CC00A0514C /* cicadaModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				3972B9A51A3D056D0098B2B1 /* cicadaModel_v1.1.xcdatamodel */,
 				39B7E0561A1949CC00A0514C /* cicadaModel.xcdatamodel */,
 			);
 			currentVersion = 39B7E0561A1949CC00A0514C /* cicadaModel.xcdatamodel */;
