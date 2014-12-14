@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -301,9 +302,59 @@
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
         <!--Destination TableVC-->
+        <scene sceneID="7QO-fd-Ef7">
+            <objects>
+                <tableViewController storyboardIdentifier="destionationTableVC" id="5i9-fK-GSX" customClass="PWDestinationTableVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yem-hQ-Pvv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" showsScopeBar="YES" id="0qe-ni-Xxs">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="88"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>City</string>
+                                <string>State</string>
+                            </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="5i9-fK-GSX" id="JJC-hy-eyh"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="destinationCell" id="qlM-Zt-gkr">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qlM-Zt-gkr" id="fdS-ot-QbD">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5i9-fK-GSX" id="kZk-XY-oTu"/>
+                            <outlet property="delegate" destination="5i9-fK-GSX" id="m4w-gi-XB4"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="xjQ-gM-l86" id="Ips-OP-OTg"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OMp-Ct-Gqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="xjQ-gM-l86">
+                    <connections>
+                        <outlet property="delegate" destination="5i9-fK-GSX" id="3vL-uv-QWI"/>
+                        <outlet property="searchBar" destination="0qe-ni-Xxs" id="zUi-Y9-1ve"/>
+                        <outlet property="searchContentsController" destination="5i9-fK-GSX" id="E3K-l8-9Wo"/>
+                        <outlet property="searchResultsDataSource" destination="5i9-fK-GSX" id="Zqo-oz-Swc"/>
+                        <outlet property="searchResultsDelegate" destination="5i9-fK-GSX" id="CUf-Lt-mnN"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1002" y="-1974"/>
+        </scene>
+        <!--Destination TableVC-->
         <scene sceneID="9cj-bs-b5o">
             <objects>
-                <tableViewController storyboardIdentifier="destionationTableVC" id="E3v-GV-xLB" customClass="PWDestinationTableVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="OLDdestionationTableVC" id="E3v-GV-xLB" customClass="PWDestinationTableVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xdN-dA-Q1j">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,7 +371,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="destinationCell" id="MVr-7P-rgY">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="destinationCell2" id="MVr-7P-rgY">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MVr-7P-rgY" id="06K-4I-ckf">
                                     <autoresizingMask key="autoresizingMask"/>

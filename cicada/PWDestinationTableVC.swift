@@ -8,12 +8,17 @@
 
 import UIKit
 
-class PWDestinationTableVC: UITableViewController, UISearchBarDelegate {
+
+// NOTE: Because this TableVC actually contains two table views: self.tableview and the tableview for SearchBar, caution must be taken to use correct table view!
+// The self.tableview and the tableview parameter in methods are different!
+// Please see sample application WordFacts
+
+class PWDestinationTableVC: UITableViewController {
 //    var tableData: [String] = ["One1","Two1", "Three1", "One2","Two2", "Three2", "One3","Two3", "Three3", "One4","Two", "Three", "One5","Two", "Three", "One3","Two", "Three", "One","Two", "Three", "One","Two", "Three", "One","Two", "Three", "One4","Two", "Three", "One","Two", "Three", "One","Two", "Three", "One","Two", "Three", "One5","Two", "Three", "One","Two", "Three", "One","Two", "Three", "One","Two", "Three"]
     var searchResult: [String] =  [String]()
     
     
-    var tableData: Dictionary<String, [String]> = ["B":["bear", "bee"], "C":["cat","cow"], "D":["Dog"], "E":["Emu"], "F":["frog"], "H":["horse"], "Y":["yak"]]
+    var tableData: Dictionary<String, [String]> = ["B":["bearNew", "beeNew"], "C":["cat","cow"], "D":["Dog"], "E":["Emu"], "F":["frog"], "H":["horse"], "Y":["yak"]]
     
     var sectionTitles: [String] = [String]()
     
@@ -21,11 +26,11 @@ class PWDestinationTableVC: UITableViewController, UISearchBarDelegate {
     @IBOutlet var searchBar: UISearchBar!
     
     var isFiltered: Bool = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.delegate = self
+//        searchBar.delegate = self
         
         //addMySeparatorLine()
         
@@ -65,8 +70,27 @@ class PWDestinationTableVC: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("destinationCell", forIndexPath: indexPath) as UITableViewCell
         
+        let originalTableView = self.tableView
+        // Don't use method parameter tableView as the cell is not registered with searchBar
+        let cell = originalTableView.dequeueReusableCellWithIdentifier("destinationCell", forIndexPath: indexPath) as UITableViewCell
+        
+        
+        // Another way to distinguish whether it is being filtered is 
+        // to check whether the tableView == self.tableView
+        // if (tableView == self.tableView) {
+        //    country = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        // } else {
+        //    country = [self.filteredList objectAtIndex:indexPath.row];
+        // }
+        
+        
+         if (tableView == self.tableView) {
+            println("* It is orignal table view!")
+         } else {
+            println("It is search table view!")
+         }
+
         if (isFiltered) {
             // TODO
             cell.textLabel!.text = searchResult[indexPath.row]
