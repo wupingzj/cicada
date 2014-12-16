@@ -41,20 +41,32 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate {
     }
 
     func showDestinationTableVC() {
-        println("************ Destination text view clicked")
+        if !isCountrySelected() {
+            return
+        }
+        
         //self.performSegueWithIdentifier("segueShowMap", sender: nil)
-        
-        
-        let destinationTableVC = self.storyboard!.instantiateViewControllerWithIdentifier("destionationTableVC") as UIViewController
+        let destinationTableVC = self.storyboard!.instantiateViewControllerWithIdentifier("destionationTableVC") as PWDestinationTableVC
 
-        // hook data
-        // mapVC.businessEntity = selectedBusinessEntity
+        destinationTableVC.country = self.country
         
         // iOS7 comptible
         // self.navigationController?.pushViewController(destinationTableVC, animated: true)
         
         // iOS8 comptible
         self.showViewController(destinationTableVC as UIViewController, sender: self)
+    }
+    
+    private func isCountrySelected() -> Bool {
+        // TODO - if country not selected, show alert message
+//        abort()
+        
+        if (self.country == nil) {
+            // show alert
+            return false
+        } else {
+            return true
+        }
     }
     
     // MARK: - Navigation

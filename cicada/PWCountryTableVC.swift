@@ -70,7 +70,7 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         return cell
     }
     
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCountry:Country = self.fetchedResultsController.objectAtIndexPath(indexPath) as Country
 
         // set the checkmark
@@ -90,59 +90,57 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    
-    // MARK - fetch data
-    // #pragma mark - Fetched results controller
+    // MARK: - Fetched Data Controller
     var fetchedResultsController: NSFetchedResultsController {
         if _fetchedResultsController != nil {
             return _fetchedResultsController!
         }
             
-        let fetchRequest = NSFetchRequest()
-
-        fetchRequest.entity = NSEntityDescription.entityForName("Country", inManagedObjectContext: self.ctx)
-        
-        // Set the batch size to a suitable number.
-        fetchRequest.fetchBatchSize = 50
-        // fetchLimit controlls the total number of returned records
-        //fetchRequest.fetchLimit = 2
-        
-        let sortByName = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [sortByName]
-            
-        // TODO -- filter inactive countries like India
-        // see WorldFacts tutorial
-//      let predicate = NSPredicate(precondition({}, {return "Message To Be Defined"}))
-//        let predicate = NSPredicate(format: "%K BEGINSWITH[cd] %@", "1st Item")
-        let predicate = NSPredicate(format: "active == YES")
-        fetchRequest.predicate = predicate
-            
-        // If the fetchRequest is changed, the cache MUST be deleted. Otherwise, code crashes.
-//        NSFetchedResultsController.deleteCacheWithName("Master")
+        // If the fetchRequest is changed, the cache MUST be deleted frist. Otherwise, code crashes.
+        // NSFetchedResultsController.deleteCacheWithName("CacheName")
 
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: "name", cacheName: nil)
+        let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: self.fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: nil, cacheName: nil)
         fetchController.delegate = self
         _fetchedResultsController = fetchController
         
         var error: NSError? = nil
         if !_fetchedResultsController!.performFetch(&error) {
-            println("Unresolved error \(error), \(error!.description)")
+            println("Fetching countries: Unresolved error \(error), \(error!.description)")
             //abort()
         }
         
         return _fetchedResultsController!
     }
     var _fetchedResultsController: NSFetchedResultsController? = nil
+    
+    
+    var fetchRequest: NSFetchRequest {
+        if _fetchRequest != nil {
+            return _fetchRequest!
+        }
+        
+        // create fetchRequest instance
+        let fetchRequest = NSFetchRequest()
+        
+        fetchRequest.entity = NSEntityDescription.entityForName("Country", inManagedObjectContext: self.ctx)
+        
+        // Set the batch size to a suitable number.
+        fetchRequest.fetchBatchSize = 50
+        // fetchLimit controlls the total number of returned records
+        //fetchRequest.fetchLimit = 200
+        
+        let sortByName = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortByName]
+        
+        // ignore inactive countries
+        // see WorldFacts tutorial
+        // let predicate = NSPredicate(format: "%K BEGINSWITH[cd] %@", "name", "1st Item")
+        let predicate = NSPredicate(format: "active == YES")
+        fetchRequest.predicate = predicate
+            
+        return fetchRequest
+    }
+    var _fetchRequest: NSFetchRequest? = nil
 }
