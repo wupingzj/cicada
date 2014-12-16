@@ -62,12 +62,23 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate {
 //        abort()
         
         if (self.country == nil) {
-            // show alert
+            self.showAlertMsg(self, title: "Sorry", message: "Please choose country first")
             return false
         } else {
             return true
         }
     }
+    
+    func showAlertMsg(viewVC: UIViewController, title: String, message: String) {
+        // TODO: UIAlertController requires iOS8
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,
+            handler: { action in
+        })
+        alertController.addAction(okAction)
+        viewVC.presentViewController(alertController, animated: true, completion: nil)
+    }
+
     
     // MARK: - Navigation
 
