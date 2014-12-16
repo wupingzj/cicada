@@ -9,15 +9,22 @@
 import UIKit
 import CoreData
 
+protocol PWDestinationTableVCDelegate {
+    func didSelectDestination(controller: PWDestinationTableVC, selectedDestination: PWDestination)
+}
+
+
 // NOTE: Because this TableVC actually contains two table views: self.tableview and the tableview for SearchBar, caution must be taken to use correct table view!
 // The self.tableview and the tableview parameter in methods are different!
 // Please see sample application WordFacts
 
 class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
+    var delegate: PWDestinationTableVCDelegate? = nil
     var ctx: NSManagedObjectContext = DataService.sharedInstance.getContext()
     var country: Country!
 
     var filteredList: [PWDestination] =  [PWDestination]()
+    var lastSelectedCell: UITableViewCell? = nil
 //    var sectionTitles: [String] = [String]()
     var isFiltered: Bool = false
 
@@ -76,6 +83,32 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         cell.textLabel?.text = destination.city
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        var selectedDestination: PWDestination? = nil;
+        if (self.searchDisplayController!.active) {
+            selectedDestination = self.filteredList[indexPath.row]
+        } else {
+            selectedDestination = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWDestination
+        }
+        
+        // set the checkmark
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            if lastSelectedCell != nil {
+                // clear the checkmark of previous selection
+                lastSelectedCell?.accessoryType = UITableViewCellAccessoryType.None
+            }
+            lastSelectedCell = cell
+            
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+        
+        // callback the delegate
+        if delegate != nil && selectedDestination != nil {
+            delegate!.didSelectDestination(self, selectedDestination: selectedDestination!)
+        }
     }
     
 //    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {

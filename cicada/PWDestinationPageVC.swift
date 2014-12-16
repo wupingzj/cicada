@@ -8,13 +8,14 @@
 
 import UIKit
 
-class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate {
+class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestinationTableVCDelegate {
 
     @IBOutlet var destinationTextView: UITextView!
     
     @IBOutlet var countryButton: UIButton!
     
     var country: Country? = nil
+    var destination: PWDestination? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,7 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate {
         let destinationTableVC = self.storyboard!.instantiateViewControllerWithIdentifier("destionationTableVC") as PWDestinationTableVC
 
         destinationTableVC.country = self.country
+        destinationTableVC.delegate = self
         
         // iOS7 comptible
         // self.navigationController?.pushViewController(destinationTableVC, animated: true)
@@ -87,15 +89,36 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate {
         if segue.identifier == "showCountryTableSegue" {
             let vc = segue.destinationViewController as PWCountryTableVC
             vc.delegate = self
-            
         } else {
             println("*** Unrecongnized segue name \(segue.identifier) in PWDestinationPageVC.prepareForSegue. Do nothing ***")
         }
     }
     
-    // MARK: PWCountryTableVC selection delegate callback
+    // MARK: - selection callback
     func didSelectCountry(controller: PWCountryTableVC, selectedCountry: Country) {
         self.country = selectedCountry
         countryButton.setTitle(country!.name, forState: UIControlState.Normal)
+    }
+    
+    func didSelectDestination(controller: PWDestinationTableVC, selectedDestination: PWDestination) {
+        self.destination = selectedDestination
+        
+        // To show destination details
+        if let selectedDestination = self.destination {
+            var text: String = selectedDestination.city
+            
+            text = concatString(text, append: selectedDestination.state)
+            text = concatString(text, append: selectedDestination.postCode)
+            
+            destinationTextView.text = text
+        }
+    }
+    
+    private func concatString(aString: String, append: String?) -> String {
+        if append == nil {
+            return aString
+        } else {
+            return aString + "\n" + append!
+        }
     }
 }
