@@ -148,7 +148,7 @@ class PWDestinationLoader {
     
     func display(entities: [PWDestination]) {
         for (index, entity) in enumerate(entities) {
-            println("destination[\(index)]: \(entity.city) country:\(entity.country.name) ")
+            println("destination[\(index)]: \(entity.town), \(entity.city) country:\(entity.country.name) ")
         }
     }
     
@@ -173,8 +173,14 @@ class PWDestinationLoader {
     
     func createDestinations() -> Bool {
         
-        self.createDestination("Killara", city: "Sydney", state: "New South Wales", postCode: "2071", displayOrder: 0, countryName: "Australia")
+        self.createDestination("Lindfield", city: "Sydney", state: "New South Wales", postCode: "2070", displayOrder: 0, countryName: "Australia")
+        self.createDestination("Burwood", city: "Melbourne", state: "Victoria", postCode: "3001", displayOrder: 0, countryName: "Australia")
         self.createDestination("Karori", city: "Wellington", state: nil, postCode: "2067", displayOrder: 0, countryName: "New Zealand")
+        self.createDestination("Lower Hutt", city: "Wellington", state: nil, postCode: "2001", displayOrder: 0, countryName: "New Zealand")
+        self.createDestination("Upper Hutt", city: "Wellington", state: nil, postCode: "2002", displayOrder: 0, countryName: "New Zealand")
+        self.createDestination("Any", city: "Porirua", state: nil, postCode: "2002", displayOrder: 0, countryName: "New Zealand")
+
+
         
         var error: NSError? = DataService.sharedInstance.saveContext()
         if let err = error {

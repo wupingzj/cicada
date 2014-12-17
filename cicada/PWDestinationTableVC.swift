@@ -175,7 +175,7 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         }
             
         // NSFetchedResultsController.deleteCacheWithName("CacheName")
-        let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: self.fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: "state", cacheName: nil)
+        let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: self.fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: nil, cacheName: nil)
         fetchController.delegate = self
         _fetchedResultsController = fetchController
         

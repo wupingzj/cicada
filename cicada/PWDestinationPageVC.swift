@@ -17,10 +17,13 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     var country: Country? = nil
     var destination: PWDestination? = nil
     
+    let reminderSelectDestination = "Please select destination"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         countryButton.setTitle("Australia", forState: UIControlState.Normal)
+        destinationTextView.text = reminderSelectDestination
 
         registerAction(destinationTextView, action:"showDestinationTableVC")
         
@@ -60,9 +63,6 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     }
     
     private func isCountrySelected() -> Bool {
-        // TODO - if country not selected, show alert message
-//        abort()
-        
         if (self.country == nil) {
             self.showAlertMsg(self, title: "Sorry", message: "Please choose country first")
             return false
@@ -96,29 +96,43 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     
     // MARK: - selection callback
     func didSelectCountry(controller: PWCountryTableVC, selectedCountry: Country) {
+        // if country changes, reset the destination
+        if self.country != selectedCountry {
+            self.destinationTextView.text = reminderSelectDestination
+            self.destination = nil
+        }
+        
         self.country = selectedCountry
         countryButton.setTitle(country!.name, forState: UIControlState.Normal)
     }
     
     func didSelectDestination(controller: PWDestinationTableVC, selectedDestination: PWDestination) {
         self.destination = selectedDestination
-        
-        // To show destination details
-        if let selectedDestination = self.destination {
-            var text: String = selectedDestination.city
-            
-            text = concatString(text, append: selectedDestination.state)
-            text = concatString(text, append: selectedDestination.postCode)
-            
-            destinationTextView.text = text
-        }
+        displayDestination(selectedDestination)
     }
     
-    private func concatString(aString: String, append: String?) -> String {
+    private func displayDestination(destination: PWDestination) {
+        // To show destination details
+        var text: String = ""
+        if (destination.town != nil) {
+            text = concatString(destination.town!, append: destination.city, newLine: false)
+        } else {
+            text = destination.city
+        }
+        
+        text = concatString(text, append: destination.state, newLine: true)
+        text = concatString(text, append: destination.postCode, newLine: true)
+        
+        destinationTextView.text = text
+    }
+    
+    private func concatString(aString: String, append: String?, newLine: Bool) -> String {
         if append == nil {
             return aString
-        } else {
+        } else if newLine {
             return aString + "\n" + append!
+        } else {
+            return aString + ", " + append!
         }
     }
 }
