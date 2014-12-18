@@ -62,7 +62,6 @@ class PWCountryLoader {
     
     func createCountries() -> Bool {
         self.createCountry("Australia", active: true)
-        self.createCountry("Argentina", active: true)
         self.createCountry("China", active: true)
         self.createCountry("United States", active: true)
         self.createCountry("United Kindom", active: true)
@@ -71,11 +70,8 @@ class PWCountryLoader {
         self.createCountry("Singapore", active: true)
         self.createCountry("New Zealand", active: true)
         self.createCountry("Germany", active: true)
-        self.createCountry("Italy", active: true)
-        self.createCountry("Greece", active: true)
-        self.createCountry("Spain", active: true)
         self.createCountry("Russia", active: true)
-        self.createCountry("Holland", active: true)
+        self.createCountry("Holland", active: false)
         self.createCountry("Fiji", active: true)
         
         

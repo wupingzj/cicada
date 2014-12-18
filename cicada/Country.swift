@@ -15,7 +15,10 @@ public class Country: NSManagedObject {
     
     @NSManaged
     var active: Bool
-    
+
+    @NSManaged
+    var useState: Bool
+
     @NSManaged
     //var destinations: [PWDestination]
     var destinations: NSSet
