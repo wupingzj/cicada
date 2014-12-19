@@ -38,7 +38,11 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if (tableView == self.tableView) {
-            return self.fetchedResultsController.sections?.count ?? 0
+            
+            
+            let count = self.fetchedResultsController.sections?.count ?? 0
+            println("The total number of sections=\(count)")
+            return count
         } else {
             return 0;
         }
@@ -111,21 +115,46 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         }
     }
     
-//    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-//        <#code#>
-//    }
+    // MARK: - Title
+    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+        if (tableView == self.tableView) {
+            if (index > 0) {
+                // The index is offset by one to allow for the extra search icon inserted at the front
+                // of the index
+                
+                return self.fetchedResultsController.sectionForSectionIndexTitle(title, atIndex:index-1)
+            } else {
+                // The first entry in the index is for the search icon so we return section not found
+                // and force the table to scroll to the top.
+                
+                self.tableView.contentOffset = CGPointZero;
+                return NSNotFound;
+            }
+        } else {
+            return 0;
+        }
+    }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return nil
-        
-//        return sectionTitles[section]
+        if (tableView == self.tableView) {
+            let sectionInfo = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
+            return sectionInfo.name
+        } else {
+            return nil;
+        }
     }
     
     // show Section Index Titles
     // ref: http://www.appcoda.com/ios-programming-index-list-uitableview/
     override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
-        return nil
-//        return sectionTitles
+        if (tableView == self.tableView) {
+            var index: [AnyObject] = [UITableViewIndexSearch]
+            var initials = self.fetchedResultsController.sectionIndexTitles
+            index += initials
+            return index;
+        } else {
+            return nil;
+        }
     }
     
     /*
@@ -173,9 +202,14 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         if _fetchedResultsController != nil {
             return _fetchedResultsController!
         }
-            
+        
+        var sectionNameKeyPath: String? = nil
+        if country.useState {
+            sectionNameKeyPath = "state"
+        }
+
         // NSFetchedResultsController.deleteCacheWithName("CacheName")
-        let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: self.fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: self.fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
         fetchController.delegate = self
         _fetchedResultsController = fetchController
         
