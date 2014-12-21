@@ -17,6 +17,7 @@
 		39B7E0621A1DEB7200A0514C /* PWQuotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0611A1DEB7200A0514C /* PWQuotesVC.swift */; };
 		39B7E09A1A202E9700A0514C /* PWAccommodationRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */; };
 		39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */; };
+		39C51BEB1A443B0300DF0AB9 /* PWStringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */; };
 		39F4D1321A2BBC98005D58E5 /* PWDestinationTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D1311A2BBC98005D58E5 /* PWDestinationTableVC.swift */; };
 		39F4D1401A3084BD005D58E5 /* PWDestinationPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D13F1A3084BD005D58E5 /* PWDestinationPageVC.swift */; };
 		39F4D1441A35B9A7005D58E5 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D1431A35B9A7005D58E5 /* Country.swift */; };
@@ -55,6 +56,7 @@
 		39B7E0611A1DEB7200A0514C /* PWQuotesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWQuotesVC.swift; sourceTree = "<group>"; };
 		39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWAccommodationRequestVC.swift; sourceTree = "<group>"; };
 		39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWAccommodationModelController.swift; sourceTree = "<group>"; };
+		39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWStringUtils.swift; sourceTree = "<group>"; };
 		39F4D1311A2BBC98005D58E5 /* PWDestinationTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDestinationTableVC.swift; sourceTree = "<group>"; };
 		39F4D13F1A3084BD005D58E5 /* PWDestinationPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDestinationPageVC.swift; sourceTree = "<group>"; };
 		39F4D1431A35B9A7005D58E5 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				39F4D1511A386622005D58E5 /* DataLoaderVC.swift */,
+				39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				39F4D14D1A35CC5A005D58E5 /* DataDao.swift in Sources */,
 				39F4D14F1A364D8D005D58E5 /* PWCountryTableVC.swift in Sources */,
 				39B7E0621A1DEB7200A0514C /* PWQuotesVC.swift in Sources */,
+				39C51BEB1A443B0300DF0AB9 /* PWStringUtils.swift in Sources */,
 				39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */,
 				39F4D14B1A35CB99005D58E5 /* DataLoader.swift in Sources */,
 				39F4D1471A35BACA005D58E5 /* DataService.swift in Sources */,

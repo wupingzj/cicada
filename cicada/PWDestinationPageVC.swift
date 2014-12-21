@@ -115,24 +115,14 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         // To show destination details
         var text: String = ""
         if (destination.town != nil) {
-            text = concatString(destination.town!, append: destination.city, newLine: false)
+            text = PWStringUtils.concatString(destination.town!, append: destination.city, newLine: false)
         } else {
             text = destination.city
         }
         
-        text = concatString(text, append: destination.state, newLine: true)
-        text = concatString(text, append: destination.postCode, newLine: true)
+        text = PWStringUtils.concatString(text, append: destination.state, newLine: true)
+        text = PWStringUtils.concatString(text, append: destination.postCode, newLine: true)
         
         destinationTextView.text = text
-    }
-    
-    private func concatString(aString: String, append: String?, newLine: Bool) -> String {
-        if append == nil {
-            return aString
-        } else if newLine {
-            return aString + "\n" + append!
-        } else {
-            return aString + ", " + append!
-        }
     }
 }

@@ -64,27 +64,21 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         // Don't use method parameter tableView as the cell is not registered with searchBar
         let cell = originalTableView.dequeueReusableCellWithIdentifier("destinationCell", forIndexPath: indexPath) as UITableViewCell
         
-        
-        // Another way to distinguish whether it is being filtered is 
-        // to check whether the tableView == self.tableView
-        // if (tableView == self.tableView) {
-        //    country = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        // } else {
-        //    country = [self.filteredList objectAtIndex:indexPath.row];
-        // }
-        
         var destination: PWDestination!
-        if (tableView == self.tableView)
-        {
+        if (tableView == self.tableView) {
             destination = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWDestination
-        }
-        else
-        {
+        } else {
             destination = self.filteredList[indexPath.row]
         }
         
-        // TODO
-        cell.textLabel?.text = destination.city
+        var text: String!
+        if let town = destination.town {
+            text = "  " + town + ", " + destination.city
+        } else {
+            text = "  " + destination.city
+        }
+        
+        cell.textLabel?.text = text
         
         return cell
     }
@@ -136,6 +130,11 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if !country.useState {
+            // Only show section when country uses state
+            return nil
+        }
+        
         if (tableView == self.tableView) {
             let sectionInfo = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
             return sectionInfo.name
