@@ -163,7 +163,7 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
     }
     
     // MARK: - Search
-    func searchForText(searchText: String, scope: PWDestinationSearchScope) {
+    func searchForText(searchText: String, scope: PWDestinationSearchScope) -> Bool {
         var predicate: NSPredicate!
         var searchAttribute: String!
         var predicateFormat: String!
@@ -174,6 +174,8 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
             predicateFormat = "country == %@ and (town BEGINSWITH[cd] %@ or city BEGINSWITH[cd] %@)"
         } else if scope == PWDestinationSearchScope.Contain {
             predicateFormat = "country == %@ and (town contains[cd] %@ or city contains[cd] %@)"
+        } else {
+            return false
         }
 
         predicate = NSPredicate(format: predicateFormat, self.country, searchText, searchText)
@@ -184,6 +186,9 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
 
         if error != nil {
             println("searchForText failed:\(error?.localizedDescription)")
+            return false
+        } else {
+            return true
         }
     }
     
@@ -192,12 +197,10 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
     // http://stackoverflow.com/questions/25826332/searchdisplaycontroller-deprecated-ios-8
     // http://stackoverflow.com/questions/24910350/uisearchdisplaydelegate-deprecation-work-around
     func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
-        println(" search string changed to \(searchString).")
         return search(controller.searchBar)
     }
     
     func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
-        println(" search scope changed to \(searchOption).")
         return search(controller.searchBar)
     }
     
@@ -207,11 +210,10 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         
         if let scope = PWDestinationSearchScope.fromRaw(rawScope) {
             if searchString.isEmpty {
-                println("*** WARNING: search strig is empty. ALL RECORDS should be displayed")
+                return false
+            } else {
+                return searchForText(searchString!, scope: scope)
             }
-            
-            searchForText(searchString!, scope: scope)
-            return true
         } else {
             return false
         }
