@@ -313,8 +313,8 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <scopeButtonTitles>
-                                <string>City</string>
-                                <string>State</string>
+                                <string>Contain</string>
+                                <string>Begin with</string>
                             </scopeButtonTitles>
                             <connections>
                                 <outlet property="delegate" destination="5i9-fK-GSX" id="JJC-hy-eyh"/>

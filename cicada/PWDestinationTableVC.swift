@@ -13,19 +13,23 @@ protocol PWDestinationTableVCDelegate {
     func didSelectDestination(controller: PWDestinationTableVC, selectedDestination: PWDestination)
 }
 
+enum PWDestinationSearchScope: Int {
+    case Contain = 0
+    case BeginWith = 1
+}
 
 // NOTE: Because this TableVC actually contains two table views: self.tableview and the tableview for SearchBar, caution must be taken to use correct table view!
 // The self.tableview and the tableview parameter in methods are different!
 // Please see sample application WordFacts
 
-class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
+class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDelegate, UISearchDisplayDelegate {
+    // No need to implement UISearchBarDelegate. Instead, UISearchDisplayDelegate is implemented
     var delegate: PWDestinationTableVCDelegate? = nil
     var ctx: NSManagedObjectContext = DataService.sharedInstance.getContext()
     var country: Country!
 
     var filteredList: [PWDestination] =  [PWDestination]()
     var lastSelectedCell: UITableViewCell? = nil
-//    var sectionTitles: [String] = [String]()
     var isFiltered: Bool = false
 
     override func viewDidLoad() {
@@ -44,7 +48,7 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
             println("The total number of sections=\(count)")
             return count
         } else {
-            return 0;
+            return 1;
         }
     }
     
@@ -62,7 +66,9 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         
         let originalTableView = self.tableView
         // Don't use method parameter tableView as the cell is not registered with searchBar
-        let cell = originalTableView.dequeueReusableCellWithIdentifier("destinationCell", forIndexPath: indexPath) as UITableViewCell
+//        let cell = originalTableView.dequeueReusableCellWithIdentifier("destinationCell", forIndexPath: indexPath) as UITableViewCell
+        
+        let cell = originalTableView.dequeueReusableCellWithIdentifier("destinationCell") as UITableViewCell
         
         var destination: PWDestination!
         if (tableView == self.tableView) {
@@ -89,7 +95,7 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         if (self.searchDisplayController!.active) {
             selectedDestination = self.filteredList[indexPath.row]
         } else {
-            selectedDestination = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWDestination
+            selectedDestination = self.fetchedResultsController.objectAtIndexPath(indexPath) as? PWDestination
         }
         
         // set the checkmark
@@ -110,30 +116,11 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
     }
     
     // MARK: - Title
-    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-        if (tableView == self.tableView) {
-            if (index > 0) {
-                // The index is offset by one to allow for the extra search icon inserted at the front
-                // of the index
-                
-                return self.fetchedResultsController.sectionForSectionIndexTitle(title, atIndex:index-1)
-            } else {
-                // The first entry in the index is for the search icon so we return section not found
-                // and force the table to scroll to the top.
-                
-                self.tableView.contentOffset = CGPointZero;
-                return NSNotFound;
-            }
-        } else {
-            return 0;
-        }
-    }
-    
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if !country.useState {
-            // Only show section when country uses state
-            return nil
-        }
+        //        if !country.useState {
+        //            // Only show section when country uses state
+        //            return nil
+        //        }
         
         if (tableView == self.tableView) {
             let sectionInfo = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
@@ -155,45 +142,79 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
             return nil;
         }
     }
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        let len = countElements(searchText)
-        if (len == 0) {
-            isFiltered = false
-        } else {
-            isFiltered = true
-        }
-        
-        self.filterContentForSearchText(searchText)
-        
-        self.tableView.reloadData()
-    }
-    
-    func searchBarSearchButtonClicked() {
-        // When clicked the search button, dismiss the keyboard
-        //self.searchBar.resignFirstResponder()
-    }
-    
-    func filterContentForSearchText(searchText: NSString) {
-        
-        
-        /*searchResult = tableData.filter() {(m: String) -> Bool in
-        return m.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil, locale: nil) != nil
-        }*/
 
+    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+        if (tableView == self.tableView) {
+            if (index > 0) {
+                // The index is offset by one to allow for the extra search icon inserted at the front
+                // of the index
+                
+                return self.fetchedResultsController.sectionForSectionIndexTitle(title, atIndex:index-1)
+            } else {
+                // The first entry in the index is for the search icon so we return section not found
+                // and force the table to scroll to the top.
+                
+                self.tableView.contentOffset = CGPointZero;
+                return NSNotFound;
+            }
+        } else {
+            return 0;
+        }
+    }
+    
+    // MARK: - Search
+    func searchForText(searchText: String, scope: PWDestinationSearchScope) {
+        var predicate: NSPredicate!
+        var searchAttribute: String!
+        var predicateFormat: String!
         
-        println("searchText=\(searchText)     searchResult.count=\(filteredList.count)")
+        searchAttribute = "city"
         
+        if scope == PWDestinationSearchScope.BeginWith {
+            predicateFormat = "%K BEGINSWITH[cd] %@"
+        } else if scope == PWDestinationSearchScope.Contain {
+            predicateFormat = "%K contains %@"
+        }
+
+        predicate = NSPredicate(format: predicateFormat, searchAttribute, searchText)
+        self.fetchRequest.predicate = predicate
+        
+        var error: NSError? = nil
+        self.filteredList = self.ctx.executeFetchRequest(self.fetchRequest, error: &error) as [PWDestination]
+
+        if error != nil {
+            println("searchForText failed:\(error?.localizedDescription)")
+        }
+    }
+    
+    // MARK: - UISearchDisplayDelegate
+    // TODO -------- UISearchDisplayDelegate is deprecated. Use UISearchController instead
+    // http://stackoverflow.com/questions/25826332/searchdisplaycontroller-deprecated-ios-8
+    // http://stackoverflow.com/questions/24910350/uisearchdisplaydelegate-deprecation-work-around
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        println(" search string changed to \(searchString).")
+        return search(controller.searchBar)
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+        println(" search scope changed to \(searchOption).")
+        return search(controller.searchBar)
+    }
+    
+    private func search(searchBar: UISearchBar) -> Bool {
+        let rawScope = searchBar.selectedScopeButtonIndex
+        let searchString = searchBar.text
+        
+        if let scope = PWDestinationSearchScope.fromRaw(rawScope) {
+            if searchString.isEmpty {
+                println("*** WARNING: search strig is empty. ALL RECORDS should be displayed")
+            }
+            
+            searchForText(searchString!, scope: scope)
+            return true
+        } else {
+            return false
+        }
     }
 
     // MARK: - Fetched Results Controller
@@ -205,6 +226,8 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         var sectionNameKeyPath: String? = nil
         if country.useState {
             sectionNameKeyPath = "state"
+        } else {
+            sectionNameKeyPath = "city"
         }
 
         // NSFetchedResultsController.deleteCacheWithName("CacheName")
@@ -248,6 +271,8 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         let predicate = NSPredicate(format: "country == %@", self.country)
         fetchRequest.predicate = predicate
         
+        _fetchRequest = fetchRequest
+            
         return fetchRequest
     }
     var _fetchRequest: NSFetchRequest? = nil
