@@ -88,6 +88,9 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         if delegate != nil {
             delegate!.didSelectCountry(self, selectedCountry: selectedCountry)
         }
+        
+        // programmatically click the Back button
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
 
     // MARK: - Fetched Data Controller

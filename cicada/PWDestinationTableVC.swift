@@ -113,6 +113,14 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         if delegate != nil && selectedDestination != nil {
             delegate!.didSelectDestination(self, selectedDestination: selectedDestination!)
         }
+
+//        if (self.searchDisplayController!.active) {
+//            // programmatically click the Cancel button of search bar
+//            self.searchDisplayController!.active = false
+//        }
+        
+        // programmatically click the Back button
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     // MARK: - Title
