@@ -171,12 +171,12 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         searchAttribute = "city"
         
         if scope == PWDestinationSearchScope.BeginWith {
-            predicateFormat = "%K BEGINSWITH[cd] %@"
+            predicateFormat = "country == %@ and (town BEGINSWITH[cd] %@ or city BEGINSWITH[cd] %@)"
         } else if scope == PWDestinationSearchScope.Contain {
-            predicateFormat = "%K contains %@"
+            predicateFormat = "country == %@ and (town contains[cd] %@ or city contains[cd] %@)"
         }
 
-        predicate = NSPredicate(format: predicateFormat, searchAttribute, searchText)
+        predicate = NSPredicate(format: predicateFormat, self.country, searchText, searchText)
         self.fetchRequest.predicate = predicate
         
         var error: NSError? = nil
