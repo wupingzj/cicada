@@ -123,7 +123,14 @@ public class DataService {
     // Returns the URL to the application's Documents directory.
     var applicationDocumentsDirectory: NSURL {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-            return urls[urls.endIndex-1] as NSURL
+        return urls[urls.endIndex-1] as NSURL
+    }
+    
+    // Returns the URL to the application's Support directory.
+    var applicationSupportDirectory: NSURL {
+        var error: NSError? = nil;
+        let appSupportURL = NSFileManager.defaultManager().URLForDirectory(.ApplicationSupportDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &error)
+        return appSupportURL!
     }
     
     // #pragma mark - Save core data context
