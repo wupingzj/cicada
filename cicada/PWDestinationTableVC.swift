@@ -216,7 +216,7 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         let rawScope = searchBar.selectedScopeButtonIndex
         let searchString = searchBar.text
         
-        if let scope = PWDestinationSearchScope.fromRaw(rawScope) {
+        if let scope = PWDestinationSearchScope(rawValue: rawScope) {
             if searchString.isEmpty {
                 return false
             } else {

@@ -30,7 +30,7 @@ class PWAccommodationModelController: NSObject, UIPageViewControllerDataSource  
             // Create a new view controller and pass suitable data.
             // Question: Taking speed and memory into consideration, should we cache the newly created view controller or not???
             let vcName = pageNames[index]
-            vc = storyboard.instantiateViewControllerWithIdentifier(vcName) as UIViewController
+            vc = storyboard.instantiateViewControllerWithIdentifier(vcName) as? UIViewController
 
             pages[index] = vc
         }

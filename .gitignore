@@ -1,2 +1,7 @@
 !cicada.xcodeproj/project.pbxproj
-cicada.xcodeproj/*
+cicada.xcodeproj/project.xcworkspace/xcuserdata/
+xcuserdata
+.DS_Store
+*.swp
+*.lock
+
