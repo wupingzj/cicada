@@ -10,6 +10,7 @@ import Foundation
 
 import CoreData
 
+// MARK: PWCountryLoader
 class PWCountryLoader {
     func getCountryList() -> [Country] {
         var dataDao: DataDao = DataDao()
@@ -95,7 +96,7 @@ class PWCountryLoader {
     }
 }
 
-// ********************
+// MARK: PWDestinationLoader
 class PWDestinationLoader {
     func getCountry(countryName: String) -> Country? {
         var dataDao: DataDao = DataDao()

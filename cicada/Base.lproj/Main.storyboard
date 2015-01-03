@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -96,6 +96,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odG-Xn-Shh">
+                                <rect key="frame" x="16" y="72" width="143" height="30"/>
+                                <state key="normal" title="Get Data from server">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getDataFromServer:" destination="9pv-A4-QxB" eventType="touchUpInside" id="BOF-9F-WYi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -104,12 +113,14 @@
                             <constraint firstItem="EDQ-S9-Vf6" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="9hu-5p-8bG"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="7PV-R3-zo0" secondAttribute="bottom" constant="95" id="AuS-dP-iwA"/>
                             <constraint firstItem="HQM-Tl-RLF" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="192" id="DyO-d3-hQ4"/>
+                            <constraint firstItem="odG-Xn-Shh" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="Gxw-x5-2KR"/>
                             <constraint firstItem="bxN-bX-BMv" firstAttribute="leading" secondItem="EDQ-S9-Vf6" secondAttribute="trailing" constant="20" id="I8R-Gg-9Wi"/>
                             <constraint firstItem="g25-ur-pXw" firstAttribute="leading" secondItem="7PV-R3-zo0" secondAttribute="leading" id="K4U-S7-ZDi"/>
                             <constraint firstItem="DzX-LJ-exU" firstAttribute="leading" secondItem="bxN-bX-BMv" secondAttribute="trailing" constant="20" id="MHw-fc-0KK"/>
                             <constraint firstItem="DzX-LJ-exU" firstAttribute="baseline" secondItem="bxN-bX-BMv" secondAttribute="baseline" id="PHA-tm-my6"/>
                             <constraint firstItem="EDQ-S9-Vf6" firstAttribute="top" secondItem="HQM-Tl-RLF" secondAttribute="bottom" constant="8" id="Pok-V9-6Wz"/>
                             <constraint firstItem="7PV-R3-zo0" firstAttribute="top" secondItem="g25-ur-pXw" secondAttribute="bottom" constant="8" id="VpI-Ue-jgr"/>
+                            <constraint firstItem="odG-Xn-Shh" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" symbolic="YES" id="W3x-yK-EPo"/>
                             <constraint firstAttribute="centerX" secondItem="vvJ-Na-gtc" secondAttribute="centerX" id="YwB-ZN-Egn"/>
                             <constraint firstItem="tNj-Pl-NOT" firstAttribute="leading" secondItem="7PV-R3-zo0" secondAttribute="trailing" constant="20" id="ZE8-mv-G3O"/>
                             <constraint firstItem="HQM-Tl-RLF" firstAttribute="leading" secondItem="EDQ-S9-Vf6" secondAttribute="leading" id="ZZX-4w-Ybk"/>

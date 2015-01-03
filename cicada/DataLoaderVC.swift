@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class DataLoaderVC: UIViewController {
 
@@ -21,6 +22,14 @@ class DataLoaderVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func getDataFromServer(sender: AnyObject) {
+        Alamofire.request(.GET, "http://www.google.com", parameters: nil)
+            .response { (request, response, data, error) in
+                println("request=\(request)")
+                println("response=\(response)")
+                println("error=\(error)")
+        }
+    }
     
     // ******** destination data *************
     @IBAction func createDestination(sender: AnyObject) {
