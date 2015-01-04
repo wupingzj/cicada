@@ -97,12 +97,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odG-Xn-Shh">
-                                <rect key="frame" x="16" y="72" width="143" height="30"/>
-                                <state key="normal" title="Get Data from server">
+                                <rect key="frame" x="16" y="72" width="151" height="30"/>
+                                <state key="normal" title="Get Data from Google">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="getDataFromServer:" destination="9pv-A4-QxB" eventType="touchUpInside" id="BOF-9F-WYi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZ9-rI-OPe">
+                                <rect key="frame" x="20" y="110" width="168" height="30"/>
+                                <state key="normal" title="Get Data from my server">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getDataFromMyServer:" destination="9pv-A4-QxB" eventType="touchUpInside" id="8yE-td-sSc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -124,6 +133,8 @@
                             <constraint firstAttribute="centerX" secondItem="vvJ-Na-gtc" secondAttribute="centerX" id="YwB-ZN-Egn"/>
                             <constraint firstItem="tNj-Pl-NOT" firstAttribute="leading" secondItem="7PV-R3-zo0" secondAttribute="trailing" constant="20" id="ZE8-mv-G3O"/>
                             <constraint firstItem="HQM-Tl-RLF" firstAttribute="leading" secondItem="EDQ-S9-Vf6" secondAttribute="leading" id="ZZX-4w-Ybk"/>
+                            <constraint firstItem="uZ9-rI-OPe" firstAttribute="top" secondItem="odG-Xn-Shh" secondAttribute="bottom" constant="8" symbolic="YES" id="Zn5-9g-QyI"/>
+                            <constraint firstItem="uZ9-rI-OPe" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="4" id="bL9-77-oE0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2wp-mt-bdU" secondAttribute="trailing" constant="5" id="bLF-Ba-gBO"/>
                             <constraint firstItem="tNj-Pl-NOT" firstAttribute="baseline" secondItem="aQ7-hU-vvM" secondAttribute="baseline" id="cKn-4m-FCh"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="vvJ-Na-gtc" secondAttribute="bottom" constant="8" symbolic="YES" id="gn0-40-hJW"/>

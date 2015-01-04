@@ -22,6 +22,7 @@ class DataLoaderVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: *** Experiment networking ***
     @IBAction func getDataFromServer(sender: AnyObject) {
         Alamofire.request(.GET, "http://www.google.com", parameters: nil)
             .response { (request, response, data, error) in
@@ -29,9 +30,71 @@ class DataLoaderVC: UIViewController {
                 println("response=\(response)")
                 println("error=\(error)")
         }
+        
+        // parse JSON
+        Alamofire.request(.GET, "http://httpbin.org/get")
+            .responseJSON {(request, response, JSON, error) in
+                println("JSON=\(JSON)")
+        }
+        
+        println("Finished request. This line is hit before the callback methods as the request is asynchronized.")
+        // also note that the callback of httpbin is hit BEFORE that of Google. That might be becase httpbin.org replies faster than google to respond.
     }
     
-    // ******** destination data *************
+    @IBAction func getDataFromMyServer(sender: AnyObject) {
+        callCicadaServer()
+        
+    }
+    
+    private func callCicadaServer() {
+        Alamofire.request(.GET, "http://localhost:8080/countries", parameters: nil)
+            .responseJSON { (request, response, json, error) in
+                println("request=\(request)")
+                println("response=\(response)")
+                println("response code=\(response?.statusCode)")
+                println("error=\(error)")
+                if error != nil {
+                    println("Failed to call my server. response=\(response)")
+                    println("Failed to call my server. Error code=\(error?.code)")
+                    println("Failed to call my server. Error description=\(error?.description)")
+                    println("Failed to call my server. Error domain=\(error?.domain)")
+                    println("Failed to call my server. Error userInfo=\(error?.userInfo)")
+                    
+                } else if json != nil {
+                    // _TtSq means optional
+                    // _TtSS means String
+                    // See http://www.eswick.com/2014/06/inside-swift/ to decipher the mysterous Swift type names
+                    println("Succeeded to call my server. Data Class=\(_stdlib_getTypeName(json!)) class=\(NSStringFromClass(json!.dynamicType)).")
+                    println("Succeeded to call my server. Data=\(json)")
+                }
+        }
+    }
+    
+    private func experimentAlamofire() {
+        Alamofire.request(.GET, "http://httpbin.org/get")
+            .responseJSON {(request, response, JSON, error) in
+                // expect success
+                println("JSON=\(JSON)")
+                println("error=\(error)")
+        }
+        
+        Alamofire.request(.GET, "http://httpbin.org/html")
+            .responseJSON {(request, response, JSON, error) in
+                // expect error because response is HTML rather than JSON
+                println("JSON=\(JSON)")
+                println("error=\(error)")
+        }
+        
+        Alamofire.request(.GET, "http://httpbin.org/html")
+            .responseString {(request, response, string, error) in
+                // expect success
+                println("string=\(string)")
+                println("error=\(error)")
+        }
+    }
+    
+    
+    // MARK: ******* destination data *******
     @IBAction func createDestination(sender: AnyObject) {
         print("creating destination...")
         
@@ -54,7 +117,7 @@ class DataLoaderVC: UIViewController {
         dataloader.display(destinations)
     }
     
-    // ********* country data *********
+    // MARK: ********* country data *********
     @IBAction func loadCountryData(sender: AnyObject) {
         let dataloader = PWCountryLoader()
         dataloader.createCountries();

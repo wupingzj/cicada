@@ -25,12 +25,27 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        
+        // setup refresh
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl = refreshControl
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    // MARK: - Refresh table
+    func refresh() {
+        if let refreshControl = self.refreshControl {
+            refreshControl.attributedTitle = NSAttributedString(string: "Refreshing data...")
+            refreshControl.endRefreshing()
+            
+            //self.reloadInputViews()
+        }
+    }
+    
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if let sections = self.fetchedResultsController.sections {
