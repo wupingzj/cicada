@@ -37,14 +37,43 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
     }
 
     // MARK: - Refresh table
+    func reloadTableView() {
+        // reset fetchResultController to reflect the data change
+         _fetchedResultsController = nil
+        self.tableView.reloadData()
+    }
+    
     func refresh() {
         if let refreshControl = self.refreshControl {
             refreshControl.attributedTitle = NSAttributedString(string: "Refreshing data...")
-            refreshControl.endRefreshing()
             
-            //self.reloadInputViews()
+            PWCountryService.sharedInstance.downloadAllCountries({data, error in
+                println("**** doing callback with data=\(data), error=\(error)")
+                
+                // Note: the network call is asynchronized.
+                refreshControl.endRefreshing()
+                
+                var ok = false
+                if let err = error {
+                   ok = false
+                } else if let dataUnwrapped: AnyObject = data  {
+                    // data returned, parse and persist data
+                    let json = JSON(dataUnwrapped)
+                    ok = PWCountryService.sharedInstance.parseAndPersistCountries(json)
+                } else {
+                    ok = false
+                    println("No data returned from cicada server. Please investigate.")
+                }
+                
+                if ok {
+                    self.reloadTableView()
+                } else {
+                    PWViewControllerUtils.showAlertMsg(self, title: "Sorry", message: "Failed to refresh country data. Please try again later")
+                }
+            })
         }
     }
+    
     
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

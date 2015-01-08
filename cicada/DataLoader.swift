@@ -13,9 +13,7 @@ import CoreData
 // MARK: PWCountryLoader
 class PWCountryLoader {
     func getCountryList() -> [Country] {
-        var dataDao: DataDao = DataDao()
-        
-        let (managedObjects, error) = dataDao.listEntities("Country", fault:false, sortByKey: "name", ascending: false, fetchBatchSize:20)
+        let (managedObjects, error) = DataDao.listEntities("Country", fault:false, sortByKey: "name", ascending: false, fetchBatchSize:20)
         
         if (error != nil) {
             println("****** Failed to get all busines entities. Unresolved error \(error), \(error!.description)")
@@ -129,7 +127,7 @@ class PWDestinationLoader {
     func getDestinationList() -> [PWDestination] {
         var dataDao: DataDao = DataDao()
         
-        let (managedObjects, error) = dataDao.listEntities("Destination", fault:false, sortByKey: "city", ascending: false, fetchBatchSize:20)
+        let (managedObjects, error) = DataDao.listEntities("Destination", fault:false, sortByKey: "city", ascending: false, fetchBatchSize:20)
         
         if (error != nil) {
             println("****** Failed to get all busines entities. Unresolved error \(error), \(error!.description)")

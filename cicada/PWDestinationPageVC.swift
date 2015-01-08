@@ -64,26 +64,14 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     
     private func isCountrySelected() -> Bool {
         if (self.country == nil) {
-            self.showAlertMsg(self, title: "Sorry", message: "Please choose country first")
+            PWViewControllerUtils.showAlertMsg(self, title: "Sorry", message: "Please choose country first")
             return false
         } else {
             return true
         }
     }
     
-    func showAlertMsg(viewVC: UIViewController, title: String, message: String) {
-        // TODO: UIAlertController requires iOS8
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,
-            handler: { action in
-        })
-        alertController.addAction(okAction)
-        viewVC.presentViewController(alertController, animated: true, completion: nil)
-    }
-
-    
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "showCountryTableSegue" {

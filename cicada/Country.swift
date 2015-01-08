@@ -23,11 +23,29 @@ public class Country: NSManagedObject {
     //var destinations: [PWDestination]
     var destinations: NSSet
     
+    // As swift doesn't support class variable yet, use class function instead for now
+    class func getName() -> String {
+        return "Country"
+    }
+    
     class func createEntity() -> Country {
         let ctx: NSManagedObjectContext = DataService.sharedInstance.getContext()
-        let ed: NSEntityDescription = NSEntityDescription.entityForName("Country", inManagedObjectContext: ctx)!
-        let newEntity = Country(entity: ed, insertIntoManagedObjectContext: ctx)
+        let ed: NSEntityDescription = NSEntityDescription.entityForName(getName(), inManagedObjectContext: ctx)!
+        return Country(entity: ed, insertIntoManagedObjectContext: ctx)
+    }
+    
+    class func getCountryEntityDescription() -> NSEntityDescription {
+        let ctx: NSManagedObjectContext = DataService.sharedInstance.getContext()
+        return NSEntityDescription.entityForName(getName(), inManagedObjectContext: ctx)!
+    }
+    
+    class func createCountry(#name: String, active: Bool, useState: Bool) -> Country {
+        let newCountry: Country = Country.createEntity()
         
-        return newEntity
+        newCountry.name = name
+        newCountry.active = active
+        newCountry.useState = useState
+        
+        return newCountry
     }
 }

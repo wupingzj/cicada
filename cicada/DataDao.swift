@@ -11,12 +11,12 @@ import CoreData
 
 // Important note on error-handling:
 //  Caller must check return NSError before use returned managed object array to make sure the retrieval was successful.
-public class DataDao {
-    public func listEntities(entityName:String) -> (managedObjects: [NSManagedObject], error: NSError?) {
-        return listEntities(entityName, fault:false, sortByKey: "number", ascending: false, fetchBatchSize:20)
+class DataDao {
+    class func listEntities(entityName:String) -> (managedObjects: [NSManagedObject], error: NSError?) {
+        return listEntities(entityName, fault:false, sortByKey: nil, ascending: false, fetchBatchSize:20)
     }
     
-    public func listEntities(entityName:String, fault:Bool?, sortByKey:String?, ascending:Bool?, fetchBatchSize:Int?) -> (managedObjects: [NSManagedObject], error: NSError?) {
+    class func listEntities(entityName:String, fault:Bool?, sortByKey:String?, ascending:Bool?, fetchBatchSize:Int?) -> (managedObjects: [NSManagedObject], error: NSError?) {
         
         println("**** Will retrieve all \(entityName) entities ****")
         
@@ -68,5 +68,11 @@ public class DataDao {
         }
         
         return (managedObjects, error)
+    }
+    
+    class func findEntity() -> NSManagedObject? {
+        // TODO
+        // find AN entity according to a key path
+        return nil
     }
 }
