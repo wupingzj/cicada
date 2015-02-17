@@ -22,7 +22,9 @@ class cicadaTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
+        var c = PWStringUtils.concatString("a", append: "b", newLine: true)
+        println(c)
+        
         XCTAssert(true, "Pass")
     }
     

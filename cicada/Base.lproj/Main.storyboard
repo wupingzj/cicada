@@ -106,8 +106,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZ9-rI-OPe">
-                                <rect key="frame" x="20" y="110" width="168" height="30"/>
-                                <state key="normal" title="Get Data from my server">
+                                <rect key="frame" x="20" y="110" width="44" height="30"/>
+                                <state key="normal" title="Logon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>

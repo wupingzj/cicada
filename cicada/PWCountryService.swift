@@ -16,20 +16,63 @@ class PWCountryService {
         return countryServiceInstance
     }
     
+    
+    
     func downloadAllCountries(callBack: (countriesJSON: AnyObject?, error: NSError?) -> Void) {
-        // TODO: build URL
-        Alamofire.request(.GET, "http://localhost:8080/countries", parameters: nil)
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json"])
-            .responseJSON { (request, response, data, error) in
-
-                //self.logHttpResponse(request, response: response, data: data, error: error)
-                
-                // ALWAYS call callBack so that caller can handle normal and abnormal scenarios
-                // Caller must check whether there is any error
-                callBack(countriesJSON: data, error: error)
-        }
+        
+//        let networkService = PWNetworkService.sharedInstance
+//        networkService.setCookies()
+        
+        callBack(countriesJSON: nil, error: nil)
+        
+//        manager.request(.GET, "http://localhost:8080/login", parameters: ["username": "admin", "password": "password"])
+//            .validate(statusCode: 200..<300)
+//            .response(serializer: serializer){ (request, response, string, error) in
+//                
+//                if let err = error {
+//                    println("Failed to call my server. Error code=\(err.code), domain=\(err.domain)")
+//                    println("Failed to call my server. response=\(response)")
+//                    println("Failed to call my server. Error description=\(err.description)")
+//                    println("Failed to call my server. Error userInfo=\(err.userInfo)")
+//                } else {
+//                    println("Successfully logged in.")
+//                    
+//                    // TODO: build URL
+//                    manager.request(.GET, "http://localhost:8080/country/list", parameters: nil)
+//                        .validate(statusCode: 200..<300)
+//                        .validate(contentType: ["application/json"])
+//                        .responseJSON { (request, response, data, error) in
+//                            
+//                            //self.logHttpResponse(request, response: response, data: data, error: error)
+//                            
+//                            // ALWAYS call callBack so that caller can handle normal and abnormal scenarios
+//                            // Caller must check whether there is any error
+//                            callBack(countriesJSON: data, error: error)
+//                    }
+//                }
+//                //                XCTAssertNotNil(request, "request should not be nil")
+//                //                XCTAssertNotNil(response, "response should not be nil")
+//                //                XCTAssertNotNil(string, "string should not be nil")
+//                //                XCTAssertNil(error, "error should be nil")
+//        }
+//        //self.login("admin", password: "password")
+        
+        
+        
+//        // TODO: build URL
+//        manager.request(.GET, "http://localhost:8080/country/list", parameters: nil)
+//            .validate(statusCode: 200..<300)
+//            .validate(contentType: ["application/json"])
+//            .responseJSON { (request, response, data, error) in
+//
+//                //self.logHttpResponse(request, response: response, data: data, error: error)
+//                
+//                // ALWAYS call callBack so that caller can handle normal and abnormal scenarios
+//                // Caller must check whether there is any error
+//                callBack(countriesJSON: data, error: error)
+//        }
     }
+    
     
     // For debugging only
     private func logHttpResponse(request: NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) {

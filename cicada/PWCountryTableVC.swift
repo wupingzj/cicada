@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Alamofire
 
 protocol PWCountryTableVCDelegate {
     func didSelectCountry(controller: PWCountryTableVC, selectedCountry: Country)
@@ -43,7 +44,45 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         self.tableView.reloadData()
     }
     
+    
+    var mgr: Alamofire.Manager!
+    let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+    
+    func configureManager() -> Alamofire.Manager {
+        let cfg = NSURLSessionConfiguration.defaultSessionConfiguration()
+        cfg.HTTPCookieStorage = cookies
+        return Alamofire.Manager(configuration: cfg)
+    }
+    
+    
+    func checkCookies() {
+        Alamofire.Manager.sharedInstance.request(NSURLRequest(URL: NSURL(string: "http://httpbin.org/cookies")!)).responseString {
+            (_, _, response, _) in
+            var resp = response // { "cookies": { "stack": "overflow" } }
+            println("secookie= \(resp)")
+        }
+    }
     func refresh() {
+        //mgr = configureManager()
+        Alamofire.Manager.sharedInstance.request(NSURLRequest(URL: NSURL(string: "http://httpbin.org/cookies/set?stack=overflow")!))
+            //.validate(statusCode: 302...302)
+            .responseString {
+            (request, response, data, error) in
+            var resp = response // { "cookies": { "stack": "overflow" } }
+            println(resp)
+                println(error)
+            
+            // the cookies are now a part of the URLSession -
+            // we can inspect them and call the next URL
+            println(self.cookies.cookiesForURL(NSURL(string: "http://httpbin.org/cookies")!))
+            self.checkCookies()
+        }
+        
+        if let refreshControl = self.refreshControl {
+            refreshControl.endRefreshing()
+        }
+        
+        
         if let refreshControl = self.refreshControl {
             refreshControl.attributedTitle = NSAttributedString(string: "Refreshing data...")
             

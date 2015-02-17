@@ -7,25 +7,78 @@
 //
 
 import Foundation
+import Alamofire
 
-let userServiceInstance = PWUserService()
 class PWUserService {
     class var sharedInstance: PWUserService {
-        return userServiceInstance
+        struct Singleton {
+            static let instance = PWUserService()
+        }
+        return Singleton.instance
     }
+    
+//    init() {
+//    }
+    
+    var isLoggedIn: Bool = false
     
     func isLoggedon() -> Bool {
-        // TODO - to be implemented
-        return true
+        return isLoggedIn
     }
     
-    func logon(#user: String, password: String) -> Bool {
-        // TODO - to be implemented
-        return true
+    func isSessionExpired() -> Bool {
+        // TODO
+        // To implement the logic of invalidating the underlying session expiring after a period of non-activity
+        // Not essentially for this stage yet
+        return false
     }
     
-    func logoff() -> Bool {
-        // TODO - to be implemented
+    func logon(#username: String, password: String, callBack: (response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void) {
+        let networkService = PWNetworkService.sharedInstance
+        let serializer = Alamofire.Request.stringResponseSerializer(encoding: NSUTF8StringEncoding)
+        
+        networkService.networkManager.request(.POST, "http://localhost:8080/country/login", parameters: ["username":"x","password":"p"])
+            //.authenticate(user: username, password: password)
+            .responseJSON { (request, response, data, error) in
+                networkService.logHttpResponse(request, response: response, data: data, error: error)
+                
+                if let err = error {
+                    println("Failed to call my server. Error code=\(err.code), domain=\(err.domain)")
+                } else {
+                    println("Successfully logged in.")
+                    
+                }
+                
+                // ALWAYS call callBack so that caller can handle successful and unsuccessful logon request
+                callBack(response: response, data: data, error: error)
+        }
+    }
+    
+    func logonBackUp(#username: String, password: String, callBack: (response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void) {
+        let networkService = PWNetworkService.sharedInstance
+        let serializer = Alamofire.Request.stringResponseSerializer(encoding: NSUTF8StringEncoding)
+        
+        networkService.networkManager.request(.POST, "http://localhost:8080/country/login2", parameters: ["username": username, "password": password])
+            .validate(statusCode: 200..<300)
+            .response(serializer: serializer){ (request, response, string, error) in
+                
+                networkService.logHttpResponse(request, response: response, data: string, error: error)
+                
+                if let err = error {
+                    println("Failed to call my server. Error code=\(err.code), domain=\(err.domain)")
+                } else {
+                    println("Successfully logged in.")
+                    
+                }
+                
+                // ALWAYS call callBack so that caller can handle successful and unsuccessful logon request
+                callBack(response: response, data: string, error: error)
+        }
+    }
+    
+    class func logoff() -> Bool {
+        // TODO
+        // - to be implemented
         return true
     }
 }

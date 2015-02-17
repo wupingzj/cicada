@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3924391D1A53A354004769FA /* PWUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924391C1A53A354004769FA /* PWUserService.swift */; };
+		393640F31A8E26AD001140FC /* PWNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393640F21A8E26AD001140FC /* PWNetworkService.swift */; };
+		393640F51A8E8E1A001140FC /* PWStringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */; };
+		393640F81A8FDDB5001140FC /* TechMemo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 393640F71A8FDDB4001140FC /* TechMemo.txt */; };
 		3972B9A41A3D00BF0098B2B1 /* PWDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */; };
 		3972B9A61A3D0CE50098B2B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0331A11DF3700A0514C /* Main.storyboard */; };
 		39B7E02E1A11DF3700A0514C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E02D1A11DF3700A0514C /* AppDelegate.swift */; };
@@ -81,6 +84,8 @@
 
 /* Begin PBXFileReference section */
 		3924391C1A53A354004769FA /* PWUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWUserService.swift; sourceTree = "<group>"; };
+		393640F21A8E26AD001140FC /* PWNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWNetworkService.swift; sourceTree = "<group>"; };
+		393640F71A8FDDB4001140FC /* TechMemo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TechMemo.txt; sourceTree = "<group>"; };
 		3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDestination.swift; sourceTree = "<group>"; };
 		3972B9A51A3D056D0098B2B1 /* cicadaModel_v1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cicadaModel_v1.1.xcdatamodel; sourceTree = "<group>"; };
 		39B7E0281A11DF3700A0514C /* cicada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cicada.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +147,14 @@
 			name = Service;
 			sourceTree = "<group>";
 		};
+		393640F01A8E2656001140FC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				393640F21A8E26AD001140FC /* PWNetworkService.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
 		39B7E01F1A11DF3600A0514C = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +177,7 @@
 		39B7E02A1A11DF3700A0514C /* cicada */ = {
 			isa = PBXGroup;
 			children = (
+				393640F01A8E2656001140FC /* Network */,
 				39B7E02D1A11DF3700A0514C /* AppDelegate.swift */,
 				39B7E0361A11DF3700A0514C /* Images.xcassets */,
 				39B7E0331A11DF3700A0514C /* Main.storyboard */,
@@ -175,6 +189,7 @@
 				392439181A539FC0004769FA /* Service */,
 				39B7E02B1A11DF3700A0514C /* Supporting Files */,
 				39BB92801A58029400909B98 /* NonProductionHelper */,
+				393640F71A8FDDB4001140FC /* TechMemo.txt */,
 			);
 			path = cicada;
 			sourceTree = "<group>";
@@ -424,6 +439,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				393640F81A8FDDB5001140FC /* TechMemo.txt in Resources */,
 				3972B9A61A3D0CE50098B2B1 /* Main.storyboard in Resources */,
 				39B7E03A1A11DF3700A0514C /* LaunchScreen.xib in Resources */,
 				39B7E0371A11DF3700A0514C /* Images.xcassets in Resources */,
@@ -463,6 +479,7 @@
 				39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */,
 				39F4D14B1A35CB99005D58E5 /* DataLoader.swift in Sources */,
 				39F4D1471A35BACA005D58E5 /* DataService.swift in Sources */,
+				393640F31A8E26AD001140FC /* PWNetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39B7E0461A11DF3700A0514C /* cicadaTests.swift in Sources */,
+				393640F51A8E8E1A001140FC /* PWStringUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

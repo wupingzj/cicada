@@ -1,0 +1,31 @@
+1. Singleton sample:
+
+    class PWUserService {
+        class var sharedInstance: PWUserService {
+            struct Singleton {
+                static let instance = PWUserService()
+            }
+
+            return Singleton.instance
+        }
+    }
+
+2.
+
+// Use computed property to simulate class variable
+// http://imtx.me/archives/1916.html
+// https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Properties.html
+//    Then PWUserService.isLoggedIn can be used
+//
+//    struct Variables {
+//        static var loggedIn: Bool = false
+//    }
+//    class var isLoggedIn: Bool {
+//        get {
+//            return Variables.loggedIn
+//        }
+//        set {
+//            Variables.loggedIn = newValue
+//        }
+//    }
+

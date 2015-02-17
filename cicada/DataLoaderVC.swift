@@ -42,8 +42,28 @@ class DataLoaderVC: UIViewController {
     }
     
     @IBAction func getDataFromMyServer(sender: AnyObject) {
-        callCicadaServer()
-        
+        //callCicadaServer()
+        logon()
+    }
+    
+    private func logon() {
+        // TODO - remove it
+        PWUserService.sharedInstance.logon(username: "admin", password: "password", callBack: {response, data, error in
+            println("loggin finished. data=\(data)")
+            if let err = error {
+                println("Failed to call my server. Error code=\(err.code), domain=\(err.domain)")
+                println("Failed to call my server. response=\(response)")
+                println("Failed to call my server. Error description=\(err.description)")
+                println("Failed to call my server. Error userInfo=\(err.userInfo)")
+            } else if data != nil {
+                // _TtSq means optional
+                // _TtSS means String
+                // See http://www.eswick.com/2014/06/inside-swift/ to decipher the mysterous Swift type names
+                println("Succeeded to call my server. Data Class=\(_stdlib_getTypeName(data!)) class=\(NSStringFromClass(data!.dynamicType)).")
+                println("AppDelegate:Succeeded to call my server. Data=\(data!)")
+            }
+        })
+
     }
     
     private func callCicadaServer() {
