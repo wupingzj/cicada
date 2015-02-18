@@ -25,6 +25,7 @@ class PWNetworkService {
     }
     
     func configureManager() -> Alamofire.Manager {
+        let serializer = Alamofire.Request.stringResponseSerializer(encoding: NSUTF8StringEncoding)
         let cfg = NSURLSessionConfiguration.defaultSessionConfiguration()
         cfg.HTTPCookieStorage = cookies
         return Alamofire.Manager(configuration: cfg)
@@ -56,7 +57,9 @@ class PWNetworkService {
         println("request=\(request)")
         println("request.debugDescription=\(request.debugDescription)")
         println("response=\(response)")
-        println("response code=\(response?.statusCode)")
+        if let res = response {
+            println("response code=\(response!.statusCode)")
+        }
         println("error=\(error)")
         if let err = error {
             println("Failed to call my server. Error code=\(err.code), domain=\(err.domain)")

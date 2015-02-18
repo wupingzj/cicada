@@ -48,7 +48,7 @@ class DataLoaderVC: UIViewController {
     
     private func logon() {
         // TODO - remove it
-        PWUserService.sharedInstance.logon(username: "admin", password: "password", callBack: {response, data, error in
+        PWUserService.sharedInstance.logon(userName: "admin", password: "password", callBack: {response, data, error in
             println("loggin finished. data=\(data)")
             if let err = error {
                 println("Failed to call my server. Error code=\(err.code), domain=\(err.domain)")
@@ -56,18 +56,27 @@ class DataLoaderVC: UIViewController {
                 println("Failed to call my server. Error description=\(err.description)")
                 println("Failed to call my server. Error userInfo=\(err.userInfo)")
             } else if data != nil {
+                // TODO
+                // To check returned data to be {OK} or {DENIED}. 
+                // You cannot rely on HTTP STATUS CODE as it might be just a 200 response with a login page!
+                
+                
+                
                 // _TtSq means optional
                 // _TtSS means String
                 // See http://www.eswick.com/2014/06/inside-swift/ to decipher the mysterous Swift type names
                 println("Succeeded to call my server. Data Class=\(_stdlib_getTypeName(data!)) class=\(NSStringFromClass(data!.dynamicType)).")
                 println("AppDelegate:Succeeded to call my server. Data=\(data!)")
+                
+                self.callCicadaServer()
             }
         })
 
     }
     
     private func callCicadaServer() {
-        Alamofire.request(.GET, "http://localhost:8080/countries", parameters: nil)
+        Alamofire.request(.GET, "http://localhost:8080/country/list", parameters: nil)
+            .validate()
             .responseJSON { (request, response, json, error) in
                 println("request=\(request)")
                 println("response=\(response)")
@@ -84,7 +93,6 @@ class DataLoaderVC: UIViewController {
                     // _TtSq means optional
                     // _TtSS means String
                     // See http://www.eswick.com/2014/06/inside-swift/ to decipher the mysterous Swift type names
-                    println("Succeeded to call my server. Data Class=\(_stdlib_getTypeName(json!)) class=\(NSStringFromClass(json!.dynamicType)).")
                     println("Succeeded to call my server. Data=\(json)")
                 }
         }
