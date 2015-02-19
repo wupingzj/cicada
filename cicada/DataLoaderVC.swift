@@ -41,9 +41,17 @@ class DataLoaderVC: UIViewController {
         // also note that the callback of httpbin is hit BEFORE that of Google. That might be becase httpbin.org replies faster than google to respond.
     }
     
-    @IBAction func getDataFromMyServer(sender: AnyObject) {
-        //callCicadaServer()
+
+    @IBAction func logonToCicada(sender: UIButton) {
         logon()
+    }
+    
+    @IBAction func getData(sender: UIButton) {
+        callCicadaServer("http://localhost:8080/country/listXXX")
+    }
+    
+    @IBAction func getData2(sender: AnyObject) {
+        callCicadaServer("http://localhost:8080/country/list")
     }
     
     private func logon() {
@@ -68,31 +76,27 @@ class DataLoaderVC: UIViewController {
                 println("Succeeded to call my server. Data Class=\(_stdlib_getTypeName(data!)) class=\(NSStringFromClass(data!.dynamicType)).")
                 println("AppDelegate:Succeeded to call my server. Data=\(data!)")
                 
-                self.callCicadaServer()
+                //self.callCicadaServer()
             }
         })
 
     }
     
-    private func callCicadaServer() {
-        Alamofire.request(.GET, "http://localhost:8080/country/list", parameters: nil)
+    private func callCicadaServer(url: String) {
+        Alamofire.request(.GET, url, parameters: nil)
             .validate()
+            //.validate(contentType: ["application/json"])
             .responseJSON { (request, response, json, error) in
-                println("request=\(request)")
-                println("response=\(response)")
-                println("response code=\(response?.statusCode)")
+                println("response code=\(response!.statusCode)")
+                // normal code 200 doesn't gurantee the request passes authentication,
+                // which is because server might deny the access and return a login form
+                // Therefore, it's essential to parse and check the returned data
+                
                 println("error=\(error)")
                 if error != nil {
+                    PWNetworkService.logHttpResponse(request, response: response, data: json, error: error)
                     println("Failed to call my server. response=\(response)")
-                    println("Failed to call my server. Error code=\(error?.code)")
-                    println("Failed to call my server. Error description=\(error?.description)")
-                    println("Failed to call my server. Error domain=\(error?.domain)")
-                    println("Failed to call my server. Error userInfo=\(error?.userInfo)")
-                    
                 } else if json != nil {
-                    // _TtSq means optional
-                    // _TtSS means String
-                    // See http://www.eswick.com/2014/06/inside-swift/ to decipher the mysterous Swift type names
                     println("Succeeded to call my server. Data=\(json)")
                 }
         }

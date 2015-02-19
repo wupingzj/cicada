@@ -21,6 +21,7 @@ class PWNetworkService {
     let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage()
 
     init() {
+        println("Configuring networkManager singleton.")
         networkManager = configureManager()
     }
     
@@ -53,7 +54,7 @@ class PWNetworkService {
     } */
     
     
-    func logHttpResponse(request: NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) {
+    class func logHttpResponse(request: NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) {
         println("request=\(request)")
         println("request.debugDescription=\(request.debugDescription)")
         println("response=\(response)")
