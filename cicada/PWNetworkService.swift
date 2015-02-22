@@ -19,6 +19,7 @@ class PWNetworkService {
     
     var networkManager: Alamofire.Manager!
     let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+    // To show cookies: println(self.cookies.cookiesForURL(NSURL(string: "http://httpbin.org/cookies")!))
 
     init() {
         println("Configuring networkManager singleton.")
@@ -30,6 +31,10 @@ class PWNetworkService {
         let cfg = NSURLSessionConfiguration.defaultSessionConfiguration()
         cfg.HTTPCookieStorage = cookies
         return Alamofire.Manager(configuration: cfg)
+    }
+    
+    func getURLBase() -> String {
+        return "http://localhost:8080"
     }
     
 /* Ref: http://stackoverflow.com/questions/26537075/remembering-cookies-with-alamofire

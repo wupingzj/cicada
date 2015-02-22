@@ -44,70 +44,39 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         self.tableView.reloadData()
     }
     
-    
-    var mgr: Alamofire.Manager!
-    let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-    
-    func configureManager() -> Alamofire.Manager {
-        let cfg = NSURLSessionConfiguration.defaultSessionConfiguration()
-        cfg.HTTPCookieStorage = cookies
-        return Alamofire.Manager(configuration: cfg)
-    }
-    
-    
-    func checkCookies() {
-        Alamofire.Manager.sharedInstance.request(NSURLRequest(URL: NSURL(string: "http://httpbin.org/cookies")!)).responseString {
-            (_, _, response, _) in
-            var resp = response // { "cookies": { "stack": "overflow" } }
-            println("secookie= \(resp)")
-        }
-    }
     func refresh() {
-        //mgr = configureManager()
-        Alamofire.Manager.sharedInstance.request(NSURLRequest(URL: NSURL(string: "http://httpbin.org/cookies/set?stack=overflow")!))
-            //.validate(statusCode: 302...302)
-            .responseString {
-            (request, response, data, error) in
-            var resp = response // { "cookies": { "stack": "overflow" } }
-            println(resp)
-                println(error)
-            
-            // the cookies are now a part of the URLSession -
-            // we can inspect them and call the next URL
-            println(self.cookies.cookiesForURL(NSURL(string: "http://httpbin.org/cookies")!))
-            self.checkCookies()
-        }
-        
-        if let refreshControl = self.refreshControl {
-            refreshControl.endRefreshing()
-        }
-        
-        
         if let refreshControl = self.refreshControl {
             refreshControl.attributedTitle = NSAttributedString(string: "Refreshing data...")
             
-            PWCountryService.sharedInstance.downloadAllCountries({data, error in
+            PWCountryService.sharedInstance.downloadAllCountries({data, error, redirectToLogon in
                 println("**** doing callback with data=\(data), error=\(error)")
                 
                 // Note: the network call is asynchronized.
                 refreshControl.endRefreshing()
                 
-                var ok = false
-                if let err = error {
-                   ok = false
-                } else if let dataUnwrapped: AnyObject = data  {
-                    // data returned, parse and persist data
-                    let json = JSON(dataUnwrapped)
-                    ok = PWCountryService.sharedInstance.parseAndPersistCountries(json)
+                if redirectToLogon {
+                    PWViewControllerUtils.showAlertMsg(self, title: "Sorry", message: "Please logon first and then try again")
+                    
+                    // TODO - switch GUI to login screen
                 } else {
-                    ok = false
-                    println("No data returned from cicada server. Please investigate.")
-                }
-                
-                if ok {
-                    self.reloadTableView()
-                } else {
-                    PWViewControllerUtils.showAlertMsg(self, title: "Sorry", message: "Failed to refresh country data. Please try again later")
+                    var ok = false
+                    if let err = error {
+                        println("Failed to download country list.")
+                    } else {
+                        if let dataUnwrapped: AnyObject = data  {
+                            // data returned, parse and persist data
+                            let json = JSON(dataUnwrapped)
+                            ok = PWCountryService.sharedInstance.parseAndPersistCountries(json)
+                        } else {
+                            println("Connected to server but no data returned from cicada server.")
+                        }
+                    }
+                    
+                    if ok {
+                        self.reloadTableView()
+                    } else {
+                        PWViewControllerUtils.showAlertMsg(self, title: "Sorry", message: "Failed to refresh country data. Please try again later")
+                    }
                 }
             })
         }

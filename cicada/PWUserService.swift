@@ -34,10 +34,6 @@ class PWUserService {
     }
     
     func logon(#userName: String, password: String, callBack: (response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void) {
-        if isLoggedon() {
-            return
-        }
-
         // Alamofire authenicate method should not be used as it support Basic Authentication only. It uses NSURLCredential and NSURLSessionAuthChallengeDisposition
         //networkService.networkManager.request(.POST, "http://localhost:8080/login").authenticate(user: userName, password: password)
 
@@ -60,9 +56,22 @@ class PWUserService {
         }
     }
     
-    class func logoff() -> Bool {
+    func logoff() -> Bool {
         // TODO
         // - to be implemented
         return true
+    }
+    
+    class func isRedirectToLogon(response: NSHTTPURLResponse?) -> Bool {
+        if response == nil {
+            return false
+        } else {
+            return response!.URL!.path == getLogonPath()
+        }
+    }
+    
+    // Not including baseURL
+    class func getLogonPath() -> String {
+        return "/login"
     }
 }
