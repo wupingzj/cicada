@@ -52,9 +52,13 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         // default to user's current location
         var manager: OneShotLocationManager? = OneShotLocationManager()
         manager!.fetchWithCompletion { (location, error) in
+            // get user current location
             if let loc = location {
                 self.getCountryByLocation(loc) { (placemark: CLPlacemark) in
+                    // get user current location's readable placemark
                     self.logPlacemark(placemark)
+                    
+                    // find corresponding country entity by country name
                     let country = DataDao.findCountryBy(placemark.country)
                     if let foundCountry = country {
                         self.country = foundCountry

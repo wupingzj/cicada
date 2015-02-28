@@ -12,7 +12,6 @@
 		393640F51A8E8E1A001140FC /* PWStringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */; };
 		393640F81A8FDDB5001140FC /* TechMemo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 393640F71A8FDDB4001140FC /* TechMemo.txt */; };
 		3940639B1AA110020041A912 /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940639A1AA110020041A912 /* OneShotLocationManager.swift */; };
-		3940639E1AA114EC0041A912 /* PWLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940639D1AA114EC0041A912 /* PWLocationService.swift */; };
 		3972B9A41A3D00BF0098B2B1 /* PWDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */; };
 		3972B9A61A3D0CE50098B2B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0331A11DF3700A0514C /* Main.storyboard */; };
 		39B7E02E1A11DF3700A0514C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E02D1A11DF3700A0514C /* AppDelegate.swift */; };
@@ -89,7 +88,6 @@
 		393640F21A8E26AD001140FC /* PWNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWNetworkService.swift; sourceTree = "<group>"; };
 		393640F71A8FDDB4001140FC /* TechMemo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TechMemo.txt; sourceTree = "<group>"; };
 		3940639A1AA110020041A912 /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
-		3940639D1AA114EC0041A912 /* PWLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWLocationService.swift; sourceTree = "<group>"; };
 		3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDestination.swift; sourceTree = "<group>"; };
 		3972B9A51A3D056D0098B2B1 /* cicadaModel_v1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cicadaModel_v1.1.xcdatamodel; sourceTree = "<group>"; };
 		39B7E0281A11DF3700A0514C /* cicada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cicada.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,7 +146,6 @@
 				39BB92881A5BAFA100909B98 /* SwiftyJSON.swift */,
 				3924391C1A53A354004769FA /* PWUserService.swift */,
 				39BB92831A59E25E00909B98 /* PWCountryService.swift */,
-				3940639D1AA114EC0041A912 /* PWLocationService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -475,7 +472,6 @@
 				39B7E0571A1949CC00A0514C /* cicadaModel.xcdatamodeld in Sources */,
 				3924391D1A53A354004769FA /* PWUserService.swift in Sources */,
 				39BB92891A5BAFA100909B98 /* SwiftyJSON.swift in Sources */,
-				3940639E1AA114EC0041A912 /* PWLocationService.swift in Sources */,
 				39F4D1401A3084BD005D58E5 /* PWDestinationPageVC.swift in Sources */,
 				39BB92841A59E25E00909B98 /* PWCountryService.swift in Sources */,
 				39F4D1521A386622005D58E5 /* DataLoaderVC.swift in Sources */,
