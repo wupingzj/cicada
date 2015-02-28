@@ -82,7 +82,6 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         }
     }
     
-    
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if let sections = self.fetchedResultsController.sections {

@@ -82,7 +82,7 @@ class PWCountryService {
     }
 
     func updateOrCreateCountry(countryTuples: [CountryTuple]) {
-        let (entities, error) = DataDao.listEntities(Country.getName())
+        let (entities, error) = DataDao.listEntities(Country.getEntityName())
         if error == nil {
             let countries = entities as [Country]
             for countryTuple in countryTuples {

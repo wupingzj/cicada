@@ -70,9 +70,31 @@ class DataDao {
         return (managedObjects, error)
     }
     
-    class func findEntity() -> NSManagedObject? {
-        // TODO
-        // find AN entity according to a key path
-        return nil
+    class func findCountryBy(countryName: String) -> Country? {
+        let fetchRequest = NSFetchRequest(entityName: Country.getEntityName())
+        fetchRequest.predicate = NSPredicate(format: "name == %@", countryName)
+
+//        fetchRequest.returnsObjectsAsFaults = false
+//        fetchRequest.includesPropertyValues = true
+//        fetchRequest.fetchBatchSize = 0
+        
+        var error: NSError? = nil
+        let ctx = DataService.sharedInstance.getContext()
+        var countries: [Country] = ctx.executeFetchRequest(fetchRequest, error: &error) as [Country]
+        
+        if let err = error {
+            println("****** Failed to execute Fetch Request to get Countrys. Unresolved error \(error), \(error!.userInfo)")
+            return nil
+        }
+        
+        if countries.count == 0 {
+            println("No country is found matching name \(countryName)")
+            return nil
+        } else if countries.count == 1 {
+            return countries[0]
+        } else {
+            println("More than one countries are found matching \(countryName). Return the first one")
+            return countries[0]
+        }
     }
 }
