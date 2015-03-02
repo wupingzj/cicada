@@ -12,6 +12,7 @@
 		393640F51A8E8E1A001140FC /* PWStringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */; };
 		393640F81A8FDDB5001140FC /* TechMemo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 393640F71A8FDDB4001140FC /* TechMemo.txt */; };
 		3940639B1AA110020041A912 /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940639A1AA110020041A912 /* OneShotLocationManager.swift */; };
+		394063A11AA342C80041A912 /* PWConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394063A01AA342C80041A912 /* PWConstants.swift */; };
 		3972B9A41A3D00BF0098B2B1 /* PWDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */; };
 		3972B9A61A3D0CE50098B2B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0331A11DF3700A0514C /* Main.storyboard */; };
 		39B7E02E1A11DF3700A0514C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E02D1A11DF3700A0514C /* AppDelegate.swift */; };
@@ -88,6 +89,7 @@
 		393640F21A8E26AD001140FC /* PWNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWNetworkService.swift; sourceTree = "<group>"; };
 		393640F71A8FDDB4001140FC /* TechMemo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TechMemo.txt; sourceTree = "<group>"; };
 		3940639A1AA110020041A912 /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
+		394063A01AA342C80041A912 /* PWConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWConstants.swift; sourceTree = "<group>"; };
 		3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDestination.swift; sourceTree = "<group>"; };
 		3972B9A51A3D056D0098B2B1 /* cicadaModel_v1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cicadaModel_v1.1.xcdatamodel; sourceTree = "<group>"; };
 		39B7E0281A11DF3700A0514C /* cicada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cicada.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +255,7 @@
 		39B7E0541A1948E500A0514C /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				394063A01AA342C80041A912 /* PWConstants.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */,
 				39F4D14B1A35CB99005D58E5 /* DataLoader.swift in Sources */,
 				39F4D1471A35BACA005D58E5 /* DataService.swift in Sources */,
+				394063A11AA342C80041A912 /* PWConstants.swift in Sources */,
 				393640F31A8E26AD001140FC /* PWNetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

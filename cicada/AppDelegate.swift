@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 
         saveContext()
+        
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -46,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 
         saveContext()
+        
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
 
     

@@ -16,7 +16,7 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     
     // state
     var country: Country? = nil
-    var countryCode : String? = nil
+//    var countryCode : String? = nil
     var destination: PWDestination? = nil
     
     // service
@@ -29,10 +29,10 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         super.viewDidLoad()
 
         registerAction(destinationTextView, action:"showDestinationTableVC")
-        //        destinationTextView.sizeToFit()
+        // destinationTextView.sizeToFit()
 
         if country == nil {
-            setDefaultLocation()
+            loadCountryFromPreferenceOrCurrentLocation()
         }
     }
 
@@ -48,22 +48,31 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     }
 
     // MARK: - set default location
-    private func setDefaultLocation() {
-        // default to user's current location
+    private func loadCountryFromPreferenceOrCurrentLocation() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let countryString = defaults.stringForKey(PWPreference_Country_Key) {
+            updateCountryWith(countryString)
+        } else {
+            searchCurrentLocation()
+        }
+    }
+    
+    private func searchCurrentLocation() {
+        // search and set user's current location: Country and Destination
         var manager: OneShotLocationManager? = OneShotLocationManager()
         manager!.fetchWithCompletion { (location, error) in
             // get user current location
             if let loc = location {
-                self.getCountryByLocation(loc) { (placemark: CLPlacemark) in
-                    // get user current location's readable placemark
-                    self.logPlacemark(placemark)
-                    
-                    // find corresponding country entity by country name
-                    let country = DataDao.findCountryBy(placemark.country)
-                    if let foundCountry = country {
-                        self.country = foundCountry
-                        self.countryButton.setTitle(foundCountry.name, forState: UIControlState.Normal)
-                        // TODO set current location as destination
+                self.getCountryByLocation(loc) { (placemark: CLPlacemark?, ok: Bool) in
+                    if !ok || placemark == nil {
+                        self.updateCountryWith(PWDefault_Country_Value)
+                    } else {
+                        // get user current location's readable placemark
+                        self.logPlacemark(placemark!)
+                        
+                        // find corresponding country entity by country name
+                        self.updateCountryWith(placemark!.country)
+                        self.updateDestinationWith(placemark!)
                     }
                 }
             } else if let err = error {
@@ -79,6 +88,24 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         destinationTextView.text = reminderSelectDestination
     }
     
+    private func updateCountryWith(countryName: String) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setValue(countryName, forKey: PWPreference_Country_Key)
+
+        let country: Country? = DataDao.findCountryBy(countryName)
+        
+        if let foundCountry = country {
+            // update Country Button with found country entity
+            self.country = foundCountry
+            self.countryButton.setTitle(foundCountry.name, forState: UIControlState.Normal)
+        }
+    }
+    
+    private func updateDestinationWith(placemark: CLPlacemark) {
+        // TODO set current location as destination
+        // Should or Should NOT set current location as destination?
+    }
+    
     private func logPlacemark(placemark: CLPlacemark) {
         let addressStr: String = "Address = \(placemark.subThoroughfare), \(placemark.thoroughfare), \(placemark.locality), \(placemark.ISOcountryCode), \(placemark.country)"
         println("****** For given location, get placemark = \(addressStr) ***")
@@ -92,20 +119,22 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     }
     
     // Get the countryInformation for given CLLocation. If succeed, call the placemarkHandler. Otherwise, silently do nothing
-    private func getCountryByLocation(location: CLLocation, placemarkHandler: (placemark: CLPlacemark) -> Void ) {
+    private func getCountryByLocation(location: CLLocation, placemarkHandler: (placemark: CLPlacemark?, ok: Bool) -> Void ) {
         geocoder.reverseGeocodeLocation(location) {
             (placemarks: [AnyObject]!, error: NSError!) in
             
             if let err = error {
                 println("Cannot get country code from GeocodeLocation. Reason: error occured.")
+                placemarkHandler(placemark: nil, ok: false)
                 return
             }
             
             if placemarks != nil && placemarks.count > 0 {
                 let top: CLPlacemark = placemarks[0] as CLPlacemark
-                placemarkHandler(placemark: top)
+                placemarkHandler(placemark: top, ok: true)
             } else {
                 println("Cannot get country code from GeocodeLocation. Reason: placemarks arrya is nil or empty.")
+                placemarkHandler(placemark: nil, ok: false)
             }
         }
     }
@@ -158,6 +187,9 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         
         self.country = selectedCountry
         countryButton.setTitle(country!.name, forState: UIControlState.Normal)
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setValue(selectedCountry.name, forKey: PWPreference_Country_Key)
     }
     
     func didSelectDestination(controller: PWDestinationTableVC, selectedDestination: PWDestination) {

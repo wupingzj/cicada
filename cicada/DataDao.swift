@@ -88,13 +88,13 @@ class DataDao {
         }
         
         if countries.count == 0 {
-            println("No country is found matching name \(countryName)")
+            println("Error: No country is found matching name \(countryName)")
             return nil
         } else if countries.count == 1 {
             return countries[0]
         } else {
-            println("More than one countries are found matching \(countryName). Return the first one")
-            return countries[0]
+            println("Error: More than one countries are found matching \(countryName).")
+            return nil
         }
     }
 }
