@@ -35,10 +35,10 @@ class PWUserService {
     
     func logon(#userName: String, password: String, callBack: (response: NSHTTPURLResponse?, data: AnyObject?, error: NSError?) -> Void) {
         // Alamofire authenicate method should not be used as it support Basic Authentication only. It uses NSURLCredential and NSURLSessionAuthChallengeDisposition
-        //networkService.networkManager.request(.POST, "http://localhost:8080/login").authenticate(user: userName, password: password)
 
         // underneath, a 302 and then 304 is returned. This might need to be changed
-        Alamofire.request(.POST, "http://localhost:8080/login", parameters: ["username":userName,"password":password])
+        let url: String = PWNetworkService.sharedInstance.getURLBase() + "/login"
+        Alamofire.request(.POST, url, parameters: ["username":userName,"password":password])
             .validate()
             .responseString { (request, response, data, error) in
                 PWNetworkService.logHttpResponse(request, response: response, data: data, error: error)
