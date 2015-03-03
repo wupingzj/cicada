@@ -526,7 +526,7 @@
         <scene sceneID="JcG-zR-fyw">
             <objects>
                 <navigationController title="RequestNC" automaticallyAdjustsScrollViewInsets="NO" id="jgg-Sp-CkQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Accommodation" image="second" id="szA-oh-BcO"/>
+                    <tabBarItem key="tabBarItem" title="Publish" image="second" id="szA-oh-BcO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8u8-q4-xx6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

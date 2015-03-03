@@ -160,6 +160,18 @@
 			name = Network;
 			sourceTree = "<group>";
 		};
+		394063A51AA58C330041A912 /* Publish */ = {
+			isa = PBXGroup;
+			children = (
+				39F4D12E1A2BBBC7005D58E5 /* DestinationPage */,
+				39F4D12F1A2BBBE4005D58E5 /* AccommodationPage */,
+				39F4D1301A2BBBF2005D58E5 /* DetailsPage */,
+				39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */,
+				39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */,
+			);
+			name = Publish;
+			sourceTree = "<group>";
+		};
 		39B7E01F1A11DF3600A0514C = {
 			isa = PBXGroup;
 			children = (
@@ -238,8 +250,8 @@
 		39B7E0521A1948AD00A0514C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				394063A51AA58C330041A912 /* Publish */,
 				39F4D1501A386559005D58E5 /* Util */,
-				39B7E0591A1DE02800A0514C /* Accommodation */,
 				39B7E0601A1DEB3600A0514C /* Quotes */,
 			);
 			name = ViewController;
@@ -258,18 +270,6 @@
 				394063A01AA342C80041A912 /* PWConstants.swift */,
 			);
 			name = Utility;
-			sourceTree = "<group>";
-		};
-		39B7E0591A1DE02800A0514C /* Accommodation */ = {
-			isa = PBXGroup;
-			children = (
-				39F4D12E1A2BBBC7005D58E5 /* DestinationPage */,
-				39F4D12F1A2BBBE4005D58E5 /* AccommodationPage */,
-				39F4D1301A2BBBF2005D58E5 /* DetailsPage */,
-				39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */,
-				39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */,
-			);
-			name = Accommodation;
 			sourceTree = "<group>";
 		};
 		39B7E0601A1DEB3600A0514C /* Quotes */ = {
