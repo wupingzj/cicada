@@ -23,6 +23,9 @@ public class Country: NSManagedObject {
     //var destinations: [PWDestination]
     var destinations: NSSet
     
+    @NSManaged
+    var imageUrl: String
+    
     // As swift doesn't support class variable yet, use class function instead for now
     class func getEntityName() -> String {
         return "Country"
@@ -39,12 +42,13 @@ public class Country: NSManagedObject {
         return NSEntityDescription.entityForName(getEntityName(), inManagedObjectContext: ctx)!
     }
     
-    class func createCountry(#name: String, active: Bool, useState: Bool) -> Country {
+    class func createCountry(#name: String, active: Bool, useState: Bool, imageUrl: String) -> Country {
         let newCountry: Country = Country.createEntity()
         
         newCountry.name = name
         newCountry.active = active
         newCountry.useState = useState
+        newCountry.imageUrl = imageUrl
         
         return newCountry
     }

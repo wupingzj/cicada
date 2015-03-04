@@ -16,7 +16,6 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     
     // state
     var country: Country? = nil
-//    var countryCode : String? = nil
     var destination: PWDestination? = nil
     
     // service

@@ -30,7 +30,7 @@ class PWCountryLoader {
     
     func display(entities: [Country]) {
         for (index, entity) in enumerate(entities) {
-            println("contry[\(index)]: \(entity.name) \(entity.active) ")
+            println("contry[\(index)]: \(entity.name) \(entity.active)  imageUrl=\(entity.imageUrl) ")
         }
     }
     
@@ -60,18 +60,18 @@ class PWCountryLoader {
     }
     
     func createCountries() -> Bool {
-        self.createCountry("Australia", active: true, useState: true)
-        self.createCountry("China", active: true, useState: true)
-        self.createCountry("United States", active: true, useState: true)
-        self.createCountry("United Kindom", active: true, useState: true)
-        self.createCountry("Thailand", active: false, useState: true)
-        self.createCountry("India", active: false, useState: true)
-        self.createCountry("Singapore", active: true, useState: false)
-        self.createCountry("New Zealand", active: true, useState: false)
-        self.createCountry("Germany", active: true, useState: true)
-        self.createCountry("Russia", active: true, useState: true)
-        self.createCountry("Holland", active: false, useState: false)
-        self.createCountry("Fiji", active: true, useState: false)
+        self.createCountry("Australia", active: true, useState: true, imageUrl: "image/country/Australia.3.jpg")
+        self.createCountry("China", active: true, useState: true, imageUrl: "image/country/China.3.jpg")
+        self.createCountry("United States", active: true, useState: true, imageUrl: "image/country/USA.3.jpg")
+        self.createCountry("United Kindom", active: true, useState: true, imageUrl: "image/country/UK.3.jpg")
+        self.createCountry("Thailand", active: false, useState: true, imageUrl: "image/country/Thailand.3.jpg")
+        self.createCountry("India", active: false, useState: true, imageUrl: "image/country/India.3.jpg")
+        self.createCountry("Singapore", active: true, useState: false, imageUrl: "image/country/Singapore.3.jpg")
+        self.createCountry("New Zealand", active: true, useState: false, imageUrl: "image/country/NZ.3.jpg")
+        self.createCountry("Germany", active: true, useState: true, imageUrl: "image/country/Germany.3.jpg")
+        self.createCountry("Russia", active: true, useState: true, imageUrl: "image/country/Russia.3.jpg")
+        self.createCountry("Holland", active: false, useState: false, imageUrl: "image/country/Holland.3.jpg")
+        self.createCountry("Fiji", active: true, useState: false, imageUrl: "image/country/Fiji.3.jpg")
         
         
         var error: NSError? = DataService.sharedInstance.saveContext()
@@ -83,12 +83,13 @@ class PWCountryLoader {
         }
     }
     
-    private func createCountry(name:String, active:Bool, useState: Bool) -> Country {
+    private func createCountry(name:String, active:Bool, useState: Bool, imageUrl: String) -> Country {
         let newCountry: Country = Country.createEntity()
         
         newCountry.name = name
         newCountry.active = active
         newCountry.useState = useState
+        newCountry.imageUrl = imageUrl
         
         return newCountry
     }

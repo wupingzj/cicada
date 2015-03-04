@@ -42,10 +42,7 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if (tableView == self.tableView) {
-            
-            
             let count = self.fetchedResultsController.sections?.count ?? 0
-            println("The total number of sections=\(count)")
             return count
         } else {
             return 1;

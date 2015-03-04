@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 let countryServiceInstance = PWCountryService()
-typealias CountryTuple = (name: String, active: Bool, useState: Bool)
+typealias CountryTuple = (name: String, active: Bool, useState: Bool, imageUrl: String)
 class PWCountryService {
     class var sharedInstance: PWCountryService {
         return countryServiceInstance
@@ -53,9 +53,10 @@ class PWCountryService {
                 let name = jsonItem["name"].string
                 let active = jsonItem["active"].bool
                 let useState = jsonItem["useState"].bool
+                let imageUrl = jsonItem["imageUrl"].string
 
                 if (name != nil && active != nil && useState != nil) {
-                    let countryTuple = (name: name!, active: active!, useState: useState!)
+                    let countryTuple = (name: name!, active: active!, useState: useState!, imageUrl: imageUrl!)
                     countryTuples.append(countryTuple)
                 } else {
                     parseJsonOK = false
@@ -91,9 +92,10 @@ class PWCountryService {
                     country.name = countryTuple.name
                     country.active = countryTuple.active
                     country.useState = countryTuple.useState
+                    country.imageUrl = countryTuple.imageUrl
                 } else {
                     // Not exist. Create a new country
-                    Country.createCountry(name: countryTuple.name, active: countryTuple.active, useState: countryTuple.useState)
+                    Country.createCountry(name: countryTuple.name, active: countryTuple.active, useState: countryTuple.useState, imageUrl: countryTuple.imageUrl)
                 }
             }
         }

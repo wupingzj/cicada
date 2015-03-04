@@ -75,7 +75,7 @@ class PWCountryTableVC: UITableViewController, NSFetchedResultsControllerDelegat
                     if ok {
                         self.reloadTableView()
                     } else {
-                        PWViewControllerUtils.showAlertMsg(self, title: "Sorry", message: "Failed to refresh country data. Please try again later")
+                        PWViewControllerUtils.showAlertMsg(self, title: "Sorry", message: "Failed to refresh country list. Please try again later")
                     }
                 }
             })

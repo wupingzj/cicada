@@ -384,8 +384,24 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6No-mx-SJu">
+                                <rect key="frame" x="472" y="24" width="112" height="30"/>
+                                <state key="normal" title="Change Country">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="MQB-XK-Ogh" kind="show" identifier="showCountryTableSegue" id="1H9-51-RV9"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfO-En-ieT" userLabel="DestinationImageView">
+                                <rect key="frame" x="16" y="57" width="568" height="200"/>
+                                <color key="backgroundColor" red="0.26373425350000002" green="0.38221407140000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="YBS-pO-5xY"/>
+                                </constraints>
+                            </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Please click to select" translatesAutoresizingMaskIntoConstraints="NO" id="3tu-ff-2Xc">
-                                <rect key="frame" x="16" y="57" width="290" height="60"/>
+                                <rect key="frame" x="16" y="265" width="290" height="60"/>
                                 <color key="backgroundColor" red="0.86413242525305101" green="1" blue="0.85960216672810186" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Yuv-Mn-6sF"/>
@@ -395,24 +411,18 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <dataDetectorType key="dataDetectorTypes" address="YES"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6No-mx-SJu">
-                                <rect key="frame" x="538" y="24" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="MQB-XK-Ogh" kind="show" identifier="showCountryTableSegue" id="1H9-51-RV9"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ZfO-En-ieT" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="08w-jC-VvR"/>
                             <constraint firstItem="3tu-ff-2Xc" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="4Kc-mA-hRL"/>
+                            <constraint firstItem="ZfO-En-ieT" firstAttribute="top" secondItem="QxT-TY-WlA" secondAttribute="bottom" constant="8" symbolic="YES" id="Dat-sD-dbb"/>
+                            <constraint firstItem="3tu-ff-2Xc" firstAttribute="top" secondItem="ZfO-En-ieT" secondAttribute="bottom" constant="8" symbolic="YES" id="E8y-8R-EWd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6No-mx-SJu" secondAttribute="trailing" id="KE7-mH-sJg"/>
                             <constraint firstItem="6No-mx-SJu" firstAttribute="baseline" secondItem="QxT-TY-WlA" secondAttribute="baseline" id="O7W-kF-iec"/>
                             <constraint firstItem="QxT-TY-WlA" firstAttribute="top" secondItem="UNs-5b-0Ax" secondAttribute="bottom" constant="8" symbolic="YES" id="X3D-fd-6zS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZfO-En-ieT" secondAttribute="trailing" id="liD-7J-uY0"/>
                             <constraint firstItem="QxT-TY-WlA" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="v16-Zg-Pt8"/>
-                            <constraint firstItem="3tu-ff-2Xc" firstAttribute="top" secondItem="QxT-TY-WlA" secondAttribute="bottom" constant="8" symbolic="YES" id="wtE-KI-0Jn"/>
                         </constraints>
                     </view>
                     <connections>

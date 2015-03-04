@@ -47,11 +47,13 @@ class DataLoaderVC: UIViewController {
     }
     
     @IBAction func getData(sender: UIButton) {
-        callCicadaServer("http://localhost:8080/country/listXXX")
+        let url: String = PWNetworkService.sharedInstance.getURLBase() + "/country/list"
+        callCicadaServer(url)
     }
     
     @IBAction func getData2(sender: AnyObject) {
-        callCicadaServer("http://localhost:8080/country/list")
+        let url: String = PWNetworkService.sharedInstance.getURLBase() + "/country/list"
+        callCicadaServer(url)
     }
     
     private func logon() {
