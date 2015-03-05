@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Alamofire
 
 class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestinationTableVCDelegate {
     // outlet
@@ -164,16 +165,31 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     private func loadDestinationImage(imageUrl: String) {
         // ref: http://stackoverflow.com/questions/24231680/swift-loading-image-from-url
         //      for synchronous and asynchronous image loading
-        let urlStr: String = PWNetworkService.sharedInstance.getURLBase() + imageUrl
-        if let url = NSURL(string: urlStr) {
+        let fullImageUrl: String = PWNetworkService.sharedInstance.getURLBase() + imageUrl
+        
+        // approach 1: synchrnously fetch image
+        /* if let url = NSURL(string: fullImageUrl) {
             if let imageData = NSData(contentsOfURL: url) {
                 self.destinationImageView.image = UIImage(data: imageData)
             } else {
                 println("Failed to load data with URL \(url)")
             }
         } else {
-            println("Invalid urlStr: \(urlStr)")
-        }
+            println("Invalid urlStr: \(fullImageUrl)")
+        } */
+        
+        // approach 2: asynchronously fetch image
+        Alamofire.request(.GET, fullImageUrl)
+            .validate()
+            .response() { (request, response, data, error) in
+                if let err = error {
+                    //PWNetworkService.logHttpResponse(request, response: response, data: json, error: error)
+                    println("Failed to retrieve image at URL: \(fullImageUrl)")
+                } else if data != nil {
+                    let image = UIImage(data: data! as NSData)
+                    self.destinationImageView.image = image
+                }
+            }
     }
 
     // MARK: - Navigation
