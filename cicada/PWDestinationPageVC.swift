@@ -11,8 +11,9 @@ import CoreLocation
 
 class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestinationTableVCDelegate {
     // outlet
-    @IBOutlet var destinationTextView: UITextView!
     @IBOutlet var countryButton: UIButton!
+    @IBOutlet var destinationImageView: UIImageView!
+    @IBOutlet var destinationTextView: UITextView!
     
     // state
     var country: Country? = nil
@@ -32,6 +33,18 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
 
         if country == nil {
             loadCountryFromPreferenceOrCurrentLocation()
+        }
+        
+        if let imageUrl = getImageUrl() {
+            loadDestinationImage(imageUrl)
+        }
+    }
+    
+    private func getImageUrl() -> String? {
+        if let checkedCountry = country {
+            return checkedCountry.imageUrl
+        } else {
+            return nil
         }
     }
 
@@ -146,6 +159,22 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
             return true
         }
     }
+    
+    // MARK: - set country image / destination image
+    private func loadDestinationImage(imageUrl: String) {
+        // ref: http://stackoverflow.com/questions/24231680/swift-loading-image-from-url
+        //      for synchronous and asynchronous image loading
+        let urlStr: String = PWNetworkService.sharedInstance.getURLBase() + imageUrl
+        if let url = NSURL(string: urlStr) {
+            if let imageData = NSData(contentsOfURL: url) {
+                self.destinationImageView.image = UIImage(data: imageData)
+            } else {
+                println("Failed to load data with URL \(url)")
+            }
+        } else {
+            println("Invalid urlStr: \(urlStr)")
+        }
+    }
 
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -189,11 +218,19 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setValue(selectedCountry.name, forKey: PWPreference_Country_Key)
+        
+        if let imageUrl = getImageUrl() {
+            loadDestinationImage(imageUrl)
+        }
     }
     
     func didSelectDestination(controller: PWDestinationTableVC, selectedDestination: PWDestination) {
         self.destination = selectedDestination
         displayDestination(selectedDestination)
+        
+        if let imageUrl = getImageUrl() {
+            loadDestinationImage(imageUrl)
+        }
     }
     
     private func displayDestination(destination: PWDestination) {

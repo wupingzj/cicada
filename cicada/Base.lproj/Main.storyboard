@@ -426,6 +426,7 @@
                     </view>
                     <connections>
                         <outlet property="countryButton" destination="6No-mx-SJu" id="E8Y-XL-RXp"/>
+                        <outlet property="destinationImageView" destination="Iw1-pO-om8" id="Pza-kY-aik"/>
                         <outlet property="destinationTextView" destination="3tu-ff-2Xc" id="WVo-Kn-NeF"/>
                     </connections>
                 </viewController>
