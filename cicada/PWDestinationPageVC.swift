@@ -24,7 +24,7 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     var geocoder = CLGeocoder()
 
     // info
-    let reminderSelectDestination = "Please select destination"
+    let reminderSelectDestination = "Where to go?"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,10 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
 
         if country == nil {
             loadCountryFromPreferenceOrCurrentLocation()
+        }
+        
+        if destination == nil {
+            destinationTextView.text = reminderSelectDestination
         }
         
         if let imageUrl = getImageUrl() {
