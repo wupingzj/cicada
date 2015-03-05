@@ -164,6 +164,8 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     // MARK: - set country image / destination image
     private func loadDestinationImage(imageUrl: String) {
         // ref: http://stackoverflow.com/questions/24231680/swift-loading-image-from-url
+        //      http://www.raywenderlich.com/85080/beginning-alamofire-tutorial
+        //      http://www.raywenderlich.com/87595/intermediate-alamofire-tutorial
         //      for synchronous and asynchronous image loading
         let fullImageUrl: String = PWNetworkService.sharedInstance.getURLBase() + imageUrl
         
@@ -182,13 +184,16 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         Alamofire.request(.GET, fullImageUrl)
             .validate()
             .response() { (request, response, data, error) in
-                if let err = error {
-                    //PWNetworkService.logHttpResponse(request, response: response, data: json, error: error)
-                    println("Failed to retrieve image at URL: \(fullImageUrl)")
-                } else if data != nil {
+                if error == nil && data != nil {
                     let image = UIImage(data: data! as NSData)
                     self.destinationImageView.image = image
-                }
+                    
+//                    self.imageView.frame = self.centerFrameFromImage(image)
+//                    self.spinner.stopAnimating()
+//                    self.centerScrollViewContents()
+                    } else {
+                        println("Failed to retrieve image at URL: \(fullImageUrl)")
+                    }
             }
     }
 
