@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--TBD-->
@@ -410,15 +411,37 @@
                                     <constraint firstAttribute="height" constant="200" id="bgb-lu-quG"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tge-ip-ifK">
+                                <rect key="frame" x="138" y="430" width="48" height="30"/>
+                                <state key="normal" title="Arrives">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeArrivalDate:" destination="kRk-tO-kDD" eventType="touchUpInside" id="z3j-PO-J3Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXe-fw-Sq9">
+                                <rect key="frame" x="301" y="430" width="54" height="30"/>
+                                <state key="normal" title="Departs">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeDepartureDate:" destination="kRk-tO-kDD" eventType="touchUpInside" id="MsJ-rH-CZX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="WXe-fw-Sq9" firstAttribute="baseline" secondItem="tge-ip-ifK" secondAttribute="baseline" id="1I2-zO-bO7"/>
                             <constraint firstItem="3tu-ff-2Xc" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="4Kc-mA-hRL"/>
                             <constraint firstItem="Iw1-pO-om8" firstAttribute="top" secondItem="QxT-TY-WlA" secondAttribute="bottom" constant="8" symbolic="YES" id="F1I-qk-ULg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6No-mx-SJu" secondAttribute="trailing" id="KE7-mH-sJg"/>
+                            <constraint firstItem="WXe-fw-Sq9" firstAttribute="centerX" secondItem="Elx-Ds-5vh" secondAttribute="trailingMargin" multiplier="0.66" id="LnY-Cy-pBa"/>
                             <constraint firstItem="6No-mx-SJu" firstAttribute="baseline" secondItem="QxT-TY-WlA" secondAttribute="baseline" id="O7W-kF-iec"/>
+                            <constraint firstItem="tge-ip-ifK" firstAttribute="centerX" secondItem="Elx-Ds-5vh" secondAttribute="trailingMargin" multiplier="0.33" id="PnW-Ou-3RL"/>
                             <constraint firstItem="3tu-ff-2Xc" firstAttribute="top" secondItem="Iw1-pO-om8" secondAttribute="bottom" id="Rtc-10-YRA"/>
                             <constraint firstItem="QxT-TY-WlA" firstAttribute="top" secondItem="UNs-5b-0Ax" secondAttribute="bottom" constant="8" symbolic="YES" id="X3D-fd-6zS"/>
+                            <constraint firstItem="tge-ip-ifK" firstAttribute="top" secondItem="3tu-ff-2Xc" secondAttribute="bottom" constant="8" symbolic="YES" id="XAG-bW-MMg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Iw1-pO-om8" secondAttribute="trailing" id="mfZ-5G-tsk"/>
                             <constraint firstItem="Iw1-pO-om8" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="unU-qP-5SW"/>
                             <constraint firstItem="QxT-TY-WlA" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="v16-Zg-Pt8"/>

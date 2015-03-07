@@ -299,4 +299,14 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         
         destinationTextView.text = text
     }
+
+    // MARK: - Choose Dates
+    @IBAction func changeArrivalDate(sender: UIButton) {
+    }
+    
+    
+    @IBAction func changeDepartureDate(sender: UIButton) {
+    }
 }
+    
+
