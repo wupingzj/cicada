@@ -52,6 +52,12 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
             return nil
         }
     }
+    
+    private func loadDestinationImages(destination: PWDestination) {
+        // if wi-fi, load multiple images
+        // if mobile-data, load only two images
+    
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -188,17 +194,38 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         Alamofire.request(.GET, fullImageUrl)
             .validate()
             .response() { (request, response, data, error) in
+                var ok = false
+                
                 if error == nil && data != nil {
-                    let image = UIImage(data: data! as NSData)
-                    self.destinationImageView.image = image
-                    
-//                    self.imageView.frame = self.centerFrameFromImage(image)
-//                    self.spinner.stopAnimating()
-//                    self.centerScrollViewContents()
-                    } else {
-                        println("Failed to retrieve image at URL: \(fullImageUrl)")
+                    if let image = UIImage(data: data! as NSData) {
+                        // self.destinationImageView.image = image
+                        
+                        // TODO - animate multiple images
+                        var images: [UIImage] = []
+                        images.append(image)
+                        images.append(image)
+                        images.append(image)
+                        self.destinationImageView.animationImages = images
+                        self.destinationImageView.animationDuration = 5
+                        self.destinationImageView.startAnimating()
+                        
+                        //                    self.imageView.frame = self.centerFrameFromImage(image)
+                        //                    self.spinner.stopAnimating()
+                        //                    self.centerScrollViewContents()
+                        
+                        ok = true
                     }
+                } else {
+                    println("Failed to retrieve image at URL: \(fullImageUrl)")
+                }
+                
+                if !ok {
+                    println("Download destination image failed. Use default image instead.")
+                    // TODO - load default local country image
+                }
             }
+
+
     }
 
     // MARK: - Navigation
@@ -268,7 +295,7 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         }
         
         text = PWStringUtils.concatString(text, append: destination.state, newLine: true)
-        text = PWStringUtils.concatString(text, append: destination.postCode, newLine: true)
+        text = PWStringUtils.concatString(text, append: destination.postCode, newLine: false)
         
         destinationTextView.text = text
     }
