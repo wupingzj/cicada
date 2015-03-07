@@ -295,17 +295,19 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         }
         
         text = PWStringUtils.concatString(text, append: destination.state, newLine: true)
-        text = PWStringUtils.concatString(text, append: destination.postCode, newLine: false)
+        //text = PWStringUtils.concatString(text, append: destination.postCode, newLine: false)
         
         destinationTextView.text = text
     }
 
     // MARK: - Choose Dates
     @IBAction func changeArrivalDate(sender: UIButton) {
+        println("changing arrival date...")
     }
     
     
     @IBAction func changeDepartureDate(sender: UIButton) {
+        println("changing departure date...")
     }
 }
     

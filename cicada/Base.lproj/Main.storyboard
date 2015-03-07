@@ -394,10 +394,10 @@
                                     <segue destination="MQB-XK-Ogh" kind="show" identifier="showCountryTableSegue" id="1H9-51-RV9"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Placeholder text" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3tu-ff-2Xc">
-                                <rect key="frame" x="16" y="257" width="290" height="60"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Destionation Text" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3tu-ff-2Xc" userLabel="DestinationText">
+                                <rect key="frame" x="155" y="265" width="290" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Yuv-Mn-6sF"/>
+                                    <constraint firstAttribute="height" constant="40" id="Yuv-Mn-6sF"/>
                                     <constraint firstAttribute="width" constant="290" id="esG-DL-w3v"/>
                                 </constraints>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -433,15 +433,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WXe-fw-Sq9" firstAttribute="baseline" secondItem="tge-ip-ifK" secondAttribute="baseline" id="1I2-zO-bO7"/>
-                            <constraint firstItem="3tu-ff-2Xc" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="4Kc-mA-hRL"/>
                             <constraint firstItem="Iw1-pO-om8" firstAttribute="top" secondItem="QxT-TY-WlA" secondAttribute="bottom" constant="8" symbolic="YES" id="F1I-qk-ULg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6No-mx-SJu" secondAttribute="trailing" id="KE7-mH-sJg"/>
                             <constraint firstItem="WXe-fw-Sq9" firstAttribute="centerX" secondItem="Elx-Ds-5vh" secondAttribute="trailingMargin" multiplier="0.66" id="LnY-Cy-pBa"/>
                             <constraint firstItem="6No-mx-SJu" firstAttribute="baseline" secondItem="QxT-TY-WlA" secondAttribute="baseline" id="O7W-kF-iec"/>
                             <constraint firstItem="tge-ip-ifK" firstAttribute="centerX" secondItem="Elx-Ds-5vh" secondAttribute="trailingMargin" multiplier="0.33" id="PnW-Ou-3RL"/>
-                            <constraint firstItem="3tu-ff-2Xc" firstAttribute="top" secondItem="Iw1-pO-om8" secondAttribute="bottom" id="Rtc-10-YRA"/>
+                            <constraint firstItem="3tu-ff-2Xc" firstAttribute="top" secondItem="Iw1-pO-om8" secondAttribute="bottom" constant="8" symbolic="YES" id="Rtc-10-YRA"/>
                             <constraint firstItem="QxT-TY-WlA" firstAttribute="top" secondItem="UNs-5b-0Ax" secondAttribute="bottom" constant="8" symbolic="YES" id="X3D-fd-6zS"/>
-                            <constraint firstItem="tge-ip-ifK" firstAttribute="top" secondItem="3tu-ff-2Xc" secondAttribute="bottom" constant="8" symbolic="YES" id="XAG-bW-MMg"/>
+                            <constraint firstItem="tge-ip-ifK" firstAttribute="top" secondItem="3tu-ff-2Xc" secondAttribute="bottom" constant="40" id="XAG-bW-MMg"/>
+                            <constraint firstAttribute="centerX" secondItem="3tu-ff-2Xc" secondAttribute="centerX" id="k3q-qV-1OK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Iw1-pO-om8" secondAttribute="trailing" id="mfZ-5G-tsk"/>
                             <constraint firstItem="Iw1-pO-om8" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="unU-qP-5SW"/>
                             <constraint firstItem="QxT-TY-WlA" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="v16-Zg-Pt8"/>
