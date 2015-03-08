@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import Alamofire
 
-class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestinationTableVCDelegate {
+class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestinationTableVCDelegate, UIPopoverControllerDelegate {
     // outlet
     @IBOutlet var countryButton: UIButton!
     @IBOutlet var destinationImageView: UIImageView!
@@ -25,6 +25,10 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
 
     // info
     let reminderSelectDestination = "Where to go?"
+    
+    let arrivalDatePicker = UIDatePicker()
+    let departureDatePicker = UIDatePicker()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +47,9 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         if let imageUrl = getImageUrl() {
             loadDestinationImage(imageUrl)
         }
+        
+        initDatePicker(DatePickerType.ARRIVAL, acton: "arrivalDateChanged")
+        initDatePicker(DatePickerType.ARRIVAL, acton: "departureDateChanged")
     }
     
     private func getImageUrl() -> String? {
@@ -303,12 +310,67 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     // MARK: - Choose Dates
     @IBAction func changeArrivalDate(sender: UIButton) {
         println("changing arrival date...")
+        showDatePicker(sender, datePickerType: DatePickerType.ARRIVAL, acton: "arrivalDateChanged")
     }
     
     
     @IBAction func changeDepartureDate(sender: UIButton) {
         println("changing departure date...")
+        showDatePicker(sender, datePickerType: DatePickerType.ARRIVAL, acton: "departureDateChanged")
+    }
+    
+    private func arrivalDateChanged() {
+        
+    }
+    
+    private func departureDateChanged() {
+        
+    }
+
+    private func showDatePicker(sender: UIButton, datePickerType: DatePickerType, acton: String) {
+        let viewController = UIViewController()
+        let view = UIView()
+        let datePicker = getDatePicker(datePickerType)
+        view.addSubview(datePicker)
+        viewController.view.addSubview(view)
+        
+        let size = CGSizeMake(150, 140)
+        let popOver = UIPopoverController(contentViewController: viewController)
+        popOver.delegate = self
+        popOver.setPopoverContentSize(size, animated: true)
+        popOver.presentPopoverFromRect(sender.frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+    }
+    
+    private func initDatePicker(datePickerType: DatePickerType, acton: String) {
+        let today = NSDate()
+        
+        var datePicker: UIDatePicker!
+        if datePickerType == DatePickerType.ARRIVAL {
+            datePicker = arrivalDatePicker
+        }
+
+        if datePickerType == DatePickerType.DEPARTURE {
+            datePicker = departureDatePicker
+        }
+
+        datePicker.setDate(today, animated: true)
+        datePicker.datePickerMode = UIDatePickerMode.Date
+        datePicker.addTarget(self, action: Selector(acton), forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    private func getDatePicker(datePickerType: DatePickerType) -> UIDatePicker {
+        if datePickerType == DatePickerType.ARRIVAL {
+            return arrivalDatePicker
+        }
+        
+        if datePickerType == DatePickerType.DEPARTURE {
+            return departureDatePicker
+        }
+        
+        return arrivalDatePicker
     }
 }
+
+
     
 

@@ -13,6 +13,7 @@
 		393640F81A8FDDB5001140FC /* TechMemo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 393640F71A8FDDB4001140FC /* TechMemo.txt */; };
 		3940639B1AA110020041A912 /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940639A1AA110020041A912 /* OneShotLocationManager.swift */; };
 		394063A11AA342C80041A912 /* PWConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394063A01AA342C80041A912 /* PWConstants.swift */; };
+		394063AD1AAC6AD60041A912 /* PWDatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394063AC1AAC6AD60041A912 /* PWDatePickerVC.swift */; };
 		3972B9A41A3D00BF0098B2B1 /* PWDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */; };
 		3972B9A61A3D0CE50098B2B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0331A11DF3700A0514C /* Main.storyboard */; };
 		39B7E02E1A11DF3700A0514C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E02D1A11DF3700A0514C /* AppDelegate.swift */; };
@@ -40,6 +41,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		394063B11AAC6AD70041A912 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 39F9531B1A52D6D10098C30F /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire OSX";
+		};
+		394063B31AAC6AD70041A912 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 39F9531B1A52D6D10098C30F /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire OSX Tests";
+		};
 		39B7E0401A11DF3700A0514C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 39B7E0201A11DF3600A0514C /* Project object */;
@@ -90,6 +105,7 @@
 		393640F71A8FDDB4001140FC /* TechMemo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TechMemo.txt; sourceTree = "<group>"; };
 		3940639A1AA110020041A912 /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
 		394063A01AA342C80041A912 /* PWConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWConstants.swift; sourceTree = "<group>"; };
+		394063AC1AAC6AD60041A912 /* PWDatePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDatePickerVC.swift; sourceTree = "<group>"; };
 		3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDestination.swift; sourceTree = "<group>"; };
 		3972B9A51A3D056D0098B2B1 /* cicadaModel_v1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cicadaModel_v1.1.xcdatamodel; sourceTree = "<group>"; };
 		39B7E0281A11DF3700A0514C /* cicada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cicada.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,6 +311,7 @@
 				39F4D1311A2BBC98005D58E5 /* PWDestinationTableVC.swift */,
 				39F4D13F1A3084BD005D58E5 /* PWDestinationPageVC.swift */,
 				39F4D14E1A364D8D005D58E5 /* PWCountryTableVC.swift */,
+				394063AC1AAC6AD60041A912 /* PWDatePickerVC.swift */,
 			);
 			name = DestinationPage;
 			sourceTree = "<group>";
@@ -335,7 +352,9 @@
 			isa = PBXGroup;
 			children = (
 				39F953211A52D6D10098C30F /* Alamofire.framework */,
+				394063B21AAC6AD70041A912 /* Alamofire.framework */,
 				39F953231A52D6D10098C30F /* AlamofireTests.xctest */,
+				394063B41AAC6AD70041A912 /* Alamofire OSX Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -425,6 +444,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		394063B21AAC6AD70041A912 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 394063B11AAC6AD70041A912 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		394063B41AAC6AD70041A912 /* Alamofire OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire OSX Tests.xctest";
+			remoteRef = 394063B31AAC6AD70041A912 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		39F953211A52D6D10098C30F /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -435,7 +468,7 @@
 		39F953231A52D6D10098C30F /* AlamofireTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = AlamofireTests.xctest;
+			path = "Alamofire iOS Tests.xctest";
 			remoteRef = 39F953221A52D6D10098C30F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -472,6 +505,7 @@
 				39F4D1441A35B9A7005D58E5 /* Country.swift in Sources */,
 				39BB92871A5AB77800909B98 /* PWViewControllerUtils.swift in Sources */,
 				3940639B1AA110020041A912 /* OneShotLocationManager.swift in Sources */,
+				394063AD1AAC6AD60041A912 /* PWDatePickerVC.swift in Sources */,
 				39B7E02E1A11DF3700A0514C /* AppDelegate.swift in Sources */,
 				39B7E0571A1949CC00A0514C /* cicadaModel.xcdatamodeld in Sources */,
 				3924391D1A53A354004769FA /* PWUserService.swift in Sources */,

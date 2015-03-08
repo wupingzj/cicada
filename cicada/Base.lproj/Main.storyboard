@@ -176,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1522" y="-8"/>
+            <point key="canvasLocation" x="1530" y="424"/>
         </scene>
         <!--quotesViewController-->
         <scene sceneID="wg7-f3-ORb">
@@ -216,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1522" y="832"/>
+            <point key="canvasLocation" x="1398" y="1560"/>
         </scene>
         <!--Research-->
         <scene sceneID="R7p-Tw-GUa">
@@ -248,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55N-9S-gdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="1709"/>
+            <point key="canvasLocation" x="0.0" y="2641"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -347,6 +347,61 @@
             </objects>
             <point key="canvasLocation" x="2346" y="-1974"/>
         </scene>
+        <!--datePicker-->
+        <scene sceneID="Nna-qL-ixB">
+            <objects>
+                <viewController id="PVH-7f-PGp" userLabel="datePicker" customClass="PWDatePickerVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VFW-LA-n4X"/>
+                        <viewControllerLayoutGuide type="bottom" id="jOi-g6-TaQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Sue-xD-rgN">
+                        <rect key="frame" x="0.0" y="94" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="QQs-gG-EAE">
+                                <rect key="frame" x="140" y="219" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="447499892.57261097">
+                                    <!--2015-03-08 09:31:32 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Picked Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G27-sM-PXb">
+                                <rect key="frame" x="240" y="154" width="120" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="KOn-Xp-qjo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="QQs-gG-EAE" secondAttribute="centerX" id="Kor-BY-DqI"/>
+                            <constraint firstItem="G27-sM-PXb" firstAttribute="bottom" secondItem="QQs-gG-EAE" secondAttribute="top" multiplier="0.8" id="Uxs-1S-ToK"/>
+                            <constraint firstAttribute="centerY" secondItem="QQs-gG-EAE" secondAttribute="centerY" id="gnS-E4-obq"/>
+                            <constraint firstAttribute="centerX" secondItem="G27-sM-PXb" secondAttribute="centerX" id="pep-0b-8PT"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="9Km-iS-Y61">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Yje-5l-sH8">
+                            <connections>
+                                <action selector="done:" destination="PVH-7f-PGp" id="Pmx-FL-nTj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="datePicker" destination="QQs-gG-EAE" id="zxL-mT-ggd"/>
+                        <outlet property="pickedDateLabel" destination="G27-sM-PXb" id="OWn-m3-USU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="23w-sc-ZNI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3053" y="-1228"/>
+        </scene>
         <!--Destination-->
         <scene sceneID="8FT-xV-hDz">
             <objects>
@@ -379,14 +434,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxT-TY-WlA">
-                                <rect key="frame" x="16" y="28" width="92" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6No-mx-SJu">
-                                <rect key="frame" x="472" y="24" width="112" height="30"/>
+                                <rect key="frame" x="472" y="28" width="112" height="30"/>
                                 <state key="normal" title="Change Country">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -394,18 +443,18 @@
                                     <segue destination="MQB-XK-Ogh" kind="show" identifier="showCountryTableSegue" id="1H9-51-RV9"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Destionation Text" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3tu-ff-2Xc" userLabel="DestinationText">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Destionation Text" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3tu-ff-2Xc" userLabel="DestinationText">
                                 <rect key="frame" x="155" y="265" width="290" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Yuv-Mn-6sF"/>
                                     <constraint firstAttribute="width" constant="290" id="esG-DL-w3v"/>
                                 </constraints>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <dataDetectorType key="dataDetectorTypes" address="YES"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iw1-pO-om8" userLabel="DestinationImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iw1-pO-om8" userLabel="DestinationImageView">
                                 <rect key="frame" x="16" y="57" width="568" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="bgb-lu-quG"/>
@@ -417,7 +466,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="changeArrivalDate:" destination="kRk-tO-kDD" eventType="touchUpInside" id="z3j-PO-J3Y"/>
+                                    <segue destination="PVH-7f-PGp" kind="show" id="JGv-YY-KDS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXe-fw-Sq9">
@@ -426,25 +475,23 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="changeDepartureDate:" destination="kRk-tO-kDD" eventType="touchUpInside" id="MsJ-rH-CZX"/>
+                                    <segue destination="PVH-7f-PGp" kind="show" id="zCw-s7-8Cc"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WXe-fw-Sq9" firstAttribute="baseline" secondItem="tge-ip-ifK" secondAttribute="baseline" id="1I2-zO-bO7"/>
-                            <constraint firstItem="Iw1-pO-om8" firstAttribute="top" secondItem="QxT-TY-WlA" secondAttribute="bottom" constant="8" symbolic="YES" id="F1I-qk-ULg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6No-mx-SJu" secondAttribute="trailing" id="KE7-mH-sJg"/>
                             <constraint firstItem="WXe-fw-Sq9" firstAttribute="centerX" secondItem="Elx-Ds-5vh" secondAttribute="trailingMargin" multiplier="0.66" id="LnY-Cy-pBa"/>
-                            <constraint firstItem="6No-mx-SJu" firstAttribute="baseline" secondItem="QxT-TY-WlA" secondAttribute="baseline" id="O7W-kF-iec"/>
                             <constraint firstItem="tge-ip-ifK" firstAttribute="centerX" secondItem="Elx-Ds-5vh" secondAttribute="trailingMargin" multiplier="0.33" id="PnW-Ou-3RL"/>
                             <constraint firstItem="3tu-ff-2Xc" firstAttribute="top" secondItem="Iw1-pO-om8" secondAttribute="bottom" constant="8" symbolic="YES" id="Rtc-10-YRA"/>
-                            <constraint firstItem="QxT-TY-WlA" firstAttribute="top" secondItem="UNs-5b-0Ax" secondAttribute="bottom" constant="8" symbolic="YES" id="X3D-fd-6zS"/>
                             <constraint firstItem="tge-ip-ifK" firstAttribute="top" secondItem="3tu-ff-2Xc" secondAttribute="bottom" constant="40" id="XAG-bW-MMg"/>
+                            <constraint firstItem="6No-mx-SJu" firstAttribute="top" secondItem="UNs-5b-0Ax" secondAttribute="bottom" constant="8" symbolic="YES" id="auw-pq-D5g"/>
                             <constraint firstAttribute="centerX" secondItem="3tu-ff-2Xc" secondAttribute="centerX" id="k3q-qV-1OK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Iw1-pO-om8" secondAttribute="trailing" id="mfZ-5G-tsk"/>
                             <constraint firstItem="Iw1-pO-om8" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="unU-qP-5SW"/>
-                            <constraint firstItem="QxT-TY-WlA" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="v16-Zg-Pt8"/>
+                            <constraint firstItem="Iw1-pO-om8" firstAttribute="top" secondItem="6No-mx-SJu" secondAttribute="bottom" constant="8" symbolic="YES" id="vgz-em-hNK"/>
                         </constraints>
                     </view>
                     <connections>
@@ -485,7 +532,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmO-ed-E1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2994" y="-1228"/>
+            <point key="canvasLocation" x="2334" y="-456"/>
         </scene>
         <!--confirmationPageVC-->
         <scene sceneID="6Sz-cs-cbG">
@@ -515,7 +562,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hl0-rW-6sZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3635" y="-1228"/>
+            <point key="canvasLocation" x="3079" y="-416"/>
         </scene>
         <!--TBDNavController-->
         <scene sceneID="FGa-qk-ads">
@@ -534,7 +581,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jj2-mM-zSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774" y="-8"/>
+            <point key="canvasLocation" x="774" y="424"/>
         </scene>
         <!--QuoteNavController-->
         <scene sceneID="ar3-4h-eRz">
@@ -553,7 +600,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0C-bv-dgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="832"/>
+            <point key="canvasLocation" x="606" y="1560"/>
         </scene>
         <!--RequestNC-->
         <scene sceneID="JcG-zR-fyw">
@@ -579,4 +626,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="zCw-s7-8Cc"/>
+    </inferredMetricsTieBreakers>
 </document>
