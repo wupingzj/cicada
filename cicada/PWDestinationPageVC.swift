@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import Alamofire
 
-class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestinationTableVCDelegate, UIPopoverControllerDelegate {
+class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestinationTableVCDelegate, PWDatePickerVCDelegate {
     // outlet
     @IBOutlet var countryButton: UIButton!
     @IBOutlet var destinationImageView: UIImageView!
@@ -19,6 +19,8 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     // state
     var country: Country? = nil
     var destination: PWDestination? = nil
+    var currentArrivalDate: NSDate? = nil
+    var currentDepartureDate: NSDate? = nil
     
     // service
     var geocoder = CLGeocoder()
@@ -47,9 +49,6 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         if let imageUrl = getImageUrl() {
             loadDestinationImage(imageUrl)
         }
-        
-        initDatePicker(DatePickerType.ARRIVAL, acton: "arrivalDateChanged")
-        initDatePicker(DatePickerType.ARRIVAL, acton: "departureDateChanged")
     }
     
     private func getImageUrl() -> String? {
@@ -237,10 +236,27 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
 
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    let COUNTRY_TABLE_SEGUE = "showCountryTableSegue"
+    let ARRIVAL_DATE_PICKER_SEGUE = "showArrivalDatePickerSegue"
+    let DEPARTURE_DATE_PICKER_SEGUE = "showDepartureDatePickerSegue"
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if segue.identifier == "showCountryTableSegue" {
+        if segue.identifier ==  COUNTRY_TABLE_SEGUE {
+            // show country table
             let vc = segue.destinationViewController as PWCountryTableVC
             vc.delegate = self
+        } else if segue.identifier == ARRIVAL_DATE_PICKER_SEGUE || segue.identifier == DEPARTURE_DATE_PICKER_SEGUE {
+            // show date picker
+            let vc = segue.destinationViewController as PWDatePickerVC
+            vc.delegate = self
+            
+            if segue.identifier == ARRIVAL_DATE_PICKER_SEGUE {
+                vc.datePickerType = DatePickerType.ARRIVAL
+            } else if segue.identifier == DEPARTURE_DATE_PICKER_SEGUE {
+                vc.datePickerType = DatePickerType.DEPARTURE
+            }
+            
+            vc.currentArrivalDate = currentArrivalDate
+            vc.currentDepartureDate = currentDepartureDate
         } else {
             println("*** Unrecongnized segue name \(segue.identifier) in PWDestinationPageVC.prepareForSegue. Do nothing ***")
         }
@@ -308,66 +324,16 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     }
 
     // MARK: - Choose Dates
-    @IBAction func changeArrivalDate(sender: UIButton) {
-        println("changing arrival date...")
-        showDatePicker(sender, datePickerType: DatePickerType.ARRIVAL, acton: "arrivalDateChanged")
-    }
-    
-    
-    @IBAction func changeDepartureDate(sender: UIButton) {
-        println("changing departure date...")
-        showDatePicker(sender, datePickerType: DatePickerType.ARRIVAL, acton: "departureDateChanged")
-    }
-    
-    private func arrivalDateChanged() {
-        
-    }
-    
-    private func departureDateChanged() {
-        
-    }
-
-    private func showDatePicker(sender: UIButton, datePickerType: DatePickerType, acton: String) {
-        let viewController = UIViewController()
-        let view = UIView()
-        let datePicker = getDatePicker(datePickerType)
-        view.addSubview(datePicker)
-        viewController.view.addSubview(view)
-        
-        let size = CGSizeMake(150, 140)
-        let popOver = UIPopoverController(contentViewController: viewController)
-        popOver.delegate = self
-        popOver.setPopoverContentSize(size, animated: true)
-        popOver.presentPopoverFromRect(sender.frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
-    }
-    
-    private func initDatePicker(datePickerType: DatePickerType, acton: String) {
-        let today = NSDate()
-        
-        var datePicker: UIDatePicker!
+    // PWDatePickerVCDelegate call back
+    func didSelectDate(selectedDate: NSDate, datePickerType: DatePickerType) {
+        println("Date picker date=\(selectedDate), datePickerType=\(datePickerType)")
         if datePickerType == DatePickerType.ARRIVAL {
-            datePicker = arrivalDatePicker
+            currentArrivalDate = selectedDate
+        } else if datePickerType == DatePickerType.DEPARTURE {
+            currentDepartureDate = selectedDate
+        } else {
+            println("Not supported datePickerType=\(datePickerType)")
         }
-
-        if datePickerType == DatePickerType.DEPARTURE {
-            datePicker = departureDatePicker
-        }
-
-        datePicker.setDate(today, animated: true)
-        datePicker.datePickerMode = UIDatePickerMode.Date
-        datePicker.addTarget(self, action: Selector(acton), forControlEvents: UIControlEvents.ValueChanged)
-    }
-    
-    private func getDatePicker(datePickerType: DatePickerType) -> UIDatePicker {
-        if datePickerType == DatePickerType.ARRIVAL {
-            return arrivalDatePicker
-        }
-        
-        if datePickerType == DatePickerType.DEPARTURE {
-            return departureDatePicker
-        }
-        
-        return arrivalDatePicker
     }
 }
 
