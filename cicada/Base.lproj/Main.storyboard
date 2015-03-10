@@ -374,11 +374,19 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Zone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mj5-Vx-36g">
+                                <rect key="frame" x="259" y="183" width="82" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="QQs-gG-EAE" secondAttribute="centerX" id="Kor-BY-DqI"/>
+                            <constraint firstItem="mj5-Vx-36g" firstAttribute="top" secondItem="G27-sM-PXb" secondAttribute="bottom" constant="8" symbolic="YES" id="OAR-k3-kgv"/>
                             <constraint firstItem="G27-sM-PXb" firstAttribute="bottom" secondItem="QQs-gG-EAE" secondAttribute="top" multiplier="0.8" id="Uxs-1S-ToK"/>
+                            <constraint firstAttribute="centerX" secondItem="mj5-Vx-36g" secondAttribute="centerX" id="fzj-2e-r2a"/>
                             <constraint firstAttribute="centerY" secondItem="QQs-gG-EAE" secondAttribute="centerY" id="gnS-E4-obq"/>
                             <constraint firstAttribute="centerX" secondItem="G27-sM-PXb" secondAttribute="centerX" id="pep-0b-8PT"/>
                         </constraints>
@@ -395,6 +403,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="datePicker" destination="QQs-gG-EAE" id="zxL-mT-ggd"/>
+                        <outlet property="destinationTimeZoneLabel" destination="mj5-Vx-36g" id="a7x-Dz-cG8"/>
                         <outlet property="pickedDateLabel" destination="G27-sM-PXb" id="OWn-m3-USU"/>
                     </connections>
                 </viewController>
@@ -478,24 +487,64 @@
                                     <segue destination="PVH-7f-PGp" kind="show" identifier="showDepartureDatePickerSegue" id="zCw-s7-8Cc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyf-JL-PcE">
+                                <rect key="frame" x="170" y="392" width="45" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="f6b-v5-Lcb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="d" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGW-2s-ukM">
+                                <rect key="frame" x="358" y="392" width="54" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="1XY-hK-KbL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WXe-fw-Sq9" firstAttribute="baseline" secondItem="tge-ip-ifK" secondAttribute="baseline" id="1I2-zO-bO7"/>
+                            <constraint firstItem="Yyf-JL-PcE" firstAttribute="trailing" secondItem="tge-ip-ifK" secondAttribute="trailing" id="8NC-1w-7Wr"/>
+                            <constraint firstItem="DGW-2s-ukM" firstAttribute="top" secondItem="WXe-fw-Sq9" secondAttribute="bottom" constant="8" symbolic="YES" id="8Pn-cO-uxF"/>
+                            <constraint firstItem="tge-ip-ifK" firstAttribute="centerX" secondItem="Yyf-JL-PcE" secondAttribute="centerX" id="COy-8K-idx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6No-mx-SJu" secondAttribute="trailing" id="KE7-mH-sJg"/>
+                            <constraint firstItem="tge-ip-ifK" firstAttribute="centerY" secondItem="Yyf-JL-PcE" secondAttribute="centerY" id="KWL-Yn-ijf"/>
                             <constraint firstItem="WXe-fw-Sq9" firstAttribute="centerX" secondItem="Elx-Ds-5vh" secondAttribute="trailingMargin" multiplier="0.66" id="LnY-Cy-pBa"/>
+                            <constraint firstItem="WXe-fw-Sq9" firstAttribute="centerX" secondItem="DGW-2s-ukM" secondAttribute="centerX" id="PfJ-Ol-NUN"/>
+                            <constraint firstItem="Yyf-JL-PcE" firstAttribute="top" secondItem="tge-ip-ifK" secondAttribute="bottom" constant="8" symbolic="YES" id="Ph6-NX-BSr" userLabel="-"/>
                             <constraint firstItem="tge-ip-ifK" firstAttribute="centerX" secondItem="Elx-Ds-5vh" secondAttribute="trailingMargin" multiplier="0.33" id="PnW-Ou-3RL"/>
                             <constraint firstItem="3tu-ff-2Xc" firstAttribute="top" secondItem="Iw1-pO-om8" secondAttribute="bottom" constant="8" symbolic="YES" id="Rtc-10-YRA"/>
                             <constraint firstItem="tge-ip-ifK" firstAttribute="top" secondItem="3tu-ff-2Xc" secondAttribute="bottom" constant="40" id="XAG-bW-MMg"/>
+                            <constraint firstItem="Yyf-JL-PcE" firstAttribute="trailing" secondItem="tge-ip-ifK" secondAttribute="trailing" id="aGv-lE-DmN"/>
                             <constraint firstItem="6No-mx-SJu" firstAttribute="top" secondItem="UNs-5b-0Ax" secondAttribute="bottom" constant="8" symbolic="YES" id="auw-pq-D5g"/>
+                            <constraint firstItem="DGW-2s-ukM" firstAttribute="trailing" secondItem="WXe-fw-Sq9" secondAttribute="trailing" id="cMB-eT-wWr"/>
+                            <constraint firstItem="DGW-2s-ukM" firstAttribute="baseline" secondItem="Yyf-JL-PcE" secondAttribute="baseline" id="hJA-ha-f8A"/>
                             <constraint firstAttribute="centerX" secondItem="3tu-ff-2Xc" secondAttribute="centerX" id="k3q-qV-1OK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Iw1-pO-om8" secondAttribute="trailing" id="mfZ-5G-tsk"/>
+                            <constraint firstItem="tge-ip-ifK" firstAttribute="centerY" secondItem="Yyf-JL-PcE" secondAttribute="centerY" id="qvH-zw-7Vv"/>
                             <constraint firstItem="Iw1-pO-om8" firstAttribute="leading" secondItem="Elx-Ds-5vh" secondAttribute="leadingMargin" id="unU-qP-5SW"/>
                             <constraint firstItem="Iw1-pO-om8" firstAttribute="top" secondItem="6No-mx-SJu" secondAttribute="bottom" constant="8" symbolic="YES" id="vgz-em-hNK"/>
+                            <constraint firstItem="WXe-fw-Sq9" firstAttribute="centerY" secondItem="DGW-2s-ukM" secondAttribute="centerY" id="wFl-Yn-za7"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="KWL-Yn-ijf"/>
+                                <exclude reference="qvH-zw-7Vv"/>
+                                <exclude reference="8NC-1w-7Wr"/>
+                                <exclude reference="aGv-lE-DmN"/>
+                                <exclude reference="wFl-Yn-za7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="countryButton" destination="6No-mx-SJu" id="E8Y-XL-RXp"/>
+                        <outlet property="currentArrivalDateLabel" destination="Yyf-JL-PcE" id="pWI-2f-2ZC"/>
+                        <outlet property="currentDepartureDateLabel" destination="DGW-2s-ukM" id="dHH-wM-gzS"/>
                         <outlet property="destinationImageView" destination="Iw1-pO-om8" id="Pza-kY-aik"/>
                         <outlet property="destinationTextView" destination="3tu-ff-2Xc" id="WVo-Kn-NeF"/>
                     </connections>

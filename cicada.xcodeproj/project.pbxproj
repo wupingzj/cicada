@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		390AA0821AAF130700CEC625 /* China.3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 390AA0811AAF130700CEC625 /* China.3.jpg */; };
+		390AA0841AAF202C00CEC625 /* NewZealand.3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 390AA0831AAF202C00CEC625 /* NewZealand.3.jpg */; };
 		3924391D1A53A354004769FA /* PWUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924391C1A53A354004769FA /* PWUserService.swift */; };
 		393640F31A8E26AD001140FC /* PWNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393640F21A8E26AD001140FC /* PWNetworkService.swift */; };
 		393640F51A8E8E1A001140FC /* PWStringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */; };
@@ -100,6 +102,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		390AA0811AAF130700CEC625 /* China.3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = China.3.jpg; sourceTree = "<group>"; };
+		390AA0831AAF202C00CEC625 /* NewZealand.3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NewZealand.3.jpg; sourceTree = "<group>"; };
 		3924391C1A53A354004769FA /* PWUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWUserService.swift; sourceTree = "<group>"; };
 		393640F21A8E26AD001140FC /* PWNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWNetworkService.swift; sourceTree = "<group>"; };
 		393640F71A8FDDB4001140FC /* TechMemo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TechMemo.txt; sourceTree = "<group>"; };
@@ -157,6 +161,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		390AA07D1AAF12DB00CEC625 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				390AA0831AAF202C00CEC625 /* NewZealand.3.jpg */,
+				390AA0811AAF130700CEC625 /* China.3.jpg */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
 		392439181A539FC0004769FA /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,7 +280,6 @@
 			isa = PBXGroup;
 			children = (
 				394063A51AA58C330041A912 /* Publish */,
-				39F4D1501A386559005D58E5 /* Util */,
 				39B7E0601A1DEB3600A0514C /* Quotes */,
 			);
 			name = ViewController;
@@ -276,6 +288,7 @@
 		39B7E0531A1948D000A0514C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				390AA07D1AAF12DB00CEC625 /* image */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -284,6 +297,8 @@
 			isa = PBXGroup;
 			children = (
 				394063A01AA342C80041A912 /* PWConstants.swift */,
+				39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */,
+				39BB92861A5AB77800909B98 /* PWViewControllerUtils.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -339,21 +354,12 @@
 			name = entity;
 			sourceTree = "<group>";
 		};
-		39F4D1501A386559005D58E5 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */,
-				39BB92861A5AB77800909B98 /* PWViewControllerUtils.swift */,
-			);
-			name = Util;
-			sourceTree = "<group>";
-		};
 		39F9531C1A52D6D10098C30F /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				39F953211A52D6D10098C30F /* Alamofire.framework */,
 				394063B21AAC6AD70041A912 /* Alamofire.framework */,
-				39F953231A52D6D10098C30F /* AlamofireTests.xctest */,
+				39F953231A52D6D10098C30F /* Alamofire iOS Tests.xctest */,
 				394063B41AAC6AD70041A912 /* Alamofire OSX Tests.xctest */,
 			);
 			name = Products;
@@ -465,7 +471,7 @@
 			remoteRef = 39F953201A52D6D10098C30F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		39F953231A52D6D10098C30F /* AlamofireTests.xctest */ = {
+		39F953231A52D6D10098C30F /* Alamofire iOS Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = "Alamofire iOS Tests.xctest";
@@ -481,6 +487,8 @@
 			files = (
 				393640F81A8FDDB5001140FC /* TechMemo.txt in Resources */,
 				3972B9A61A3D0CE50098B2B1 /* Main.storyboard in Resources */,
+				390AA0821AAF130700CEC625 /* China.3.jpg in Resources */,
+				390AA0841AAF202C00CEC625 /* NewZealand.3.jpg in Resources */,
 				39B7E03A1A11DF3700A0514C /* LaunchScreen.xib in Resources */,
 				39B7E0371A11DF3700A0514C /* Images.xcassets in Resources */,
 			);

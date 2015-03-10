@@ -31,16 +31,17 @@ extension NSDate
 }
 
 class PWDatePickerVC: UIViewController {
-    
-    @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var pickedDateLabel: UILabel!
+    @IBOutlet var destinationTimeZoneLabel: UILabel!
+    @IBOutlet var datePicker: UIDatePicker!
     
     // view controller input parameters
     var delegate: PWDatePickerVCDelegate? = nil
     var datePickerType: DatePickerType!
     // The following two input parameters are used to initialize the datePicker
-    var currentArrivalDate: NSDate?
-    var currentDepartureDate: NSDate?
+    var currentArrivalDate: NSDate!
+    var currentDepartureDate: NSDate!
+    var destinationTimeZone: NSTimeZone!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,58 +51,36 @@ class PWDatePickerVC: UIViewController {
   
         var today = NSDate()
         datePicker.minimumDate = today
-        var date = today
+        
+        var date: NSDate!
         if datePickerType == DatePickerType.ARRIVAL {
-            if let currentDate = self.currentArrivalDate {
-                date = currentDate
-                datePicker.minimumDate = currentDate
-            }
+            date = self.currentArrivalDate
         } else if datePickerType == DatePickerType.DEPARTURE {
-            if let currentDate = self.currentDepartureDate {
-                date = currentDate
-            }
-            
-            // departure date's minmum date
-            if let currentArrivalDate = self.currentArrivalDate {
-                datePicker.minimumDate = currentArrivalDate
-            } else {
-                datePicker.minimumDate = today
-            }
+            date = self.currentDepartureDate
         }
-        
-        println("datePicker.minimumDate=\(datePicker.minimumDate)")
-        // TODO - maximum date
-        
         datePicker.setDate(date, animated: true)
-
+        //destinationTimeZoneLabel.text = "Time in " + (destinationTimeZone.abbreviation!) + (destinationTimeZone.name)
+        destinationTimeZoneLabel.text = "Time in " + destinationTimeZone.debugDescription
+        
         // reflect date in label
         datePickerChanged()
     }
     
     func datePickerChanged() {
         if datePickerType == DatePickerType.ARRIVAL {
-            pickedDateLabel.text = "Arrival Date: Show TimeZone, localized timeformat"
+            pickedDateLabel.text = "Arrival Date: "
         } else {
             pickedDateLabel.text = "Departure Date: "
         }
         
-        pickedDateLabel.text! += formatDate(datePicker.date)
+        pickedDateLabel.text! += PWStringUtils.formatDate(datePicker.date)
         pickedDateLabel.numberOfLines = 0
         pickedDateLabel.sizeToFit()
     }
     
-    private func formatDate(date: NSDate) -> String {
-        var dateFormatter = NSDateFormatter()
-        
-        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-        
-        var strDate = dateFormatter.stringFromDate(date)
-        return strDate
-    }
+    
     
     @IBAction func done(sender: UIBarButtonItem) {
-        // TODO
         let selectedDate = datePicker.date
         
         // callback the delegate

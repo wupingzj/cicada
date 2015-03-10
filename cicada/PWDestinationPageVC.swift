@@ -15,12 +15,14 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     @IBOutlet var countryButton: UIButton!
     @IBOutlet var destinationImageView: UIImageView!
     @IBOutlet var destinationTextView: UITextView!
+    @IBOutlet var currentArrivalDateLabel: UILabel!
+    @IBOutlet var currentDepartureDateLabel: UILabel!
     
     // state
     var country: Country? = nil
     var destination: PWDestination? = nil
-    var currentArrivalDate: NSDate? = nil
-    var currentDepartureDate: NSDate? = nil
+    var currentArrivalDate: NSDate = NSDate()
+    var currentDepartureDate: NSDate = NSDate()
     
     // service
     var geocoder = CLGeocoder()
@@ -46,9 +48,11 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
             destinationTextView.text = reminderSelectDestination
         }
         
-        if let imageUrl = getImageUrl() {
-            loadDestinationImage(imageUrl)
-        }
+        loadDestinationImageFromLocalFile()
+        displayDestinationImage()
+        
+        currentArrivalDateLabel.text = "-"
+        currentDepartureDateLabel.text = "-"
     }
     
     private func getImageUrl() -> String? {
@@ -59,12 +63,6 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         }
     }
     
-    private func loadDestinationImages(destination: PWDestination) {
-        // if wi-fi, load multiple images
-        // if mobile-data, load only two images
-    
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -178,7 +176,23 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     }
     
     // MARK: - set country image / destination image
-    private func loadDestinationImage(imageUrl: String) {
+    private func displayDestinationImage() {
+        if let imageUrl = getImageUrl() {
+            // load destination image at imageUrl from server
+            loadDestinationImage(imageUrl) { (ok: Bool) in
+                if !ok {
+                    // Failed loading from server, load destination image from local file
+                    self.loadDestinationImageFromLocalFile()
+                }
+            }
+        }
+    }
+    
+    private func loadDestinationImage(imageUrl: String, completionHandler:(ok: Bool) -> Void) {
+        // TODO
+        // if wi-fi, load multiple images
+        // if mobile-data, load only two images
+
         // ref: http://stackoverflow.com/questions/24231680/swift-loading-image-from-url
         //      http://www.raywenderlich.com/85080/beginning-alamofire-tutorial
         //      http://www.raywenderlich.com/87595/intermediate-alamofire-tutorial
@@ -228,13 +242,26 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
                 if !ok {
                     println("Download destination image failed. Use default image instead.")
                     // TODO - load default local country image
+                    completionHandler(ok: false)
                 }
             }
-
-
+    }
+    
+    private func loadDestinationImageFromLocalFile() {
+        if let c = self.country {
+            //TODO
+            let imageFileName = "NewZealand.3.jpg"
+            if let image = UIImage(named: imageFileName) {
+                println("Load image from local file \(imageFileName)")
+                self.destinationImageView.image = image
+            } else {
+                // could not load the image
+                println("Failed to load image from file \(imageFileName)")
+            }
+        }
     }
 
-    // MARK: - Navigation
+    // MARK: - Navigation - Segue
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     let COUNTRY_TABLE_SEGUE = "showCountryTableSegue"
     let ARRIVAL_DATE_PICKER_SEGUE = "showArrivalDatePickerSegue"
@@ -248,6 +275,8 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
             // show date picker
             let vc = segue.destinationViewController as PWDatePickerVC
             vc.delegate = self
+            // TODO
+            vc.destinationTimeZone = NSTimeZone(name: "GMT")
             
             if segue.identifier == ARRIVAL_DATE_PICKER_SEGUE {
                 vc.datePickerType = DatePickerType.ARRIVAL
@@ -255,8 +284,8 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
                 vc.datePickerType = DatePickerType.DEPARTURE
             }
             
-            vc.currentArrivalDate = currentArrivalDate
-            vc.currentDepartureDate = currentDepartureDate
+            vc.currentArrivalDate = self.currentArrivalDate
+            vc.currentDepartureDate = self.currentDepartureDate
         } else {
             println("*** Unrecongnized segue name \(segue.identifier) in PWDestinationPageVC.prepareForSegue. Do nothing ***")
         }
@@ -294,21 +323,17 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setValue(selectedCountry.name, forKey: PWPreference_Country_Key)
         
-        if let imageUrl = getImageUrl() {
-            loadDestinationImage(imageUrl)
-        }
+        displayDestinationImage()
     }
     
     func didSelectDestination(controller: PWDestinationTableVC, selectedDestination: PWDestination) {
         self.destination = selectedDestination
-        displayDestination(selectedDestination)
+        displayDestinationText(selectedDestination)
         
-        if let imageUrl = getImageUrl() {
-            loadDestinationImage(imageUrl)
-        }
+        displayDestinationImage()
     }
     
-    private func displayDestination(destination: PWDestination) {
+    private func displayDestinationText(destination: PWDestination) {
         // To show destination details
         var text: String = ""
         if (destination.town != nil) {
@@ -327,13 +352,20 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     // PWDatePickerVCDelegate call back
     func didSelectDate(selectedDate: NSDate, datePickerType: DatePickerType) {
         println("Date picker date=\(selectedDate), datePickerType=\(datePickerType)")
+        var dateLabel: UILabel!
         if datePickerType == DatePickerType.ARRIVAL {
-            currentArrivalDate = selectedDate
+            self.currentArrivalDate = selectedDate
+            dateLabel = self.currentArrivalDateLabel
         } else if datePickerType == DatePickerType.DEPARTURE {
-            currentDepartureDate = selectedDate
+            self.currentDepartureDate = selectedDate
+            dateLabel = self.currentDepartureDateLabel
         } else {
             println("Not supported datePickerType=\(datePickerType)")
         }
+        
+        dateLabel.text = PWStringUtils.formatDate(selectedDate)
+        dateLabel.numberOfLines = 0
+        dateLabel.sizeToFit()
     }
 }
 
