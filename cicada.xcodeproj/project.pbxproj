@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		390AA0821AAF130700CEC625 /* China.3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 390AA0811AAF130700CEC625 /* China.3.jpg */; };
 		390AA0841AAF202C00CEC625 /* NewZealand.3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 390AA0831AAF202C00CEC625 /* NewZealand.3.jpg */; };
+		390AA0881AB1667E00CEC625 /* PWRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390AA0871AB1667E00CEC625 /* PWRequest.swift */; };
+		390AA08D1AB1669200CEC625 /* PWQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390AA08C1AB1669200CEC625 /* PWQuote.swift */; };
 		3924391D1A53A354004769FA /* PWUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924391C1A53A354004769FA /* PWUserService.swift */; };
 		393640F31A8E26AD001140FC /* PWNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393640F21A8E26AD001140FC /* PWNetworkService.swift */; };
 		393640F51A8E8E1A001140FC /* PWStringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */; };
@@ -104,6 +106,9 @@
 /* Begin PBXFileReference section */
 		390AA0811AAF130700CEC625 /* China.3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = China.3.jpg; sourceTree = "<group>"; };
 		390AA0831AAF202C00CEC625 /* NewZealand.3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NewZealand.3.jpg; sourceTree = "<group>"; };
+		390AA0871AB1667E00CEC625 /* PWRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWRequest.swift; sourceTree = "<group>"; };
+		390AA08C1AB1669200CEC625 /* PWQuote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWQuote.swift; sourceTree = "<group>"; };
+		390AA08E1AB2386400CEC625 /* cicadaModel_v1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cicadaModel_v1.2.xcdatamodel; sourceTree = "<group>"; };
 		3924391C1A53A354004769FA /* PWUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWUserService.swift; sourceTree = "<group>"; };
 		393640F21A8E26AD001140FC /* PWNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWNetworkService.swift; sourceTree = "<group>"; };
 		393640F71A8FDDB4001140FC /* TechMemo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TechMemo.txt; sourceTree = "<group>"; };
@@ -350,6 +355,8 @@
 			children = (
 				39F4D1431A35B9A7005D58E5 /* Country.swift */,
 				3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */,
+				390AA0871AB1667E00CEC625 /* PWRequest.swift */,
+				390AA08C1AB1669200CEC625 /* PWQuote.swift */,
 			);
 			name = entity;
 			sourceTree = "<group>";
@@ -510,6 +517,7 @@
 			files = (
 				39B7E09A1A202E9700A0514C /* PWAccommodationRequestVC.swift in Sources */,
 				3972B9A41A3D00BF0098B2B1 /* PWDestination.swift in Sources */,
+				390AA0881AB1667E00CEC625 /* PWRequest.swift in Sources */,
 				39F4D1441A35B9A7005D58E5 /* Country.swift in Sources */,
 				39BB92871A5AB77800909B98 /* PWViewControllerUtils.swift in Sources */,
 				3940639B1AA110020041A912 /* OneShotLocationManager.swift in Sources */,
@@ -529,6 +537,7 @@
 				39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */,
 				39F4D14B1A35CB99005D58E5 /* DataLoader.swift in Sources */,
 				39F4D1471A35BACA005D58E5 /* DataService.swift in Sources */,
+				390AA08D1AB1669200CEC625 /* PWQuote.swift in Sources */,
 				394063A11AA342C80041A912 /* PWConstants.swift in Sources */,
 				393640F31A8E26AD001140FC /* PWNetworkService.swift in Sources */,
 			);
@@ -755,8 +764,9 @@
 			children = (
 				3972B9A51A3D056D0098B2B1 /* cicadaModel_v1.1.xcdatamodel */,
 				39B7E0561A1949CC00A0514C /* cicadaModel.xcdatamodel */,
+				390AA08E1AB2386400CEC625 /* cicadaModel_v1.2.xcdatamodel */,
 			);
-			currentVersion = 39B7E0561A1949CC00A0514C /* cicadaModel.xcdatamodel */;
+			currentVersion = 390AA08E1AB2386400CEC625 /* cicadaModel_v1.2.xcdatamodel */;
 			path = cicadaModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -36,8 +36,8 @@ class PWNetworkService {
     func getURLBase() -> String {
         // TODO - use HTTPS instead
         // TODO - use DNS name instead of IP Address
-        //return "http://localhost:8080"
-        return "http://192.168.0.7:8080"
+        return "http://localhost:8080"
+        //return "http://192.168.0.7:8080"
     }
     
 /* Ref: http://stackoverflow.com/questions/26537075/remembering-cookies-with-alamofire

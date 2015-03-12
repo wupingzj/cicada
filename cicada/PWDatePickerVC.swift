@@ -20,6 +20,7 @@ public enum DatePickerType: String {
 
 extension NSDate
 {
+    // TODO - high priority - use format cache to improve performance
     convenience
     init(dateString:String) {
         let dateStringFormatter = NSDateFormatter()
