@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="V1.2.addedRequestAndQuote" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AbstractEntity" representedClassName="cicada.PWAbstractEntity" syncable="YES">
+        <attribute name="createdDate" attributeType="Date" syncable="YES"/>
+        <attribute name="modifiedDate" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
     <entity name="Country" representedClassName="cicada.Country" syncable="YES">
         <attribute name="active" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,23 +20,35 @@
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="destination" inverseEntity="Country" syncable="YES"/>
         <relationship name="request" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Request" inverseName="destination" inverseEntity="Request" syncable="YES"/>
     </entity>
+    <entity name="Message" representedClassName="cicada.PWMessage" parentEntity="AbstractEntity" syncable="YES">
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="quote" maxCount="1" deletionRule="Nullify" destinationEntity="Quote" inverseName="message" inverseEntity="Quote" syncable="YES"/>
+    </entity>
     <entity name="ModelStatus" representedClassName="cicada.ModelStatus" syncable="YES">
         <attribute name="table" attributeType="String" syncable="YES"/>
         <attribute name="updatedTimestamp" attributeType="Date" syncable="YES"/>
         <attribute name="version" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Quote" representedClassName="cicada.PWQuote" syncable="YES"/>
-    <entity name="Request" representedClassName="cicada.PWRequest" syncable="YES">
+    <entity name="Quote" representedClassName="cicada.PWQuote" parentEntity="AbstractEntity" syncable="YES">
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" attributeType="String" syncable="YES"/>
+        <relationship name="message" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Message" inverseName="quote" inverseEntity="Message" syncable="YES"/>
+        <relationship name="request" maxCount="1" deletionRule="Nullify" destinationEntity="Request" inverseName="quotes" inverseEntity="Request" syncable="YES"/>
+    </entity>
+    <entity name="Request" representedClassName="cicada.PWRequest" parentEntity="AbstractEntity" syncable="YES">
         <attribute name="arrivalDate" attributeType="Date" syncable="YES"/>
         <attribute name="departureDate" attributeType="Date" syncable="YES"/>
         <attribute name="uuid" attributeType="String" syncable="YES"/>
-        <relationship name="destination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Destination" inverseName="request" inverseEntity="Destination" syncable="YES"/>
+        <relationship name="destination" maxCount="1" deletionRule="Nullify" destinationEntity="Destination" inverseName="request" inverseEntity="Destination" syncable="YES"/>
+        <relationship name="quotes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Quote" inverseName="request" inverseEntity="Quote" syncable="YES"/>
     </entity>
     <elements>
         <element name="Country" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="Destination" positionX="-54" positionY="18" width="128" height="148"/>
         <element name="ModelStatus" positionX="-54" positionY="9" width="128" height="88"/>
-        <element name="Quote" positionX="-54" positionY="63" width="128" height="45"/>
-        <element name="Request" positionX="-63" positionY="54" width="128" height="103"/>
+        <element name="Quote" positionX="-54" positionY="63" width="128" height="103"/>
+        <element name="Request" positionX="-63" positionY="54" width="128" height="118"/>
+        <element name="Message" positionX="-36" positionY="81" width="128" height="73"/>
+        <element name="AbstractEntity" positionX="-27" positionY="90" width="128" height="75"/>
     </elements>
 </model>

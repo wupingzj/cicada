@@ -11,6 +11,9 @@
 		390AA0841AAF202C00CEC625 /* NewZealand.3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 390AA0831AAF202C00CEC625 /* NewZealand.3.jpg */; };
 		390AA0881AB1667E00CEC625 /* PWRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390AA0871AB1667E00CEC625 /* PWRequest.swift */; };
 		390AA08D1AB1669200CEC625 /* PWQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390AA08C1AB1669200CEC625 /* PWQuote.swift */; };
+		390AA0961AB242DF00CEC625 /* PWQuoteTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390AA0951AB242DF00CEC625 /* PWQuoteTableVC.swift */; };
+		390AA0981AB3A22000CEC625 /* PWMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390AA0971AB3A22000CEC625 /* PWMessage.swift */; };
+		390AA09A1AB45EBE00CEC625 /* PWAbstractEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390AA0991AB45EBE00CEC625 /* PWAbstractEntity.swift */; };
 		3924391D1A53A354004769FA /* PWUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924391C1A53A354004769FA /* PWUserService.swift */; };
 		393640F31A8E26AD001140FC /* PWNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393640F21A8E26AD001140FC /* PWNetworkService.swift */; };
 		393640F51A8E8E1A001140FC /* PWStringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */; };
@@ -25,7 +28,6 @@
 		39B7E03A1A11DF3700A0514C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0381A11DF3700A0514C /* LaunchScreen.xib */; };
 		39B7E0461A11DF3700A0514C /* cicadaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0451A11DF3700A0514C /* cicadaTests.swift */; };
 		39B7E0571A1949CC00A0514C /* cicadaModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0551A1949CC00A0514C /* cicadaModel.xcdatamodeld */; };
-		39B7E0621A1DEB7200A0514C /* PWQuotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0611A1DEB7200A0514C /* PWQuotesVC.swift */; };
 		39B7E09A1A202E9700A0514C /* PWAccommodationRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */; };
 		39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */; };
 		39BB92841A59E25E00909B98 /* PWCountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB92831A59E25E00909B98 /* PWCountryService.swift */; };
@@ -109,6 +111,9 @@
 		390AA0871AB1667E00CEC625 /* PWRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWRequest.swift; sourceTree = "<group>"; };
 		390AA08C1AB1669200CEC625 /* PWQuote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWQuote.swift; sourceTree = "<group>"; };
 		390AA08E1AB2386400CEC625 /* cicadaModel_v1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cicadaModel_v1.2.xcdatamodel; sourceTree = "<group>"; };
+		390AA0951AB242DF00CEC625 /* PWQuoteTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWQuoteTableVC.swift; sourceTree = "<group>"; };
+		390AA0971AB3A22000CEC625 /* PWMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWMessage.swift; sourceTree = "<group>"; };
+		390AA0991AB45EBE00CEC625 /* PWAbstractEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWAbstractEntity.swift; sourceTree = "<group>"; };
 		3924391C1A53A354004769FA /* PWUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWUserService.swift; sourceTree = "<group>"; };
 		393640F21A8E26AD001140FC /* PWNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWNetworkService.swift; sourceTree = "<group>"; };
 		393640F71A8FDDB4001140FC /* TechMemo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TechMemo.txt; sourceTree = "<group>"; };
@@ -129,7 +134,6 @@
 		39B7E04F1A11E0F200A0514C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		39B7E0501A11E0F200A0514C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		39B7E0561A1949CC00A0514C /* cicadaModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cicadaModel.xcdatamodel; sourceTree = "<group>"; };
-		39B7E0611A1DEB7200A0514C /* PWQuotesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWQuotesVC.swift; sourceTree = "<group>"; };
 		39B7E0991A202E9700A0514C /* PWAccommodationRequestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWAccommodationRequestVC.swift; sourceTree = "<group>"; };
 		39B7E09B1A20453900A0514C /* PWAccommodationModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWAccommodationModelController.swift; sourceTree = "<group>"; };
 		39BB92831A59E25E00909B98 /* PWCountryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWCountryService.swift; sourceTree = "<group>"; };
@@ -173,6 +177,14 @@
 				390AA0811AAF130700CEC625 /* China.3.jpg */,
 			);
 			name = image;
+			sourceTree = "<group>";
+		};
+		390AA0911AB242A300CEC625 /* Quote */ = {
+			isa = PBXGroup;
+			children = (
+				390AA0951AB242DF00CEC625 /* PWQuoteTableVC.swift */,
+			);
+			name = Quote;
 			sourceTree = "<group>";
 		};
 		392439181A539FC0004769FA /* Service */ = {
@@ -284,8 +296,8 @@
 		39B7E0521A1948AD00A0514C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				390AA0911AB242A300CEC625 /* Quote */,
 				394063A51AA58C330041A912 /* Publish */,
-				39B7E0601A1DEB3600A0514C /* Quotes */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -306,14 +318,6 @@
 				39BB92861A5AB77800909B98 /* PWViewControllerUtils.swift */,
 			);
 			name = Utility;
-			sourceTree = "<group>";
-		};
-		39B7E0601A1DEB3600A0514C /* Quotes */ = {
-			isa = PBXGroup;
-			children = (
-				39B7E0611A1DEB7200A0514C /* PWQuotesVC.swift */,
-			);
-			name = Quotes;
 			sourceTree = "<group>";
 		};
 		39BB92801A58029400909B98 /* NonProductionHelper */ = {
@@ -357,6 +361,8 @@
 				3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */,
 				390AA0871AB1667E00CEC625 /* PWRequest.swift */,
 				390AA08C1AB1669200CEC625 /* PWQuote.swift */,
+				390AA0971AB3A22000CEC625 /* PWMessage.swift */,
+				390AA0991AB45EBE00CEC625 /* PWAbstractEntity.swift */,
 			);
 			name = entity;
 			sourceTree = "<group>";
@@ -532,11 +538,13 @@
 				39F4D1321A2BBC98005D58E5 /* PWDestinationTableVC.swift in Sources */,
 				39F4D14D1A35CC5A005D58E5 /* DataDao.swift in Sources */,
 				39F4D14F1A364D8D005D58E5 /* PWCountryTableVC.swift in Sources */,
-				39B7E0621A1DEB7200A0514C /* PWQuotesVC.swift in Sources */,
+				390AA09A1AB45EBE00CEC625 /* PWAbstractEntity.swift in Sources */,
 				39C51BEB1A443B0300DF0AB9 /* PWStringUtils.swift in Sources */,
+				390AA0961AB242DF00CEC625 /* PWQuoteTableVC.swift in Sources */,
 				39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */,
 				39F4D14B1A35CB99005D58E5 /* DataLoader.swift in Sources */,
 				39F4D1471A35BACA005D58E5 /* DataService.swift in Sources */,
+				390AA0981AB3A22000CEC625 /* PWMessage.swift in Sources */,
 				390AA08D1AB1669200CEC625 /* PWQuote.swift in Sources */,
 				394063A11AA342C80041A912 /* PWConstants.swift in Sources */,
 				393640F31A8E26AD001140FC /* PWNetworkService.swift in Sources */,
