@@ -56,7 +56,7 @@ public class DataService {
     // If the coordinator doesn't already exist, it is created and the application's store added to it.
     var sharedPSC: NSPersistentStoreCoordinator {
         if _persistentStoreCoordinator == nil {
-            let storeURL = self.applicationDocumentsDirectory.URLByAppendingPathComponent("cicadaV1.5.sqlite")
+            let storeURL = self.applicationDocumentsDirectory.URLByAppendingPathComponent("cicadaV1.7.sqlite")
             println("storeURL=\(storeURL)")
             
             

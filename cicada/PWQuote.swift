@@ -16,7 +16,7 @@ public enum PWQuoteStatus: String {
     case IGNORED = "IGNORED"
 }
 
-class PWQuote: NSManagedObject {
+class PWQuote: PWAbstractEntity {
     // This UUID is generated on and comes back from server side. Don't generate on client side.
     @NSManaged
     var uuid: String
@@ -32,4 +32,13 @@ class PWQuote: NSManagedObject {
     
     // TODO
     // communications
+    
+    // INIT data for creation. It's called only once in whole life-cycle.
+    override func awakeFromInsert() {
+        super.awakeFromInsert()
+        
+        // createdDate cannot be initialized in AbstractEntity
+        self.createdDate = NSDate()
+        self.modifiedDate = nil
+    }
 }

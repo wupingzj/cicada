@@ -38,16 +38,17 @@
     <entity name="Request" representedClassName="cicada.PWRequest" parentEntity="AbstractEntity" syncable="YES">
         <attribute name="arrivalDate" attributeType="Date" syncable="YES"/>
         <attribute name="departureDate" attributeType="Date" syncable="YES"/>
+        <attribute name="status" attributeType="String" syncable="YES"/>
         <attribute name="uuid" attributeType="String" syncable="YES"/>
         <relationship name="destination" maxCount="1" deletionRule="Nullify" destinationEntity="Destination" inverseName="request" inverseEntity="Destination" syncable="YES"/>
         <relationship name="quotes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Quote" inverseName="request" inverseEntity="Quote" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Country" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Country" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="Destination" positionX="-54" positionY="18" width="128" height="148"/>
         <element name="ModelStatus" positionX="-54" positionY="9" width="128" height="88"/>
         <element name="Quote" positionX="-54" positionY="63" width="128" height="103"/>
-        <element name="Request" positionX="-63" positionY="54" width="128" height="118"/>
+        <element name="Request" positionX="-63" positionY="54" width="128" height="133"/>
         <element name="Message" positionX="-36" positionY="81" width="128" height="73"/>
         <element name="AbstractEntity" positionX="-27" positionY="90" width="128" height="75"/>
     </elements>

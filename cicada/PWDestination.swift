@@ -35,4 +35,8 @@ public class PWDestination: NSManagedObject {
         
         return newEntity
     }
+    
+    func toString() -> String {
+        return "town=\(self.town), city=\(city), country=\(country.name)";
+    }
 }

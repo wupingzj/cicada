@@ -208,5 +208,67 @@ class PWDestinationLoader {
 }
 
 
+class PWRequestLoader {
+    func getRequestList() -> [PWRequest] {
+        var dataDao: DataDao = DataDao()
+        
+        let (managedObjects, error) = DataDao.listEntities("Request", fault:false, sortByKey: "destination", ascending: false, fetchBatchSize:20)
+        
+        if (error != nil) {
+            println("****** Failed to get all busines entities. Unresolved error \(error), \(error!.description)")
+            
+            return [PWRequest]()
+        } else {
+            println("There are totally \(managedObjects.count) business entities in store.")
+            
+            // cast to business entities
+            let entities: [PWRequest] = managedObjects as [PWRequest]
+            return entities
+        }
+    }
+    
+    func display(entities: [PWRequest]) {
+        for (index, entity) in enumerate(entities) {
+            println("request[\(index)]: \(entity.arrivalDate), \(entity.departureDate), \(entity.status), destination:\(entity.destination.toString()) ")
+        }
+    }
+    
+    func deleteAllRequests() {
+        let businessEntities: [PWRequest] = getRequestList()
+        display(businessEntities)
+        
+        let dataService: DataService = DataService.sharedInstance
+        let ctx:NSManagedObjectContext = dataService.getContext()
+        
+        //ctx.deletedObjects(businessEntities)
+        for (index, entity) in enumerate(businessEntities) {
+            ctx.deleteObject(entity)
+        }
+        
+        var error: NSError? = dataService.saveContext()
+        if let err = error {
+            println("******* Failed to save data context. \(err.userInfo)")
+        }
+    }
+
+    // For each destination, create a test request
+    func createRequests() -> Bool {
+        
+        let dataloader = PWDestinationLoader()
+        let destinations: [PWDestination] = dataloader.getDestinationList()
+        for (index, destination) in enumerate(destinations) {
+            let request = PWRequest.createRequest(destination, arrivalDate: NSDate(), departureDate: NSDate())
+        }
+        
+        var error: NSError? = DataService.sharedInstance.saveContext()
+        if let err = error {
+            println("**** Failed to save data context. \(err.userInfo)")
+            return false
+        } else {
+            return true
+        }
+    }
+}
+
 
 

@@ -1,8 +1,8 @@
 //
-//  PWQuoteTableVC.swift
+//  PWRequestTableVC.swift
 //  cicada
 //
-//  Created by Ping on 13/03/2015.
+//  Created by Ping on 15/03/2015.
 //  Copyright (c) 2015 Yang Ltd. All rights reserved.
 //
 
@@ -10,26 +10,30 @@ import UIKit
 import CoreData
 import Alamofire
 
-class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
-    var quote: PWQuote!
+class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
+    var request: PWRequest!
     
     var lastSelectedCell: UITableViewCell? = nil
     var ctx: NSManagedObjectContext = DataService.sharedInstance.getContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        // setup refresh
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
+
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Refresh table
@@ -77,40 +81,41 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
             })
         }
     }
-    
+
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if let sections = self.fetchedResultsController.sections {
+            println("Total \(sections.count) sections")
             return sections.count
         } else {
-            println("ERROR@PWQuoteTableVC: No sections found!")
+            println("ERROR@PWRequestTableVC: No sections found!")
             return 0
         }
+//            return 1
     }
-    
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if let sections = self.fetchedResultsController.sections {
             let sectionInfo = sections[section] as NSFetchedResultsSectionInfo
             return sectionInfo.numberOfObjects
         } else {
-            println("ERROR@PWQuoteTableVC: No sections found!")
+            println("ERROR@PWRequestTableVC: No sections found!")
             return 0
         }
     }
-    
+
     // Customize the appearance of table view cells.
     func configureCell(cell:UITableViewCell, atIndexPath indexPath:NSIndexPath) {
-        let quote:PWQuote = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWQuote
+        let request:PWRequest = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWRequest
         if let textLabel = cell.textLabel {
-            cell.textLabel!.text = "TODO: Quote Description" + quote.uuid
+            cell.textLabel!.text = "TODO: Request Description" + request.uuid
         } else {
-            println("ERROR@SeekTableVC: No text label found!")
+            println("ERROR@PWRequestTableVC: No text label found!")
         }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("quoteCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("requestCell", forIndexPath: indexPath) as UITableViewCell
         
         self.configureCell(cell, atIndexPath: indexPath)
         
@@ -118,7 +123,7 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedQuote = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWQuote
+        let selectedRequest = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWRequest
         
         // set the checkmark
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
@@ -139,8 +144,8 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         }
         
         // If the fetchRequest is changed, the cache MUST be deleted frist. Otherwise, code crashes.
-        let cacheName = "quoteFetchCache"
-        // NSFetchedResultsController.deleteCacheWithName(cacheName)
+        let cacheName = "requestFetchCache"
+        //NSFetchedResultsController.deleteCacheWithName(cacheName)
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
@@ -168,20 +173,18 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         // create fetchRequest instance
         let fetchRequest = NSFetchRequest()
         
-        fetchRequest.entity = NSEntityDescription.entityForName("Quote", inManagedObjectContext: self.ctx)
+        fetchRequest.entity = NSEntityDescription.entityForName("Request", inManagedObjectContext: self.ctx)
         
         // Set the batch size to a suitable number.
         fetchRequest.fetchBatchSize = 50
         // fetchLimit controlls the total number of returned records
         //fetchRequest.fetchLimit = 200
         
-        let sortByRequest = NSSortDescriptor(key: "request", ascending: true)
+        let sortByRequest = NSSortDescriptor(key: "createdDate", ascending: false)
         fetchRequest.sortDescriptors = [sortByRequest]
         
-        // ignore inactive countries
-        // see WorldFacts tutorial
-        // let predicate = NSPredicate(format: "%K BEGINSWITH[cd] %@", "name", "1st Item")
-        let predicate = NSPredicate(format: "status == 'IGNORED'")
+        // ignore deleted requests
+        let predicate = NSPredicate(format: "status != 'DELETED'")
         fetchRequest.predicate = predicate
         
         return fetchRequest

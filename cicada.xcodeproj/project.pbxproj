@@ -14,6 +14,7 @@
 		390AA0961AB242DF00CEC625 /* PWQuoteTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390AA0951AB242DF00CEC625 /* PWQuoteTableVC.swift */; };
 		390AA0981AB3A22000CEC625 /* PWMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390AA0971AB3A22000CEC625 /* PWMessage.swift */; };
 		390AA09A1AB45EBE00CEC625 /* PWAbstractEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390AA0991AB45EBE00CEC625 /* PWAbstractEntity.swift */; };
+		390AA09C1AB54F8900CEC625 /* PWRequestTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390AA09B1AB54F8900CEC625 /* PWRequestTableVC.swift */; };
 		3924391D1A53A354004769FA /* PWUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924391C1A53A354004769FA /* PWUserService.swift */; };
 		393640F31A8E26AD001140FC /* PWNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393640F21A8E26AD001140FC /* PWNetworkService.swift */; };
 		393640F51A8E8E1A001140FC /* PWStringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */; };
@@ -114,6 +115,7 @@
 		390AA0951AB242DF00CEC625 /* PWQuoteTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWQuoteTableVC.swift; sourceTree = "<group>"; };
 		390AA0971AB3A22000CEC625 /* PWMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWMessage.swift; sourceTree = "<group>"; };
 		390AA0991AB45EBE00CEC625 /* PWAbstractEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWAbstractEntity.swift; sourceTree = "<group>"; };
+		390AA09B1AB54F8900CEC625 /* PWRequestTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWRequestTableVC.swift; sourceTree = "<group>"; };
 		3924391C1A53A354004769FA /* PWUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWUserService.swift; sourceTree = "<group>"; };
 		393640F21A8E26AD001140FC /* PWNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWNetworkService.swift; sourceTree = "<group>"; };
 		393640F71A8FDDB4001140FC /* TechMemo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TechMemo.txt; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		390AA0911AB242A300CEC625 /* Quote */ = {
 			isa = PBXGroup;
 			children = (
+				390AA09B1AB54F8900CEC625 /* PWRequestTableVC.swift */,
 				390AA0951AB242DF00CEC625 /* PWQuoteTableVC.swift */,
 			);
 			name = Quote;
@@ -527,6 +530,7 @@
 				39F4D1441A35B9A7005D58E5 /* Country.swift in Sources */,
 				39BB92871A5AB77800909B98 /* PWViewControllerUtils.swift in Sources */,
 				3940639B1AA110020041A912 /* OneShotLocationManager.swift in Sources */,
+				390AA09C1AB54F8900CEC625 /* PWRequestTableVC.swift in Sources */,
 				394063AD1AAC6AD60041A912 /* PWDatePickerVC.swift in Sources */,
 				39B7E02E1A11DF3700A0514C /* AppDelegate.swift in Sources */,
 				39B7E0571A1949CC00A0514C /* cicadaModel.xcdatamodeld in Sources */,

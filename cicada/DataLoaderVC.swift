@@ -167,4 +167,25 @@ class DataLoaderVC: UIViewController {
         let countries = dataloader.getCountryList();
         dataloader.display(countries)
     }
+
+
+    // MARK: ******* quote data *******
+    
+    // MARK: ******* request data *******
+    
+    @IBAction func createRequest(sender: AnyObject) {
+        let dataloader = PWRequestLoader()
+        let requests = dataloader.createRequests();
+    }
+    
+    @IBAction func deleteRequest(sender: AnyObject) {
+        let dataloader = PWRequestLoader()
+        dataloader.deleteAllRequests();
+    }
+    
+    @IBAction func listRequest(sender: AnyObject) {
+        let dataloader = PWRequestLoader()
+        let requests = dataloader.getRequestList();
+        dataloader.display(requests)
+    }
 }

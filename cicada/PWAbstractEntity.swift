@@ -10,10 +10,10 @@ import Foundation
 
 import CoreData
 
-public class PWAbstractEntity: NSManagedObject {
+class PWAbstractEntity: NSManagedObject {
     @NSManaged
-    public var createdDate: NSDate
+    var createdDate: NSDate
     
     @NSManaged
-    public var modifiedDate: NSDate
+    var modifiedDate: NSDate?
 }
