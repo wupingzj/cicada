@@ -37,8 +37,34 @@ class PWQuote: PWAbstractEntity {
     override func awakeFromInsert() {
         super.awakeFromInsert()
         
+        self.uuid = NSUUID().UUIDString
+        
         // createdDate cannot be initialized in AbstractEntity
         self.createdDate = NSDate()
         self.modifiedDate = nil
+        
+        self.status = PWQuoteStatus.NEW.rawValue
+    }
+    
+    // As swift doesn't support class variable yet, use class function instead for now
+    class func getEntityName() -> String {
+        return "Quote"
+    }
+    
+    class func createEntity() -> PWQuote {
+        let ctx: NSManagedObjectContext = DataService.sharedInstance.getContext()
+        let ed: NSEntityDescription = NSEntityDescription.entityForName(getEntityName(), inManagedObjectContext: ctx)!
+        return PWQuote(entity: ed, insertIntoManagedObjectContext: ctx)
+    }
+    
+    class func getEntityDescription() -> NSEntityDescription {
+        let ctx: NSManagedObjectContext = DataService.sharedInstance.getContext()
+        return NSEntityDescription.entityForName(getEntityName(), inManagedObjectContext: ctx)!
+    }
+    
+    class func createQuote(request: PWRequest) -> PWQuote {
+        let newQuote: PWQuote = PWQuote.createEntity()
+        newQuote.request = request
+        return newQuote
     }
 }

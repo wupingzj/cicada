@@ -169,10 +169,7 @@ class DataLoaderVC: UIViewController {
     }
 
 
-    // MARK: ******* quote data *******
-    
     // MARK: ******* request data *******
-    
     @IBAction func createRequest(sender: AnyObject) {
         let dataloader = PWRequestLoader()
         let requests = dataloader.createRequests();
@@ -187,5 +184,22 @@ class DataLoaderVC: UIViewController {
         let dataloader = PWRequestLoader()
         let requests = dataloader.getRequestList();
         dataloader.display(requests)
+    }
+    
+    // MARK: ******* quote data *******
+    @IBAction func createQuote(sender: AnyObject) {
+        let dataloader = PWQuoteLoader()
+        dataloader.createQuotes()
+    }
+    
+    @IBAction func deleteQuote(sender: AnyObject) {
+        let dataloader = PWQuoteLoader()
+        dataloader.deleteAllQuotes()
+    }
+    
+    @IBAction func listQuote(sender: AnyObject) {
+        let dataloader = PWQuoteLoader()
+        let quotes = dataloader.getQuotetList()
+        dataloader.display(quotes)
     }
 }

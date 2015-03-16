@@ -207,7 +207,7 @@ class PWDestinationLoader {
     }
 }
 
-
+// MARK: PWRequestLoader
 class PWRequestLoader {
     func getRequestList() -> [PWRequest] {
         var dataDao: DataDao = DataDao()
@@ -258,6 +258,70 @@ class PWRequestLoader {
         let destinations: [PWDestination] = dataloader.getDestinationList()
         for (index, destination) in enumerate(destinations) {
             let request = PWRequest.createRequest(destination, arrivalDate: NSDate(), departureDate: NSDate())
+        }
+        
+        var error: NSError? = DataService.sharedInstance.saveContext()
+        if let err = error {
+            println("**** Failed to save data context. \(err.userInfo)")
+            return false
+        } else {
+            return true
+        }
+    }
+}
+
+
+// MARK: PWQuoteLoader
+class PWQuoteLoader {
+    func getQuotetList() -> [PWQuote] {
+        var dataDao: DataDao = DataDao()
+        
+        let (managedObjects, error) = DataDao.listEntities("Quote", fault:false, sortByKey: "request", ascending: false, fetchBatchSize:20)
+        
+        if (error != nil) {
+            println("****** Failed to get all quote entities. Unresolved error \(error), \(error!.description)")
+            
+            return [PWQuote]()
+        } else {
+            println("There are totally \(managedObjects.count) quote entities in store.")
+            
+            // cast to business entities
+            let entities: [PWQuote] = managedObjects as [PWQuote]
+            return entities
+        }
+    }
+    
+    func display(entities: [PWQuote]) {
+        for (index, entity) in enumerate(entities) {
+            println("quote[\(index)]: \(entity.uuid) createdDate=\(entity.createdDate) ")
+        }
+    }
+    
+    func deleteAllQuotes() {
+        let quotes: [PWQuote] = getQuotetList()
+        display(quotes)
+        
+        let dataService: DataService = DataService.sharedInstance
+        let ctx:NSManagedObjectContext = dataService.getContext()
+        
+        //ctx.deletedObjects(businessEntities)
+        for (index, entity) in enumerate(quotes) {
+            ctx.deleteObject(entity)
+        }
+        
+        var error: NSError? = dataService.saveContext()
+        if let err = error {
+            println("******* Failed to save data context. \(err.userInfo)")
+        }
+    }
+    
+    // For each request, create two test quotes
+    func createQuotes() -> Bool {
+        let dataloader = PWRequestLoader()
+        let requests: [PWRequest] = dataloader.getRequestList()
+        for (index, request) in enumerate(requests) {
+            let quote = PWQuote.createQuote(request)
+            println("**** quote uuid: \(quote.uuid)")
         }
         
         var error: NSError? = DataService.sharedInstance.saveContext()
