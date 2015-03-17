@@ -140,7 +140,7 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         
         // If the fetchRequest is changed, the cache MUST be deleted frist. Otherwise, code crashes.
         let cacheName = "quoteFetchCache"
-        // NSFetchedResultsController.deleteCacheWithName(cacheName)
+        NSFetchedResultsController.deleteCacheWithName(cacheName)
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".

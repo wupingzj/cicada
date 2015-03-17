@@ -230,6 +230,10 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
             return _fetchedResultsController!
         }
         
+        // If the fetchRequest is changed, the cache MUST be deleted frist. Otherwise, code crashes.
+        let cacheName = "destinationFetchCache"
+        NSFetchedResultsController.deleteCacheWithName(cacheName)
+        
         var sectionNameKeyPath: String? = nil
         if country.useState {
             sectionNameKeyPath = "state"
@@ -238,7 +242,7 @@ class PWDestinationTableVC: UITableViewController, NSFetchedResultsControllerDel
         }
 
         // NSFetchedResultsController.deleteCacheWithName("CacheName")
-        let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: self.fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
+        let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: self.fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: sectionNameKeyPath, cacheName: cacheName)
         fetchController.delegate = self
         _fetchedResultsController = fetchController
         

@@ -44,6 +44,10 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
     }
     
     func refresh() {
+        self.reloadTableView()
+        self.refreshControl!.endRefreshing()
+        return
+        
         // TODO - review this method
         if let refreshControl = self.refreshControl {
             refreshControl.attributedTitle = NSAttributedString(string: "Refreshing data...")
@@ -85,7 +89,7 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if let sections = self.fetchedResultsController.sections {
-            println("Total \(sections.count) sections")
+            println("sections.count=\(sections.count)")
             return sections.count
         } else {
             println("ERROR@PWRequestTableVC: No sections found!")
@@ -97,6 +101,7 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = self.fetchedResultsController.sections {
             let sectionInfo = sections[section] as NSFetchedResultsSectionInfo
+            println("Total \(sectionInfo.numberOfObjects) rows")
             return sectionInfo.numberOfObjects
         } else {
             println("ERROR@PWRequestTableVC: No sections found!")
@@ -145,7 +150,7 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         
         // If the fetchRequest is changed, the cache MUST be deleted frist. Otherwise, code crashes.
         let cacheName = "requestFetchCache"
-        //NSFetchedResultsController.deleteCacheWithName(cacheName)
+        NSFetchedResultsController.deleteCacheWithName(cacheName)
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
@@ -173,7 +178,7 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         // create fetchRequest instance
         let fetchRequest = NSFetchRequest()
         
-        fetchRequest.entity = NSEntityDescription.entityForName("Request", inManagedObjectContext: self.ctx)
+        fetchRequest.entity = NSEntityDescription.entityForName(PWRequest.getEntityName(), inManagedObjectContext: self.ctx)
         
         // Set the batch size to a suitable number.
         fetchRequest.fetchBatchSize = 50
@@ -182,11 +187,11 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         
         let sortByRequest = NSSortDescriptor(key: "createdDate", ascending: false)
         fetchRequest.sortDescriptors = [sortByRequest]
-        
+
         // ignore deleted requests
         let predicate = NSPredicate(format: "status != 'DELETED'")
         fetchRequest.predicate = predicate
-        
+
         return fetchRequest
     }
     var _fetchRequest: NSFetchRequest? = nil
