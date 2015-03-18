@@ -180,7 +180,6 @@
                                 </state>
                                 <connections>
                                     <action selector="createQuote:" destination="9pv-A4-QxB" eventType="touchUpInside" id="0m7-yv-fFv"/>
-                                    <action selector="createRequest:" destination="9pv-A4-QxB" eventType="touchUpInside" id="h2P-2D-qDy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEk-7t-qmZ">
@@ -191,7 +190,6 @@
                                 </state>
                                 <connections>
                                     <action selector="deleteQuote:" destination="9pv-A4-QxB" eventType="touchUpInside" id="YNd-gL-p9p"/>
-                                    <action selector="deleteRequest:" destination="9pv-A4-QxB" eventType="touchUpInside" id="2aS-me-yq9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReD-aN-vhH">

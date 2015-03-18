@@ -219,7 +219,7 @@ class PWRequestLoader {
             
             return [PWRequest]()
         } else {
-            println("There are totally \(managedObjects.count) business entities in store.")
+            println("There are totally \(managedObjects.count) request entities in store.")
             
             // cast to business entities
             let entities: [PWRequest] = managedObjects as [PWRequest]
