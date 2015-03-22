@@ -346,7 +346,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ofK-On-Cfz" kind="show" id="XFq-Vb-gQT"/>
+                                    <segue destination="ofK-On-Cfz" kind="show" identifier="showQuotesSeque" id="XFq-Vb-gQT"/>
                                     <segue destination="e42-pd-MYx" kind="show" trigger="accessoryAction" id="3g2-Wa-A6Y"/>
                                 </connections>
                             </tableViewCell>

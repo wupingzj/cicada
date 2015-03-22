@@ -11,8 +11,6 @@ import CoreData
 import Alamofire
 
 class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
-    var request: PWRequest!
-    
     var lastSelectedCell: UITableViewCell? = nil
     var ctx: NSManagedObjectContext = DataService.sharedInstance.getContext()
     
@@ -114,7 +112,7 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
     func configureCell(cell:UITableViewCell, atIndexPath indexPath:NSIndexPath) {
         let request:PWRequest = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWRequest
         if let textLabel = cell.textLabel {
-            cell.textLabel!.text = "TODO: Request Description" + request.uuid
+            cell.textLabel!.text = request.toString()
         } else {
             println("ERROR@PWRequestTableVC: No text label found!")
         }
@@ -141,6 +139,50 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
             
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
+        
+        
+        
+//        let selectedCountry:Country = self.fetchedResultsController.objectAtIndexPath(indexPath) as Country
+//        
+//        // set the checkmark
+//        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+//            if lastSelectedCell != nil {
+//                // clear the checkmark of previous selection
+//                lastSelectedCell?.accessoryType = UITableViewCellAccessoryType.None
+//            }
+//            lastSelectedCell = cell
+//            
+//            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+//        }
+//        
+//        // callback the delegate
+//        if delegate != nil {
+//            delegate!.didSelectCountry(self, selectedCountry: selectedCountry)
+//        }
+//        
+//        // programmatically click the Back button
+//        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+
+    // MARK: - Navigation
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        return true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showQuotesSeque" {
+            let indexPath: NSIndexPath? = self.tableView.indexPathForSelectedRow()
+            
+            if (indexPath == nil) {
+                println("*** ERROR: MUST SELECT A business entity to proceed...***")
+            } else {
+                let destinationTableVC: PWQuoteTableVC = segue.destinationViewController as PWQuoteTableVC
+                let request:PWRequest = self.fetchedResultsController.objectAtIndexPath(indexPath!) as PWRequest
+                destinationTableVC.request = request
+            }
+        } else {
+            println("Unsupported segue \(segue.identifier)")
+        }
     }
     
     // MARK: - Fetched Data Controller
@@ -155,8 +197,6 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        
-        // TODO: give it a cache name to enable fetch Requet Cache
         let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: self.fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: nil, cacheName: cacheName)
         fetchController.delegate = self
         _fetchedResultsController = fetchController

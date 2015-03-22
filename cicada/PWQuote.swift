@@ -14,6 +14,7 @@ public enum PWQuoteStatus: String {
     case PROCESSING = "PROCESSING"
     case ACCEPTED = "ACCEPTED"
     case IGNORED = "IGNORED"
+    case DELETED = "DELETED" // deleted forever
 }
 
 class PWQuote: PWAbstractEntity {

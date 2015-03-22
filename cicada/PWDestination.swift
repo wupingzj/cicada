@@ -39,4 +39,16 @@ public class PWDestination: NSManagedObject {
     func toString() -> String {
         return "town=\(self.town), city=\(city), country=\(country.name)";
     }
+    
+    func toDisplayString() -> String {
+        var display = ""
+        if let town = self.town {
+            display += town
+        }
+        
+        display += "," + self.city
+//        display += "," + self.country.name
+        
+        return display;
+    }
 }

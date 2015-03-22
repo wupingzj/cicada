@@ -69,4 +69,8 @@ class PWRequest: PWAbstractEntity {
         
         return newRequest
     }
+    
+    func toString() -> String {
+        return "\(self.destination.toDisplayString()), \(self.arrivalDate) - \(self.departureDate)";
+    }
 }

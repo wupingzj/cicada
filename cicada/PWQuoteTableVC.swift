@@ -11,7 +11,7 @@ import CoreData
 import Alamofire
 
 class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
-    var quote: PWQuote!
+    var request: PWRequest!
     
     var lastSelectedCell: UITableViewCell? = nil
     var ctx: NSManagedObjectContext = DataService.sharedInstance.getContext()
@@ -21,6 +21,10 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        
+        if request == nil {
+            // TODO - low priority: show alert that request has not been selected yet
+        }
         
         // setup refresh
         let refreshControl = UIRefreshControl()
@@ -142,10 +146,6 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         let cacheName = "quoteFetchCache"
         NSFetchedResultsController.deleteCacheWithName(cacheName)
         
-        // Edit the section name key path and cache name if appropriate.
-        // nil for section name key path means "no sections".
-        
-        // TODO: give it a cache name to enable fetch Requet Cache
         let fetchController : NSFetchedResultsController = NSFetchedResultsController(fetchRequest: self.fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: nil, cacheName: cacheName)
         fetchController.delegate = self
         _fetchedResultsController = fetchController
@@ -181,7 +181,7 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         // ignore inactive countries
         // see WorldFacts tutorial
         // let predicate = NSPredicate(format: "%K BEGINSWITH[cd] %@", "name", "1st Item")
-        let predicate = NSPredicate(format: "status == 'IGNORED'")
+        let predicate = NSPredicate(format: "status != 'IGNORED' && status != 'DELETED' AND request == %@", self.request)
         fetchRequest.predicate = predicate
         
         return fetchRequest
