@@ -16,6 +16,7 @@
         <attribute name="displayOrder" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="postCode" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeZoneName" attributeType="String" syncable="YES"/>
         <attribute name="town" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="destination" inverseEntity="Country" syncable="YES"/>
         <relationship name="request" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Request" inverseName="destination" inverseEntity="Request" syncable="YES"/>
@@ -46,7 +47,7 @@
     <elements>
         <element name="AbstractEntity" positionX="-27" positionY="90" width="128" height="75"/>
         <element name="Country" positionX="-63" positionY="-18" width="128" height="118"/>
-        <element name="Destination" positionX="-54" positionY="18" width="128" height="148"/>
+        <element name="Destination" positionX="-54" positionY="18" width="128" height="165"/>
         <element name="Message" positionX="-36" positionY="81" width="128" height="73"/>
         <element name="ModelStatus" positionX="-54" positionY="9" width="128" height="88"/>
         <element name="Quote" positionX="-54" positionY="63" width="128" height="103"/>

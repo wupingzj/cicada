@@ -150,7 +150,7 @@ class PWDestinationLoader {
     }
     
     // *** BE CAREFUL ****
-    func XXXdeleteAllCountries() {
+    func deleteAllDestinations() {
         let businessEntities: [PWDestination] = getDestinationList()
         display(businessEntities)
         
@@ -170,12 +170,12 @@ class PWDestinationLoader {
     
     func createDestinations() -> Bool {
         
-        self.createDestination("Lindfield", city: "Sydney", state: "New South Wales", postCode: "2070", displayOrder: 0, countryName: "Australia")
-        self.createDestination("Burwood", city: "Melbourne", state: "Victoria", postCode: "3001", displayOrder: 0, countryName: "Australia")
-        self.createDestination("Karori", city: "Wellington", state: nil, postCode: "2067", displayOrder: 0, countryName: "New Zealand")
-        self.createDestination("Lower Hutt", city: "Wellington", state: nil, postCode: "2001", displayOrder: 0, countryName: "New Zealand")
-        self.createDestination("Upper Hutt", city: "Wellington", state: nil, postCode: "2002", displayOrder: 0, countryName: "New Zealand")
-        self.createDestination("Any", city: "Porirua", state: nil, postCode: "2002", displayOrder: 0, countryName: "New Zealand")
+        self.createDestination("Lindfield", city: "Sydney", state: "New South Wales", postCode: "2070", displayOrder: 0, countryName: "Australia", timeZoneName: "Australia/Sydney")
+        self.createDestination("Burwood", city: "Melbourne", state: "Victoria", postCode: "3001", displayOrder: 0, countryName: "Australia", timeZoneName: "Australia/Melbourne")
+        self.createDestination("Karori", city: "Wellington", state: nil, postCode: "2067", displayOrder: 0, countryName: "New Zealand", timeZoneName: "Pacific/Auckland")
+        self.createDestination("Lower Hutt", city: "Wellington", state: nil, postCode: "2001", displayOrder: 0, countryName: "New Zealand", timeZoneName: "Pacific/Auckland")
+        self.createDestination("Upper Hutt", city: "Wellington", state: nil, postCode: "2002", displayOrder: 0, countryName: "New Zealand", timeZoneName: "Pacific/Auckland")
+        self.createDestination("Any", city: "Porirua", state: nil, postCode: "2002", displayOrder: 0, countryName: "New Zealand", timeZoneName: "Pacific/Auckland")
 
 
         
@@ -188,7 +188,7 @@ class PWDestinationLoader {
         }
     }
     
-    private func createDestination(town: String?, city: String, state: String?, postCode: String, displayOrder: Int16, countryName: String) -> PWDestination? {
+    private func createDestination(town: String?, city: String, state: String?, postCode: String, displayOrder: Int16, countryName: String, timeZoneName: String) -> PWDestination? {
         if let country = getCountry(countryName) {
             let newDestination = PWDestination.createEntity()
             
@@ -198,6 +198,7 @@ class PWDestinationLoader {
             newDestination.postCode = postCode
             newDestination.displayOrder = displayOrder
             newDestination.country = country
+            newDestination.timeZoneName = timeZoneName
             
             return newDestination
             

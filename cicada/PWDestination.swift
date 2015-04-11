@@ -28,6 +28,9 @@ public class PWDestination: NSManagedObject {
     @NSManaged
     var country: Country
     
+    @NSManaged
+    var timeZoneName: String
+    
     class func createEntity() -> PWDestination {
         let ctx: NSManagedObjectContext = DataService.sharedInstance.getContext()
         let ed: NSEntityDescription = NSEntityDescription.entityForName("Destination", inManagedObjectContext: ctx)!

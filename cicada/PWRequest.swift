@@ -71,6 +71,28 @@ class PWRequest: PWAbstractEntity {
     }
     
     func toString() -> String {
-        return "\(self.destination.toDisplayString()), \(self.arrivalDate) - \(self.departureDate)";
+        let startDateStr = getDateFormatter_Destination().stringFromDate(self.arrivalDate)
+        return "\(self.destination.toDisplayString()), \(startDateStr)";
+    }
+    
+    var dateFormatter: NSDateFormatter!
+    func getDateFormatter_Destination() -> NSDateFormatter {
+        if self.dateFormatter == nil {
+            let df = NSDateFormatter()
+            df.dateStyle = NSDateFormatterStyle.FullStyle
+            df.timeStyle = NSDateFormatterStyle.NoStyle
+
+            //println("here is known timezones:\(NSTimeZone.knownTimeZoneNames())")
+            //df.timeZone = NSTimeZone.systemTimeZone()
+            // The behavior is, if the provided timeZoneName is invalid, the systemTimeZone will be automatically used
+            df.timeZone = NSTimeZone(name: self.destination.timeZoneName)
+            println(df.timeZone)
+            
+            self.dateFormatter = df
+            
+            return df
+        } else {
+            return self.dateFormatter!
+        }
     }
 }

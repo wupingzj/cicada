@@ -140,8 +140,7 @@ class DataLoaderVC: UIViewController {
         print("deleting destination...")
         
         let dataloader = PWDestinationLoader()
-        
-        print("******** To Be Implemented *******")
+        dataloader.deleteAllDestinations();
     }
     
     @IBAction func listDestination(sender: AnyObject) {
