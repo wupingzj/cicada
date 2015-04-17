@@ -276,7 +276,8 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
             let vc = segue.destinationViewController as PWDatePickerVC
             vc.delegate = self
             // TODO
-            vc.destinationTimeZone = NSTimeZone(name: "GMT")
+            vc.destinationTimeZone = NSTimeZone(name: self.destination!.timeZoneName)!
+//            vc.destinationTimeZone = NSTimeZone(name: "GMT")
             
             if segue.identifier == ARRIVAL_DATE_PICKER_SEGUE {
                 vc.datePickerType = DatePickerType.ARRIVAL

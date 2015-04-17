@@ -70,29 +70,20 @@ class PWRequest: PWAbstractEntity {
         return newRequest
     }
     
-    func toString() -> String {
-        let startDateStr = getDateFormatter_Destination().stringFromDate(self.arrivalDate)
-        return "\(self.destination.toDisplayString()), \(startDateStr)";
-    }
-    
-    var dateFormatter: NSDateFormatter!
-    func getDateFormatter_Destination() -> NSDateFormatter {
-        if self.dateFormatter == nil {
-            let df = NSDateFormatter()
-            df.dateStyle = NSDateFormatterStyle.FullStyle
-            df.timeStyle = NSDateFormatterStyle.NoStyle
+    func getPeriodStr() -> String {
+        var timeZone: NSTimeZone = PWDateUtils.getTimeZoneOrGMT0(self.destination.timeZoneName)
+        
+//        let arrivalDateStr = PWDateUtils.toStringShort(self.arrivalDate, timeZone: timeZone)
+        let arrivalDateStr =
+            PWDateUtils.getDateFormatterInTimeZone(timeZone)
+                .applyStyle(NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.NoStyle)
+                .stringFromDate(self.arrivalDate)
+        let diffInDays = PWDateUtils.diffInDaysAcrossMidNight(arrivalDate, end: departureDate, timeZone: timeZone)
 
-            //println("here is known timezones:\(NSTimeZone.knownTimeZoneNames())")
-            //df.timeZone = NSTimeZone.systemTimeZone()
-            // The behavior is, if the provided timeZoneName is invalid, the systemTimeZone will be automatically used
-            df.timeZone = NSTimeZone(name: self.destination.timeZoneName)
-            println(df.timeZone)
-            
-            self.dateFormatter = df
-            
-            return df
+        if (diffInDays > 1) {
+            return "\(arrivalDateStr) - \(diffInDays) days";
         } else {
-            return self.dateFormatter!
+            return "\(arrivalDateStr) - \(diffInDays) day";
         }
     }
 }

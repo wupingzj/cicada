@@ -48,6 +48,7 @@ class PWDatePickerVC: UIViewController {
         super.viewDidLoad()
         
         datePicker.datePickerMode = UIDatePickerMode.Date
+        datePicker.timeZone = destinationTimeZone
         datePicker.addTarget(self, action: Selector("datePickerChanged"), forControlEvents: UIControlEvents.ValueChanged)
   
         var today = NSDate()
@@ -75,6 +76,13 @@ class PWDatePickerVC: UIViewController {
         }
         
         pickedDateLabel.text! += PWStringUtils.formatDate(datePicker.date)
+        
+        println("**** picked date=\(datePicker.date)")
+
+        let str = PWDateUtils.toStringFull(datePicker.date, timeZone: destinationTimeZone)
+        println("**** picked date =\(str)")
+
+        
         pickedDateLabel.numberOfLines = 0
         pickedDateLabel.sizeToFit()
     }

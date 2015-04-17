@@ -258,7 +258,10 @@ class PWRequestLoader {
         let dataloader = PWDestinationLoader()
         let destinations: [PWDestination] = dataloader.getDestinationList()
         for (index, destination) in enumerate(destinations) {
-            let request = PWRequest.createRequest(destination, arrivalDate: NSDate(), departureDate: NSDate())
+            let now = NSDate()
+            let timeInterval = NSTimeInterval(2*index * 60  * 60) // arbitary hours
+            let departureDate = now.dateByAddingTimeInterval(timeInterval)
+            let request = PWRequest.createRequest(destination, arrivalDate: now, departureDate: departureDate)
         }
         
         var error: NSError? = DataService.sharedInstance.saveContext()

@@ -16,6 +16,12 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let cellID = "RequestTableCell"
+        let nibName = cellID
+        self.tableView.registerNib(UINib(nibName: nibName, bundle: nil), forCellReuseIdentifier: cellID)
+//        self.tableView.registerClass(PWRequestTVCell.self, forCellReuseIdentifier: cellID)
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -46,43 +52,6 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         self.reloadTableView()
         self.refreshControl!.endRefreshing()
         return
-        
-        // TODO - review this method
-        if let refreshControl = self.refreshControl {
-            refreshControl.attributedTitle = NSAttributedString(string: "Refreshing data...")
-            
-            PWCountryService.sharedInstance.downloadAllCountries({data, error, redirectToLogon in
-                println("**** doing callback with data=\(data), error=\(error)")
-                
-                // Note: the network call is asynchronized.
-                refreshControl.endRefreshing()
-                
-                if redirectToLogon {
-                    PWViewControllerUtils.showAlertMsg(self, title: "Sorry", message: "Please logon first and then try again")
-                    
-                    // TODO - switch GUI to login screen
-                } else {
-                    var ok = false
-                    if let err = error {
-                        println("Failed to download country list.")
-                    } else {
-                        if let dataUnwrapped: AnyObject = data  {
-                            // data returned, parse and persist data
-                            let json = JSON(dataUnwrapped)
-                            ok = PWCountryService.sharedInstance.parseAndPersistCountries(json)
-                        } else {
-                            println("Connected to server but no data returned from cicada server.")
-                        }
-                    }
-                    
-                    if ok {
-                        self.reloadTableView()
-                    } else {
-                        PWViewControllerUtils.showAlertMsg(self, title: "Sorry", message: "Failed to refresh quote list. Please try again later")
-                    }
-                }
-            })
-        }
     }
 
     // MARK: - Table view data source
@@ -107,23 +76,36 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
             return 0
         }
     }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellID = "RequestTableCell"
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("requestCell", forIndexPath: indexPath) as UITableViewCell
+//        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as PWRequestTVCell
 
-    // Customize the appearance of table view cells.
+        
+        self.configureCell(cell, atIndexPath: indexPath)
+        
+        return cell
+    }
+
     func configureCell(cell:UITableViewCell, atIndexPath indexPath:NSIndexPath) {
         let request:PWRequest = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWRequest
         if let textLabel = cell.textLabel {
-            cell.textLabel!.text = request.toString()
+            cell.textLabel!.text = request.destination.toDisplayString()
+            cell.detailTextLabel!.text = request.getPeriodStr()
         } else {
             println("ERROR@PWRequestTableVC: No text label found!")
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("requestCell", forIndexPath: indexPath) as UITableViewCell
+
+    // Customize the appearance of table view cells.
+    func configureCell2(cell:PWRequestTVCell, atIndexPath indexPath:NSIndexPath) {
+        let request:PWRequest = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWRequest
         
-        self.configureCell(cell, atIndexPath: indexPath)
-        
-        return cell
+        cell.destinationLabel.text = request.destination.toDisplayString()
+        cell.periodLabel.text = request.getPeriodStr()
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -237,3 +219,13 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
     }
     var _fetchRequest: NSFetchRequest? = nil
 }
+
+
+// Tech memo:
+//      To use custom TableViewCell,
+//          a. create cell class
+//          b. create cell nib file
+//          c. self.tableView.registerNib(UINib(nibName: nibName, bundle: nil), forCellReuseIdentifier: cellID)
+//                  Don't registerClass as that doesn't use Nib
+//          d. let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as PWRequestTVCell
+//

@@ -22,6 +22,8 @@
 		3940639B1AA110020041A912 /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940639A1AA110020041A912 /* OneShotLocationManager.swift */; };
 		394063A11AA342C80041A912 /* PWConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394063A01AA342C80041A912 /* PWConstants.swift */; };
 		394063AD1AAC6AD60041A912 /* PWDatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394063AC1AAC6AD60041A912 /* PWDatePickerVC.swift */; };
+		396CB2EA1ADCFBAB00AF3249 /* PWDateUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CB2E91ADCFBAB00AF3249 /* PWDateUtilsTest.swift */; };
+		396CB2EE1ADCFD6900AF3249 /* PWDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE19D81ADC732D00E1DDEE /* PWDateUtils.swift */; };
 		3972B9A41A3D00BF0098B2B1 /* PWDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */; };
 		3972B9A61A3D0CE50098B2B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39B7E0331A11DF3700A0514C /* Main.storyboard */; };
 		39B7E02E1A11DF3700A0514C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E02D1A11DF3700A0514C /* AppDelegate.swift */; };
@@ -34,6 +36,9 @@
 		39BB92841A59E25E00909B98 /* PWCountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB92831A59E25E00909B98 /* PWCountryService.swift */; };
 		39BB92871A5AB77800909B98 /* PWViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB92861A5AB77800909B98 /* PWViewControllerUtils.swift */; };
 		39BB92891A5BAFA100909B98 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB92881A5BAFA100909B98 /* SwiftyJSON.swift */; };
+		39BE19D21ADA1B6800E1DDEE /* RequestTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39BE19D11ADA1B6800E1DDEE /* RequestTableCell.xib */; };
+		39BE19D71ADA1E0800E1DDEE /* PWRequestTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE19D61ADA1E0800E1DDEE /* PWRequestTVCell.swift */; };
+		39BE19D91ADC732D00E1DDEE /* PWDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE19D81ADC732D00E1DDEE /* PWDateUtils.swift */; };
 		39C51BEB1A443B0300DF0AB9 /* PWStringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */; };
 		39F4D1321A2BBC98005D58E5 /* PWDestinationTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D1311A2BBC98005D58E5 /* PWDestinationTableVC.swift */; };
 		39F4D1401A3084BD005D58E5 /* PWDestinationPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D13F1A3084BD005D58E5 /* PWDestinationPageVC.swift */; };
@@ -122,6 +127,7 @@
 		3940639A1AA110020041A912 /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
 		394063A01AA342C80041A912 /* PWConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWConstants.swift; sourceTree = "<group>"; };
 		394063AC1AAC6AD60041A912 /* PWDatePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDatePickerVC.swift; sourceTree = "<group>"; };
+		396CB2E91ADCFBAB00AF3249 /* PWDateUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDateUtilsTest.swift; sourceTree = "<group>"; };
 		3972B9A31A3D00BF0098B2B1 /* PWDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDestination.swift; sourceTree = "<group>"; };
 		3972B9A51A3D056D0098B2B1 /* cicadaModel_v1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cicadaModel_v1.1.xcdatamodel; sourceTree = "<group>"; };
 		39B7E0281A11DF3700A0514C /* cicada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cicada.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +147,9 @@
 		39BB92831A59E25E00909B98 /* PWCountryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWCountryService.swift; sourceTree = "<group>"; };
 		39BB92861A5AB77800909B98 /* PWViewControllerUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWViewControllerUtils.swift; sourceTree = "<group>"; };
 		39BB92881A5BAFA100909B98 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		39BE19D11ADA1B6800E1DDEE /* RequestTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestTableCell.xib; sourceTree = "<group>"; };
+		39BE19D61ADA1E0800E1DDEE /* PWRequestTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWRequestTVCell.swift; sourceTree = "<group>"; };
+		39BE19D81ADC732D00E1DDEE /* PWDateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDateUtils.swift; sourceTree = "<group>"; };
 		39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWStringUtils.swift; sourceTree = "<group>"; };
 		39F4D1311A2BBC98005D58E5 /* PWDestinationTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDestinationTableVC.swift; sourceTree = "<group>"; };
 		39F4D13F1A3084BD005D58E5 /* PWDestinationPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDestinationPageVC.swift; sourceTree = "<group>"; };
@@ -186,6 +195,7 @@
 			children = (
 				390AA09B1AB54F8900CEC625 /* PWRequestTableVC.swift */,
 				390AA0951AB242DF00CEC625 /* PWQuoteTableVC.swift */,
+				39BE19D61ADA1E0800E1DDEE /* PWRequestTVCell.swift */,
 			);
 			name = Quote;
 			sourceTree = "<group>";
@@ -272,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				39B7E0451A11DF3700A0514C /* cicadaTests.swift */,
+				396CB2E91ADCFBAB00AF3249 /* PWDateUtilsTest.swift */,
 				39B7E0431A11DF3700A0514C /* Supporting Files */,
 			);
 			path = cicadaTests;
@@ -309,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				390AA07D1AAF12DB00CEC625 /* image */,
+				39BE19D11ADA1B6800E1DDEE /* RequestTableCell.xib */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -319,6 +331,7 @@
 				394063A01AA342C80041A912 /* PWConstants.swift */,
 				39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */,
 				39BB92861A5AB77800909B98 /* PWViewControllerUtils.swift */,
+				39BE19D81ADC732D00E1DDEE /* PWDateUtils.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -507,6 +520,7 @@
 				390AA0841AAF202C00CEC625 /* NewZealand.3.jpg in Resources */,
 				39B7E03A1A11DF3700A0514C /* LaunchScreen.xib in Resources */,
 				39B7E0371A11DF3700A0514C /* Images.xcassets in Resources */,
+				39BE19D21ADA1B6800E1DDEE /* RequestTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +540,7 @@
 			files = (
 				39B7E09A1A202E9700A0514C /* PWAccommodationRequestVC.swift in Sources */,
 				3972B9A41A3D00BF0098B2B1 /* PWDestination.swift in Sources */,
+				39BE19D71ADA1E0800E1DDEE /* PWRequestTVCell.swift in Sources */,
 				390AA0881AB1667E00CEC625 /* PWRequest.swift in Sources */,
 				39F4D1441A35B9A7005D58E5 /* Country.swift in Sources */,
 				39BB92871A5AB77800909B98 /* PWViewControllerUtils.swift in Sources */,
@@ -545,6 +560,7 @@
 				390AA09A1AB45EBE00CEC625 /* PWAbstractEntity.swift in Sources */,
 				39C51BEB1A443B0300DF0AB9 /* PWStringUtils.swift in Sources */,
 				390AA0961AB242DF00CEC625 /* PWQuoteTableVC.swift in Sources */,
+				39BE19D91ADC732D00E1DDEE /* PWDateUtils.swift in Sources */,
 				39B7E09C1A20453900A0514C /* PWAccommodationModelController.swift in Sources */,
 				39F4D14B1A35CB99005D58E5 /* DataLoader.swift in Sources */,
 				39F4D1471A35BACA005D58E5 /* DataService.swift in Sources */,
@@ -559,7 +575,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				396CB2EA1ADCFBAB00AF3249 /* PWDateUtilsTest.swift in Sources */,
 				39B7E0461A11DF3700A0514C /* cicadaTests.swift in Sources */,
+				396CB2EE1ADCFD6900AF3249 /* PWDateUtils.swift in Sources */,
 				393640F51A8E8E1A001140FC /* PWStringUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
