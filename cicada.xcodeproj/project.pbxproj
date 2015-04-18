@@ -36,8 +36,6 @@
 		39BB92841A59E25E00909B98 /* PWCountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB92831A59E25E00909B98 /* PWCountryService.swift */; };
 		39BB92871A5AB77800909B98 /* PWViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB92861A5AB77800909B98 /* PWViewControllerUtils.swift */; };
 		39BB92891A5BAFA100909B98 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB92881A5BAFA100909B98 /* SwiftyJSON.swift */; };
-		39BE19D21ADA1B6800E1DDEE /* RequestTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39BE19D11ADA1B6800E1DDEE /* RequestTableCell.xib */; };
-		39BE19D71ADA1E0800E1DDEE /* PWRequestTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE19D61ADA1E0800E1DDEE /* PWRequestTVCell.swift */; };
 		39BE19D91ADC732D00E1DDEE /* PWDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE19D81ADC732D00E1DDEE /* PWDateUtils.swift */; };
 		39C51BEB1A443B0300DF0AB9 /* PWStringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */; };
 		39F4D1321A2BBC98005D58E5 /* PWDestinationTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4D1311A2BBC98005D58E5 /* PWDestinationTableVC.swift */; };
@@ -147,8 +145,6 @@
 		39BB92831A59E25E00909B98 /* PWCountryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWCountryService.swift; sourceTree = "<group>"; };
 		39BB92861A5AB77800909B98 /* PWViewControllerUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWViewControllerUtils.swift; sourceTree = "<group>"; };
 		39BB92881A5BAFA100909B98 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		39BE19D11ADA1B6800E1DDEE /* RequestTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestTableCell.xib; sourceTree = "<group>"; };
-		39BE19D61ADA1E0800E1DDEE /* PWRequestTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWRequestTVCell.swift; sourceTree = "<group>"; };
 		39BE19D81ADC732D00E1DDEE /* PWDateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDateUtils.swift; sourceTree = "<group>"; };
 		39C51BEA1A443B0300DF0AB9 /* PWStringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWStringUtils.swift; sourceTree = "<group>"; };
 		39F4D1311A2BBC98005D58E5 /* PWDestinationTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDestinationTableVC.swift; sourceTree = "<group>"; };
@@ -195,7 +191,6 @@
 			children = (
 				390AA09B1AB54F8900CEC625 /* PWRequestTableVC.swift */,
 				390AA0951AB242DF00CEC625 /* PWQuoteTableVC.swift */,
-				39BE19D61ADA1E0800E1DDEE /* PWRequestTVCell.swift */,
 			);
 			name = Quote;
 			sourceTree = "<group>";
@@ -320,7 +315,6 @@
 			isa = PBXGroup;
 			children = (
 				390AA07D1AAF12DB00CEC625 /* image */,
-				39BE19D11ADA1B6800E1DDEE /* RequestTableCell.xib */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -520,7 +514,6 @@
 				390AA0841AAF202C00CEC625 /* NewZealand.3.jpg in Resources */,
 				39B7E03A1A11DF3700A0514C /* LaunchScreen.xib in Resources */,
 				39B7E0371A11DF3700A0514C /* Images.xcassets in Resources */,
-				39BE19D21ADA1B6800E1DDEE /* RequestTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,7 +533,6 @@
 			files = (
 				39B7E09A1A202E9700A0514C /* PWAccommodationRequestVC.swift in Sources */,
 				3972B9A41A3D00BF0098B2B1 /* PWDestination.swift in Sources */,
-				39BE19D71ADA1E0800E1DDEE /* PWRequestTVCell.swift in Sources */,
 				390AA0881AB1667E00CEC625 /* PWRequest.swift in Sources */,
 				39F4D1441A35B9A7005D58E5 /* Country.swift in Sources */,
 				39BB92871A5AB77800909B98 /* PWViewControllerUtils.swift in Sources */,

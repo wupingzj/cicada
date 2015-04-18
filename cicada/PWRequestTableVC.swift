@@ -99,15 +99,6 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         }
     }
     
-
-    // Customize the appearance of table view cells.
-    func configureCell2(cell:PWRequestTVCell, atIndexPath indexPath:NSIndexPath) {
-        let request:PWRequest = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWRequest
-        
-        cell.destinationLabel.text = request.destination.toDisplayString()
-        cell.periodLabel.text = request.getPeriodStr()
-    }
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedRequest = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWRequest
         
