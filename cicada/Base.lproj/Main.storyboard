@@ -611,9 +611,9 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Destionation Text" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3tu-ff-2Xc" userLabel="DestinationText">
-                                <rect key="frame" x="155" y="274" width="290" height="40"/>
+                                <rect key="frame" x="155" y="274" width="290" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Yuv-Mn-6sF"/>
+                                    <constraint firstAttribute="height" constant="50" id="Yuv-Mn-6sF"/>
                                     <constraint firstAttribute="width" constant="290" id="esG-DL-w3v"/>
                                 </constraints>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -675,7 +675,7 @@
                             <constraint firstItem="Yyf-JL-PcE" firstAttribute="top" secondItem="tge-ip-ifK" secondAttribute="bottom" constant="8" symbolic="YES" id="Ph6-NX-BSr" userLabel="-"/>
                             <constraint firstItem="tge-ip-ifK" firstAttribute="centerX" secondItem="Elx-Ds-5vh" secondAttribute="trailingMargin" multiplier="0.3" id="PnW-Ou-3RL"/>
                             <constraint firstItem="3tu-ff-2Xc" firstAttribute="top" secondItem="Iw1-pO-om8" secondAttribute="bottom" constant="8" symbolic="YES" id="Rtc-10-YRA"/>
-                            <constraint firstItem="tge-ip-ifK" firstAttribute="top" secondItem="3tu-ff-2Xc" secondAttribute="bottom" constant="40" id="XAG-bW-MMg"/>
+                            <constraint firstItem="tge-ip-ifK" firstAttribute="top" secondItem="3tu-ff-2Xc" secondAttribute="bottom" constant="30" id="XAG-bW-MMg"/>
                             <constraint firstItem="6No-mx-SJu" firstAttribute="top" secondItem="UNs-5b-0Ax" secondAttribute="bottom" constant="8" symbolic="YES" id="auw-pq-D5g"/>
                             <constraint firstItem="DGW-2s-ukM" firstAttribute="trailing" secondItem="WXe-fw-Sq9" secondAttribute="trailing" id="cMB-eT-wWr"/>
                             <constraint firstItem="DGW-2s-ukM" firstAttribute="baseline" secondItem="Yyf-JL-PcE" secondAttribute="baseline" id="hJA-ha-f8A"/>

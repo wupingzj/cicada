@@ -73,7 +73,7 @@ class PWRequest: PWAbstractEntity {
     func getPeriodStr() -> String {
         var timeZone: NSTimeZone = PWDateUtils.getTimeZoneOrGMT0(self.destination.timeZoneName)
         
-        let arrivalDateStr = PWDateUtils.toStringFullNoTime(self.arrivalDate, timeZone: timeZone)
+        let arrivalDateStr = PWDateUtils.toStringMediumNoTime(self.arrivalDate, timeZone: timeZone)
         let diffInDays = PWDateUtils.diffInDaysAcrossMidNight(arrivalDate, end: departureDate, timeZone: timeZone)
 
         if (diffInDays > 1) {
