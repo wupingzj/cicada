@@ -70,12 +70,24 @@ extension NSCalendar {
 extension NSDateFormatter {
     // The following API returns self, which allows chained function invoktion on NSDateFormatter
     func applyStyleFull() -> NSDateFormatter {
-         self.dateStyle  = NSDateFormatterStyle.FullStyle
-         self.timeStyle = NSDateFormatterStyle.FullStyle
+        self.dateStyle  = NSDateFormatterStyle.FullStyle
+        self.timeStyle = NSDateFormatterStyle.FullStyle
         return self
     }
     
-    func applyStyleShort() -> NSDateFormatter {
+    func applyStyleFullNoTime() -> NSDateFormatter {
+         self.dateStyle  = NSDateFormatterStyle.FullStyle
+         self.timeStyle = NSDateFormatterStyle.NoStyle
+        return self
+    }
+    
+    func applyStyleMediumNoTime() -> NSDateFormatter {
+        self.dateStyle  = NSDateFormatterStyle.MediumStyle
+        self.timeStyle = NSDateFormatterStyle.NoStyle
+        return self
+    }
+    
+    func applyStyleShortNoTime() -> NSDateFormatter {
         self.dateStyle  = NSDateFormatterStyle.ShortStyle
         self.timeStyle = NSDateFormatterStyle.NoStyle
         return self
@@ -148,12 +160,34 @@ class PWDateUtils {
     // MARK: - Format a date to String with given timeZone
     // NOTE: df is thread-safe BUT the dateStyle and timeStyle are NOT thread-safe!!!
     // If the thread safety is required for date and time styles, please not use this df but create a new dateFormatter instance
+    
+    class func toStringFull(date: NSDate, timeZoneName: String) -> String {
+        let timeZone = self.getTimeZoneOrGMT0(timeZoneName)
+        return self.toStringFull(date, timeZone: timeZone)
+        
+    }
+    
     class func toStringFull(date: NSDate, timeZone: NSTimeZone) -> String {
         return PWDateUtils.getDateFormatterInTimeZone(timeZone).applyStyleFull().stringFromDate(date)
     }
     
-    class func toStringShort(date: NSDate, timeZone: NSTimeZone) -> String {
-        return PWDateUtils.getDateFormatterInTimeZone(timeZone).applyStyleShort().stringFromDate(date)
+    class func toStringFullNoTime(date: NSDate, timeZoneName: String) -> String {
+        let timeZone = self.getTimeZoneOrGMT0(timeZoneName)
+        return self.toStringFullNoTime(date, timeZone: timeZone)
+
+    }
+    
+    class func toStringFullNoTime(date: NSDate, timeZone: NSTimeZone) -> String {
+        return PWDateUtils.getDateFormatterInTimeZone(timeZone).applyStyleFullNoTime().stringFromDate(date)
+    }
+    
+    class func toStringMediumNoTime(date: NSDate, timeZoneName: String) -> String {
+        let timeZone = self.getTimeZoneOrGMT0(timeZoneName)
+        return self.toStringMediumNoTime(date, timeZone: timeZone)
+    }
+    
+    class func toStringMediumNoTime(date: NSDate, timeZone: NSTimeZone) -> String {
+        return PWDateUtils.getDateFormatterInTimeZone(timeZone).applyStyleMediumNoTime().stringFromDate(date)
     }
     
     // MARK: - Date difference calculation
@@ -162,11 +196,10 @@ class PWDateUtils {
         let calendar = getCalendarForTimeZone(timeZone)
         
         let startDateAtMidNight: NSDate = getDateAtMidNight(start, timeZone: timeZone)
-        println("**startDateAtMidNight=")
-        self.printDateWithTimeZone(startDateAtMidNight, timeZone: timeZone)
         let endDateAtMidNight: NSDate = getDateAtMidNight(end, timeZone: timeZone)
-        println("**endDateAtMidNight=")
-        self.printDateWithTimeZone(endDateAtMidNight, timeZone: timeZone)
+        
+        //self.printDateWithTimeZone(startDateAtMidNight, timeZone: timeZone)
+        //self.printDateWithTimeZone(endDateAtMidNight, timeZone: timeZone)
         
         return calendar.components(NSCalendarUnit.CalendarUnitDay, fromDate: startDateAtMidNight, toDate: endDateAtMidNight, options: nil).day
     }

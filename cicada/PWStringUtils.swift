@@ -28,9 +28,8 @@ class PWStringUtils {
     // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/DataFormatting/Articles/dfDateFormatting10_4.html
     
     // http://oleb.net/blog/2011/11/working-with-date-and-time-in-cocoa-part-2/
-    class func formatDate(date: NSDate) -> String {
+    class func formatDateX(date: NSDate) -> String {
 //        var dateFormatter = NSDateFormatter()
-//        
 //        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
 //        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
 //        dateFormatter.locale = NSLocale.currentLocale()

@@ -30,10 +30,6 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     // info
     let reminderSelectDestination = "Where to go?"
     
-    let arrivalDatePicker = UIDatePicker()
-    let departureDatePicker = UIDatePicker()
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -344,7 +340,6 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         }
         
         text = PWStringUtils.concatString(text, append: destination.state, newLine: true)
-        //text = PWStringUtils.concatString(text, append: destination.postCode, newLine: false)
         
         destinationTextView.text = text
     }
@@ -363,8 +358,10 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         } else {
             println("Not supported datePickerType=\(datePickerType)")
         }
-        
-        dateLabel.text = PWStringUtils.formatDate(selectedDate)
+
+        let tzName = self.destination!.timeZoneName
+        dateLabel.text = PWDateUtils.toStringMediumNoTime(selectedDate, timeZoneName: tzName)
+
         dateLabel.numberOfLines = 0
         dateLabel.sizeToFit()
     }

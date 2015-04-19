@@ -61,8 +61,7 @@ class PWDatePickerVC: UIViewController {
             date = self.currentDepartureDate
         }
         datePicker.setDate(date, animated: true)
-        //destinationTimeZoneLabel.text = "Time in " + (destinationTimeZone.abbreviation!) + (destinationTimeZone.name)
-        destinationTimeZoneLabel.text = "Time in " + destinationTimeZone.debugDescription
+        destinationTimeZoneLabel.text = (destinationTimeZone.abbreviation!) + ",   " + (destinationTimeZone.name)
         
         // reflect date in label
         datePickerChanged()
@@ -70,24 +69,17 @@ class PWDatePickerVC: UIViewController {
     
     func datePickerChanged() {
         if datePickerType == DatePickerType.ARRIVAL {
-            pickedDateLabel.text = "Arrival Date: "
+            self.title = "Arrival"
         } else {
-            pickedDateLabel.text = "Departure Date: "
+            self.title = "Departure"
         }
         
-        pickedDateLabel.text! += PWStringUtils.formatDate(datePicker.date)
-        
-        println("**** picked date=\(datePicker.date)")
-
-        let str = PWDateUtils.toStringFull(datePicker.date, timeZone: destinationTimeZone)
-        println("**** picked date =\(str)")
-
+        let dateStr = PWDateUtils.toStringFullNoTime(datePicker.date, timeZone: destinationTimeZone)
+        pickedDateLabel.text = dateStr
         
         pickedDateLabel.numberOfLines = 0
         pickedDateLabel.sizeToFit()
     }
-    
-    
     
     @IBAction func done(sender: UIBarButtonItem) {
         let selectedDate = datePicker.date
