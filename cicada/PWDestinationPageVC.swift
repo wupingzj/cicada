@@ -21,8 +21,8 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     // state
     var country: Country? = nil
     var destination: PWDestination? = nil
-    var currentArrivalDate: NSDate = NSDate()
-    var currentDepartureDate: NSDate = NSDate()
+    var currentArrivalDate: NSDate? = nil
+    var currentDepartureDate: NSDate? = nil
     
     // service
     var geocoder = CLGeocoder()
@@ -262,6 +262,19 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     let COUNTRY_TABLE_SEGUE = "showCountryTableSegue"
     let ARRIVAL_DATE_PICKER_SEGUE = "showArrivalDatePickerSegue"
     let DEPARTURE_DATE_PICKER_SEGUE = "showDepartureDatePickerSegue"
+    
+    // MARK: - Navigation
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == ARRIVAL_DATE_PICKER_SEGUE || identifier == DEPARTURE_DATE_PICKER_SEGUE {
+            if (self.destination == nil) {
+                PWViewControllerUtils.showAlertMsg(self, title: "Sorry", message: "Please choose destination first")
+                return false
+            }
+        }
+
+        return true
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier ==  COUNTRY_TABLE_SEGUE {
             // show country table
@@ -281,8 +294,18 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
                 vc.datePickerType = DatePickerType.DEPARTURE
             }
             
-            vc.currentArrivalDate = self.currentArrivalDate
-            vc.currentDepartureDate = self.currentDepartureDate
+            // if no dates have been selected before, use current date as intial vales for date picker
+            if let arrivalDate = self.currentArrivalDate {
+                vc.currentArrivalDate = arrivalDate
+            } else {
+                vc.currentArrivalDate = NSDate()
+            }
+
+            if let departureDate = self.currentDepartureDate {
+                vc.currentDepartureDate = departureDate
+            } else {
+                vc.currentDepartureDate = NSDate()
+            }
         } else {
             println("*** Unrecongnized segue name \(segue.identifier) in PWDestinationPageVC.prepareForSegue. Do nothing ***")
         }
@@ -312,6 +335,8 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         if self.country != selectedCountry {
             self.destinationTextView.text = reminderSelectDestination
             self.destination = nil
+
+            timeZoneDidChange()
         }
         
         self.country = selectedCountry
@@ -343,7 +368,15 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         
         destinationTextView.text = text
     }
-
+    
+    // a listener to timeZone change, which fires the event to reset selected dates
+    private func timeZoneDidChange() {
+        self.currentArrivalDate = nil
+        self.currentDepartureDate = nil
+        self.currentArrivalDateLabel.text = "-"
+        self.currentDepartureDateLabel.text = "-"
+    }
+    
     // MARK: - Choose Dates
     // PWDatePickerVCDelegate call back
     func didSelectDate(selectedDate: NSDate, datePickerType: DatePickerType) {
