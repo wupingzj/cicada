@@ -15,6 +15,8 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     @IBOutlet var countryButton: UIButton!
     @IBOutlet var destinationImageView: UIImageView!
     @IBOutlet var destinationTextView: UITextView!
+    @IBOutlet var arrivalDateButton: UIButton!
+    @IBOutlet var departureDateButton: UIButton!
     @IBOutlet var currentArrivalDateLabel: UILabel!
     @IBOutlet var currentDepartureDateLabel: UILabel!
     
@@ -47,8 +49,8 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         loadDestinationImageFromLocalFile()
         displayDestinationImage()
         
-        currentArrivalDateLabel.text = "-"
-        currentDepartureDateLabel.text = "-"
+        destinationTextView.textColor = PWHighlightColor
+        timeZoneDidChange()
     }
     
     private func getImageUrl() -> String? {
@@ -334,8 +336,9 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         // if country changes, reset the destination
         if self.country != selectedCountry {
             self.destinationTextView.text = reminderSelectDestination
+            self.destinationTextView.textColor = PWHighlightColor
             self.destination = nil
-
+            
             timeZoneDidChange()
         }
         
@@ -349,10 +352,53 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
     }
     
     func didSelectDestination(controller: PWDestinationTableVC, selectedDestination: PWDestination) {
+        if selectedDestination == self.destination {
+            // Destination is not chnaged. It's the same. Do nothing.
+            return
+        }
+        
+        var timeZoneChanged: Bool!
+        if self.destination == nil {
+            timeZoneChanged = true
+        } else {
+            timeZoneChanged = (self.destination!.timeZoneName != selectedDestination.timeZoneName)
+        }
+        // println("***timeZoneChanged=\(timeZoneChanged) selectedDestination.timeZone=\(selectedDestination.timeZoneName)")
+        
         self.destination = selectedDestination
         displayDestinationText(selectedDestination)
         
+        if timeZoneChanged == true {
+            timeZoneDidChange()
+        }
+        
+        // When destination is changed, always show date picker buttons
+        changeDateComponentsVisibility(hidden: false)
+        
         displayDestinationImage()
+    }
+    
+    // PWDatePickerVCDelegate call back
+    func didSelectDate(selectedDate: NSDate, datePickerType: DatePickerType) {
+        println("Date picker date=\(selectedDate), datePickerType=\(datePickerType)")
+        var dateLabel: UILabel!
+        if datePickerType == DatePickerType.ARRIVAL {
+            self.currentArrivalDate = selectedDate
+            self.arrivalDateButton.tintColor = self.view.tintColor
+            dateLabel = self.currentArrivalDateLabel
+        } else if datePickerType == DatePickerType.DEPARTURE {
+            self.currentDepartureDate = selectedDate
+            self.departureDateButton.tintColor = self.view.tintColor
+            dateLabel = self.currentDepartureDateLabel
+        } else {
+            println("Not supported datePickerType=\(datePickerType)")
+        }
+        
+        let tzName = self.destination!.timeZoneName
+        dateLabel.text = PWDateUtils.toStringMediumNoTime(selectedDate, timeZoneName: tzName)
+        
+        dateLabel.numberOfLines = 0
+        dateLabel.sizeToFit()
     }
     
     private func displayDestinationText(destination: PWDestination) {
@@ -367,36 +413,29 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
         text = PWStringUtils.concatString(text, append: destination.state, newLine: true)
         
         destinationTextView.text = text
+        destinationTextView.textColor = self.view.tintColor
     }
     
     // a listener to timeZone change, which fires the event to reset selected dates
     private func timeZoneDidChange() {
+        // clear selected dates
         self.currentArrivalDate = nil
         self.currentDepartureDate = nil
         self.currentArrivalDateLabel.text = "-"
         self.currentDepartureDateLabel.text = "-"
+        
+        // highlight date pciker buttons
+        self.arrivalDateButton.tintColor = PWHighlightColor
+        self.departureDateButton.tintColor = PWHighlightColor
+        
+        changeDateComponentsVisibility(hidden: true)
     }
     
-    // MARK: - Choose Dates
-    // PWDatePickerVCDelegate call back
-    func didSelectDate(selectedDate: NSDate, datePickerType: DatePickerType) {
-        println("Date picker date=\(selectedDate), datePickerType=\(datePickerType)")
-        var dateLabel: UILabel!
-        if datePickerType == DatePickerType.ARRIVAL {
-            self.currentArrivalDate = selectedDate
-            dateLabel = self.currentArrivalDateLabel
-        } else if datePickerType == DatePickerType.DEPARTURE {
-            self.currentDepartureDate = selectedDate
-            dateLabel = self.currentDepartureDateLabel
-        } else {
-            println("Not supported datePickerType=\(datePickerType)")
-        }
-
-        let tzName = self.destination!.timeZoneName
-        dateLabel.text = PWDateUtils.toStringMediumNoTime(selectedDate, timeZoneName: tzName)
-
-        dateLabel.numberOfLines = 0
-        dateLabel.sizeToFit()
+    private func changeDateComponentsVisibility(#hidden: Bool) {
+        self.arrivalDateButton.hidden = hidden
+        self.departureDateButton.hidden = hidden
+        self.currentArrivalDateLabel.hidden = hidden
+        self.currentDepartureDateLabel.hidden = hidden
     }
 }
 

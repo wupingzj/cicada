@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // constants for default when user preference is not set yet and user current location cannot be obtained from internet
 let PWDefault_Country_Value = "Australia"
@@ -14,5 +15,6 @@ let PWDefault_Country_Value = "Australia"
 // constants for user preferences chosen by user
 let PWPreference_Country_Key = "PreferedCountry"
 
+let PWHighlightColor: UIColor = UIColor.redColor()
 
 

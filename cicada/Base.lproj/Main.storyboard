@@ -686,9 +686,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="arrivalDateButton" destination="tge-ip-ifK" id="ZG6-rE-qJR"/>
                         <outlet property="countryButton" destination="6No-mx-SJu" id="E8Y-XL-RXp"/>
                         <outlet property="currentArrivalDateLabel" destination="Yyf-JL-PcE" id="pWI-2f-2ZC"/>
                         <outlet property="currentDepartureDateLabel" destination="DGW-2s-ukM" id="dHH-wM-gzS"/>
+                        <outlet property="departureDateButton" destination="WXe-fw-Sq9" id="Ah3-ba-F2b"/>
                         <outlet property="destinationImageView" destination="Iw1-pO-om8" id="Pza-kY-aik"/>
                         <outlet property="destinationTextView" destination="3tu-ff-2Xc" id="WVo-Kn-NeF"/>
                     </connections>
