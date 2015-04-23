@@ -357,6 +357,8 @@ class PWDestinationPageVC: UIViewController, PWCountryTableVCDelegate, PWDestina
             return
         }
         
+        // TODO: the following logic detects timeZone change by comparing the current and selected timeZoneNames.
+        // It might be more reliable to compare the GMT offset rather than timeZoneNames
         var timeZoneChanged: Bool!
         if self.destination == nil {
             timeZoneChanged = true

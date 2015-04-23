@@ -81,8 +81,12 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         let cellID = "RequestTableCell"
         
         let cell = tableView.dequeueReusableCellWithIdentifier("requestCell", forIndexPath: indexPath) as UITableViewCell
-//        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as PWRequestTVCell
+        
+        if indexPath.row == 2 {
+            cell.selected = true
+            cell.selectionStyle = UITableViewCellSelectionStyle.Blue
 
+        }
         
         self.configureCell(cell, atIndexPath: indexPath)
         
@@ -102,16 +106,22 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedRequest = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWRequest
         
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+                    cell.selectionStyle = UITableViewCellSelectionStyle.Blue
+                    cell.selected = true
+                }
+
+        
         // set the checkmark
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            if lastSelectedCell != nil {
-                // clear the checkmark of previous selection
-                lastSelectedCell?.accessoryType = UITableViewCellAccessoryType.None
-            }
-            lastSelectedCell = cell
-            
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-        }
+//        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+//            if lastSelectedCell != nil {
+//                // clear the checkmark of previous selection
+//                lastSelectedCell?.accessoryType = UITableViewCellAccessoryType.None
+//            }
+//            lastSelectedCell = cell
+//            
+//            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+//        }
         
         
         
@@ -153,6 +163,8 @@ class PWRequestTableVC: UITableViewController, NSFetchedResultsControllerDelegat
                 let request:PWRequest = self.fetchedResultsController.objectAtIndexPath(indexPath!) as PWRequest
                 destinationTableVC.request = request
             }
+        } else if segue.identifier == "showRequestDeatailSeque" {
+            println("TODO: prepare transition for \(segue.identifier)")
         } else {
             println("Unsupported segue \(segue.identifier)")
         }

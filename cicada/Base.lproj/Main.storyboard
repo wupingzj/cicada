@@ -340,7 +340,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="requestCell" textLabel="IZv-34-hA7" detailTextLabel="jlh-Tp-aTu" style="IBUITableViewCellStyleSubtitle" id="gwH-Fz-xA7">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="requestCell" textLabel="IZv-34-hA7" detailTextLabel="jlh-Tp-aTu" style="IBUITableViewCellStyleSubtitle" id="gwH-Fz-xA7">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gwH-Fz-xA7" id="SOW-cW-Efc">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -361,7 +361,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="ofK-On-Cfz" kind="show" identifier="showQuotesSeque" id="XFq-Vb-gQT"/>
-                                    <segue destination="e42-pd-MYx" kind="show" trigger="accessoryAction" id="3g2-Wa-A6Y"/>
+                                    <segue destination="e42-pd-MYx" kind="show" identifier="showRequestDeatailSeque" trigger="accessoryAction" id="3g2-Wa-A6Y"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
