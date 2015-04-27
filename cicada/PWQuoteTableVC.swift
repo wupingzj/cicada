@@ -93,7 +93,6 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if let sections = self.fetchedResultsController.sections {
             let sectionInfo = sections[section] as NSFetchedResultsSectionInfo
             return sectionInfo.numberOfObjects
@@ -103,22 +102,123 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         }
     }
     
-    // Customize the appearance of table view cells.
-    func configureCell(cell:UITableViewCell, atIndexPath indexPath:NSIndexPath) {
-        let quote:PWQuote = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWQuote
-        if let textLabel = cell.textLabel {
-            cell.textLabel!.text = "TODO: Quote Description" + quote.uuid
-        } else {
-            println("ERROR@SeekTableVC: No text label found!")
-        }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 160
     }
     
+    // MARK: - Table view layout
+    let QUOTE_PHOTO_TAG = 1000
+    let QUOTE_PRICE_TAG = 1001
+    let QUOTE_BRIEF_TAG = 1002
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("quoteCell", forIndexPath: indexPath) as UITableViewCell
+        // get data
+        let quote:PWQuote = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWQuote
         
-        self.configureCell(cell, atIndexPath: indexPath)
+        let cellID = "quoteCellProgramatically"
+//        let cellID = "quoteCell"
+        var cell: UITableViewCell!
+        if let tryCell = tableView.dequeueReusableCellWithIdentifier(cellID) as UITableViewCell? {
+            cell = tryCell
+        } else {
+            cell = createCell(cellID)
+        }
+        
+        let imageView = cell.contentView.viewWithTag(QUOTE_PHOTO_TAG) as UIImageView
+        let priceLabel = cell.contentView.viewWithTag(QUOTE_PRICE_TAG) as UILabel
+        let briefLabel = cell.contentView.viewWithTag(QUOTE_BRIEF_TAG) as UILabel
+        
+        priceLabel.text = "THis is the hotel price"
+//        briefLabel.text = "This is the brief \ndescription of the \nquote. abcdedadjafdja;fjdasf abcdefghijklmnopqrstuvwxyz"
+        briefLabel.text = "This is the brief \ndescription of the quote."
         
         return cell
+    }
+    
+    private func createCell(cellID: String) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellID)
+//        cell.accessoryType = UITableViewCellAccessoryType.DetailButton
+        
+        // create image
+        let imageView: UIImageView = UIImageView(frame: CGRectMake(0, 0, 220, 40))
+        cell.contentView.addSubview(imageView)
+        imageView.tag = QUOTE_PHOTO_TAG
+        imageView.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleHeight
+        imageView.backgroundColor = UIColor.greenColor()
+        let imageUrl = "TODO_ImageUrlOfTheQuote"
+        displayDestinationImage(imageView, imageUrl: imageUrl)
+
+        
+        // create price label
+        let priceLabel = UILabel(frame: CGRectMake(0, 40, 150, 20))
+        cell.contentView.addSubview(priceLabel)
+//        priceLabel.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleHeight
+        priceLabel.tag = QUOTE_PRICE_TAG
+        priceLabel.font = UIFont.systemFontOfSize(14.0)
+        priceLabel.textAlignment = NSTextAlignment.Left
+        priceLabel.textColor = UIColor.darkGrayColor()
+//        priceLabel.backgroundColor = UIColor.redColor()
+
+        
+        
+        // create brief label
+        let briefLabel = UILabel(frame: CGRectMake(0,60, 250, 20))
+        cell.contentView.addSubview(briefLabel)
+//        briefLabel.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleHeight
+        briefLabel.tag = QUOTE_BRIEF_TAG
+        briefLabel.font = UIFont.systemFontOfSize(12.0)
+        briefLabel.textAlignment = NSTextAlignment.Left
+        briefLabel.textColor = UIColor.darkGrayColor()
+//        briefLabel.backgroundColor = UIColor.blueColor()
+        briefLabel.numberOfLines = 0
+        briefLabel.adjustsFontSizeToFitWidth = true
+//        briefLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+
+        var contentViewsDictionary: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
+        contentViewsDictionary["imageView"] = imageView
+        contentViewsDictionary["priceLabel"] = priceLabel
+        contentViewsDictionary["briefLabel"] = briefLabel
+        
+        var formatH1 = "H:|[imageView(>=50)]|"
+        var formatH2 = "H:|-[priceLabel(>=50)]-|"
+        var formatH3 = "H:|-[briefLabel(>=50)]-|"
+        var constraintsH1 = NSLayoutConstraint.constraintsWithVisualFormat(formatH1, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
+        var constraintsH2 = NSLayoutConstraint.constraintsWithVisualFormat(formatH2, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
+        var constraintsH3 = NSLayoutConstraint.constraintsWithVisualFormat(formatH3, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
+        
+        
+        var formatV: String = "V:|[imageView(100)]-(-30)-[priceLabel(30)][briefLabel(40)]"
+        var constraintsV = NSLayoutConstraint.constraintsWithVisualFormat(formatV, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
+
+        
+//        var formatV1: String = "V:|-[imageView(100)]-(-30)-[priceLabel(20)]"
+//        var formatV2: String = "V:|-[imageView(100)][briefLabel(20)]"
+//        var constraintsV1 = NSLayoutConstraint.constraintsWithVisualFormat(formatV1, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
+//        var constraintsV2 = NSLayoutConstraint.constraintsWithVisualFormat(formatV2, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
+        
+        imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        priceLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        briefLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        cell.contentView.addConstraints(constraintsH1)
+        cell.contentView.addConstraints(constraintsH2)
+        cell.contentView.addConstraints(constraintsH3)
+        cell.contentView.addConstraints(constraintsV)
+//        cell.contentView.addConstraints(constraintsV1)
+//        cell.contentView.addConstraints(constraintsV2)
+        
+        return cell
+    }
+    
+    
+    private func displayDestinationImage(imageView: UIImageView, imageUrl: String) {
+        // load destination image at imageUrl from server
+        PWImageService.loadDestinationImage(imageView, imageUrl: imageUrl) { (ok: Bool) in
+            if !ok {
+                // Failed loading from server, load destination image from local file
+                let placeHolderFileName = PWImageService.getQuoteImagePlaceHolderFileName()
+                PWImageService.loadDestinationImageFromLocalFile(imageView, imageFileName: placeHolderFileName)
+            }
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -126,13 +226,13 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         
         // set the checkmark
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            if lastSelectedCell != nil {
-                // clear the checkmark of previous selection
-                lastSelectedCell?.accessoryType = UITableViewCellAccessoryType.None
-            }
-            lastSelectedCell = cell
-            
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+//            if lastSelectedCell != nil {
+//                // clear the checkmark of previous selection
+//                lastSelectedCell?.accessoryType = UITableViewCellAccessoryType.None
+//            }
+//            lastSelectedCell = cell
+//            
+//            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
     }
     
