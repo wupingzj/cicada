@@ -324,8 +324,10 @@ class PWQuoteLoader {
         let dataloader = PWRequestLoader()
         let requests: [PWRequest] = dataloader.getRequestList()
         for (index, request) in enumerate(requests) {
-            let quote = PWQuote.createQuote(request)
-            println("**** quote uuid: \(quote.uuid)")
+            let quote1 = PWQuote.createQuote(request)
+            let quote2 = PWQuote.createQuote(request)
+            let quote3 = PWQuote.createQuote(request)
+            println("**** quote uuid: \(quote1.uuid)  \(quote2.uuid)    \(quote3.uuid)")
         }
         
         var error: NSError? = DataService.sharedInstance.saveContext()

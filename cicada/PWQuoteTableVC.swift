@@ -19,6 +19,11 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // fine-tune the table view
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.showsVerticalScrollIndicator = false
+        // self.tableView.indicatorStyle =  UIScrollViewIndicatorStyle.White
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -103,13 +108,15 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 160
+        // This is the sum of the heights of imageView, briefLabel, descLabel
+        return 140
     }
     
     // MARK: - Table view layout
     let QUOTE_PHOTO_TAG = 1000
     let QUOTE_PRICE_TAG = 1001
     let QUOTE_BRIEF_TAG = 1002
+    let QUOTE_DESCRIPTION_TAG = 1003
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // get data
         let quote:PWQuote = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWQuote
@@ -126,20 +133,27 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         let imageView = cell.contentView.viewWithTag(QUOTE_PHOTO_TAG) as UIImageView
         let priceLabel = cell.contentView.viewWithTag(QUOTE_PRICE_TAG) as UILabel
         let briefLabel = cell.contentView.viewWithTag(QUOTE_BRIEF_TAG) as UILabel
+        let descLabel = cell.contentView.viewWithTag(QUOTE_DESCRIPTION_TAG) as UILabel
         
-        priceLabel.text = "THis is the hotel price"
-//        briefLabel.text = "This is the brief \ndescription of the \nquote. abcdedadjafdja;fjdasf abcdefghijklmnopqrstuvwxyz"
-        briefLabel.text = "This is the brief \ndescription of the quote."
+        priceLabel.text = "$350"
+        briefLabel.text = "This is the brief introduction of the quote."
+//        briefLabel.text = "This is the brief \ndescription of the quote. abcdefghijklmnopqrstuvwxyz This is another bit of description"
+        descLabel.text = "detailed description"
         
         return cell
     }
     
     private func createCell(cellID: String) -> UITableViewCell {
+        // Keep in mind: when the elements of cell is added/removed or their heights are adjusted, 
+        // change heightForRowAtIndexPath value accordingly
+        
+        // TODO TODO
+        // to disable the slider on the table right side. Otherwise, a shadow of slider is displaying and then disappear
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellID)
-//        cell.accessoryType = UITableViewCellAccessoryType.DetailButton
+        // cell.accessoryType = UITableViewCellAccessoryType.DetailButton
         
         // create image
-        let imageView: UIImageView = UIImageView(frame: CGRectMake(0, 0, 220, 40))
+        let imageView: UIImageView = UIImageView()
         cell.contentView.addSubview(imageView)
         imageView.tag = QUOTE_PHOTO_TAG
         imageView.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleHeight
@@ -149,62 +163,73 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
 
         
         // create price label
-        let priceLabel = UILabel(frame: CGRectMake(0, 40, 150, 20))
+        let priceLabel = UILabel()
         cell.contentView.addSubview(priceLabel)
-//        priceLabel.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleHeight
+        priceLabel.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleHeight
         priceLabel.tag = QUOTE_PRICE_TAG
-        priceLabel.font = UIFont.systemFontOfSize(14.0)
+        priceLabel.font = UIFont.boldSystemFontOfSize(16.0)
         priceLabel.textAlignment = NSTextAlignment.Left
-        priceLabel.textColor = UIColor.darkGrayColor()
-//        priceLabel.backgroundColor = UIColor.redColor()
+        priceLabel.textColor = UIColor.whiteColor()
+        priceLabel.backgroundColor = UIColor.darkGrayColor()
 
-        
-        
+
         // create brief label
-        let briefLabel = UILabel(frame: CGRectMake(0,60, 250, 20))
+        let briefLabel = UILabel()
         cell.contentView.addSubview(briefLabel)
-//        briefLabel.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleHeight
         briefLabel.tag = QUOTE_BRIEF_TAG
         briefLabel.font = UIFont.systemFontOfSize(12.0)
         briefLabel.textAlignment = NSTextAlignment.Left
         briefLabel.textColor = UIColor.darkGrayColor()
-//        briefLabel.backgroundColor = UIColor.blueColor()
         briefLabel.numberOfLines = 0
         briefLabel.adjustsFontSizeToFitWidth = true
-//        briefLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+        // briefLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+        // briefLabel.backgroundColor = UIColor.redColor()
+        
+        // create brief label
+        let descLabel = UILabel()
+        cell.contentView.addSubview(descLabel)
+        descLabel.tag = QUOTE_DESCRIPTION_TAG
+        descLabel.font = UIFont.systemFontOfSize(12.0)
+        descLabel.textAlignment = NSTextAlignment.Left
+        descLabel.textColor = UIColor.darkGrayColor()
+        descLabel.numberOfLines = 0
+        descLabel.adjustsFontSizeToFitWidth = true
+        // descLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+        // descLabel.backgroundColor = UIColor.blueColor()
 
         var contentViewsDictionary: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
         contentViewsDictionary["imageView"] = imageView
         contentViewsDictionary["priceLabel"] = priceLabel
         contentViewsDictionary["briefLabel"] = briefLabel
+        contentViewsDictionary["descLabel"] = descLabel
         
         var formatH1 = "H:|[imageView(>=50)]|"
-        var formatH2 = "H:|-[priceLabel(>=50)]-|"
+        var formatH2 = "H:|-[priceLabel]"
         var formatH3 = "H:|-[briefLabel(>=50)]-|"
+        var formatH4 = "H:|-[descLabel(>=50)]-|"
         var constraintsH1 = NSLayoutConstraint.constraintsWithVisualFormat(formatH1, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
         var constraintsH2 = NSLayoutConstraint.constraintsWithVisualFormat(formatH2, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
         var constraintsH3 = NSLayoutConstraint.constraintsWithVisualFormat(formatH3, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
+        var constraintsH4 = NSLayoutConstraint.constraintsWithVisualFormat(formatH4, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
         
         
-        var formatV: String = "V:|[imageView(100)]-(-30)-[priceLabel(30)][briefLabel(40)]"
-        var constraintsV = NSLayoutConstraint.constraintsWithVisualFormat(formatV, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
-
+        var formatV1: String = "V:|[imageView(>=100)]-(-30)-[priceLabel(20)]"
+        var formatV2: String = "V:|[imageView(>=100)][briefLabel(20)][descLabel(20)]"
+        var constraintsV1 = NSLayoutConstraint.constraintsWithVisualFormat(formatV1, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
+        var constraintsV2 = NSLayoutConstraint.constraintsWithVisualFormat(formatV2, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
         
-//        var formatV1: String = "V:|-[imageView(100)]-(-30)-[priceLabel(20)]"
-//        var formatV2: String = "V:|-[imageView(100)][briefLabel(20)]"
-//        var constraintsV1 = NSLayoutConstraint.constraintsWithVisualFormat(formatV1, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
-//        var constraintsV2 = NSLayoutConstraint.constraintsWithVisualFormat(formatV2, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
-        
+        // important: disable autoresizing
         imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
         priceLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         briefLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        descLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         cell.contentView.addConstraints(constraintsH1)
         cell.contentView.addConstraints(constraintsH2)
         cell.contentView.addConstraints(constraintsH3)
-        cell.contentView.addConstraints(constraintsV)
-//        cell.contentView.addConstraints(constraintsV1)
-//        cell.contentView.addConstraints(constraintsV2)
+        cell.contentView.addConstraints(constraintsH4)
+        cell.contentView.addConstraints(constraintsV1)
+        cell.contentView.addConstraints(constraintsV2)
         
         return cell
     }
