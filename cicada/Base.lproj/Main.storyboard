@@ -305,6 +305,26 @@
             </objects>
             <point key="canvasLocation" x="2076" y="1560"/>
         </scene>
+        <!--QuoteDetails-->
+        <scene sceneID="hhk-C9-hcO">
+            <objects>
+                <viewController storyboardIdentifier="QuoteDetailsVC" id="596-Oe-Vdu" userLabel="QuoteDetails" customClass="PWQuoteDetailsVC" customModule="cicada" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dhu-LT-Xxp"/>
+                        <viewControllerLayoutGuide type="bottom" id="eYj-3l-8Bk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Au-8j-zy1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Quote Details" id="dEu-2W-yeE"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QFw-oZ-k38" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2770" y="1558"/>
+        </scene>
         <!--RequestDetails-->
         <scene sceneID="lVO-iB-Dwf">
             <objects>
@@ -741,8 +761,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conformation Page" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWs-xB-41S">
-                                <rect key="frame" x="226" y="290" width="149" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Conformation Page - Submit Request" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWs-xB-41S">
+                                <rect key="frame" x="226" y="290" width="149" height="69"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

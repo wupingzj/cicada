@@ -109,7 +109,7 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // This is the sum of the heights of imageView, briefLabel, descLabel
-        return 140
+        return 190
     }
     
     // MARK: - Table view layout
@@ -136,9 +136,9 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         let descLabel = cell.contentView.viewWithTag(QUOTE_DESCRIPTION_TAG) as UILabel
         
         priceLabel.text = "$350"
-        briefLabel.text = "This is the brief introduction of the quote."
+        briefLabel.text = "Bondi Beach Hotel - Magnificant sea view"
 //        briefLabel.text = "This is the brief \ndescription of the quote. abcdefghijklmnopqrstuvwxyz This is another bit of description"
-        descLabel.text = "detailed description"
+        descLabel.text = "details - details - details"
         
         return cell
     }
@@ -147,10 +147,7 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         // Keep in mind: when the elements of cell is added/removed or their heights are adjusted, 
         // change heightForRowAtIndexPath value accordingly
         
-        // TODO TODO
-        // to disable the slider on the table right side. Otherwise, a shadow of slider is displaying and then disappear
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellID)
-        // cell.accessoryType = UITableViewCellAccessoryType.DetailButton
         
         // create image
         let imageView: UIImageView = UIImageView()
@@ -167,7 +164,7 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         cell.contentView.addSubview(priceLabel)
         priceLabel.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleHeight
         priceLabel.tag = QUOTE_PRICE_TAG
-        priceLabel.font = UIFont.boldSystemFontOfSize(16.0)
+        priceLabel.font = UIFont.boldSystemFontOfSize(20.0)
         priceLabel.textAlignment = NSTextAlignment.Left
         priceLabel.textColor = UIColor.whiteColor()
         priceLabel.backgroundColor = UIColor.darkGrayColor()
@@ -177,7 +174,7 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         let briefLabel = UILabel()
         cell.contentView.addSubview(briefLabel)
         briefLabel.tag = QUOTE_BRIEF_TAG
-        briefLabel.font = UIFont.systemFontOfSize(12.0)
+        briefLabel.font = UIFont.boldSystemFontOfSize(14.0)
         briefLabel.textAlignment = NSTextAlignment.Left
         briefLabel.textColor = UIColor.darkGrayColor()
         briefLabel.numberOfLines = 0
@@ -213,8 +210,8 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         var constraintsH4 = NSLayoutConstraint.constraintsWithVisualFormat(formatH4, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
         
         
-        var formatV1: String = "V:|[imageView(>=100)]-(-30)-[priceLabel(20)]"
-        var formatV2: String = "V:|[imageView(>=100)][briefLabel(20)][descLabel(20)]"
+        var formatV1: String = "V:|[imageView(>=150)]-(-30)-[priceLabel(20)]"
+        var formatV2: String = "V:|[imageView(>=150)][briefLabel(20)][descLabel(20)]"
         var constraintsV1 = NSLayoutConstraint.constraintsWithVisualFormat(formatV1, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
         var constraintsV2 = NSLayoutConstraint.constraintsWithVisualFormat(formatV2, options: NSLayoutFormatOptions(0), metrics: nil, views: contentViewsDictionary)
         
@@ -234,7 +231,6 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         return cell
     }
     
-    
     private func displayDestinationImage(imageView: UIImageView, imageUrl: String) {
         // load destination image at imageUrl from server
         PWImageService.loadDestinationImage(imageView, imageUrl: imageUrl) { (ok: Bool) in
@@ -247,6 +243,7 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("selected row\(indexPath.row)")
         let selectedQuote = self.fetchedResultsController.objectAtIndexPath(indexPath) as PWQuote
         
         // set the checkmark
@@ -259,6 +256,24 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
 //            
 //            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
+        
+        onCellClick()
+    }
+
+    // MARK: - Navigation
+    func onCellClick() {
+        println("Cell is clicked.")
+        
+        let quoteDetailsVC = self.storyboard!.instantiateViewControllerWithIdentifier("QuoteDetailsVC") as PWQuoteDetailsVC
+        
+//        quoteDetailsVC.quote = self.quote
+//        quoteDetailsVC.delegate = self
+        
+//         iOS7 comptible
+//         self.navigationController?.pushViewController(destinationTableVC, animated: true)
+        
+        // iOS8 comptible
+        self.showViewController(quoteDetailsVC as UIViewController, sender: self)
     }
     
     // MARK: - Fetched Data Controller
