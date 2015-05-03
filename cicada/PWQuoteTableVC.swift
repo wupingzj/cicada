@@ -257,20 +257,17 @@ class PWQuoteTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
 //            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
         
-        onCellClick()
+        onCellClick(self.request, quote: selectedQuote)
     }
 
     // MARK: - Navigation
-    func onCellClick() {
+    func onCellClick(request: PWRequest, quote: PWQuote) {
         println("Cell is clicked.")
         
         let quoteDetailsVC = self.storyboard!.instantiateViewControllerWithIdentifier("QuoteDetailsVC") as PWQuoteDetailsVC
-        
-//        quoteDetailsVC.quote = self.quote
-//        quoteDetailsVC.delegate = self
-        
-//         iOS7 comptible
-//         self.navigationController?.pushViewController(destinationTableVC, animated: true)
+        quoteDetailsVC.request = request
+        quoteDetailsVC.quote = quote
+        // quoteDetailsVC.delegate = self
         
         // iOS8 comptible
         self.showViewController(quoteDetailsVC as UIViewController, sender: self)
